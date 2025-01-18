@@ -1,0 +1,43 @@
+
+  .md-admin-wrap {
+    margin-top: 1em;
+    margin-right: 15px;
+    margin-bottom: 1em;
+    margin-left: 15px;
+    padding-top: 0.5em;
+    padding-right: 12px;
+    padding-bottom: 0.5em;
+    padding-left: 12px;
+    background-color: #ffffff;
+    border: solid 1px #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+  }
+
+    .md-admin-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      border: 1px solid #c3c4c7;
+      margin-bottom: 3em;
+    }
+
+      .md-admin-wrap table tr:nth-of-type(even) {
+        background-color: #f6f7f7;
+      }
+
+      .md-admin-wrap table th {
+        padding: 0.5em 0.5em;
+        border-bottom: 1px solid #c3c4c7;
+      }
+
+      .md-admin-wrap table td {
+        padding: 0.5em 0.5em;
+      }
+
+        .md-admin-wrap table td.md-fund-list-td span:after {
+          content: ", ";
+        }
+
+        .md-admin-wrap table td.md-fund-list-td span:last-of-type:after {
+          content: ". ";
+        }

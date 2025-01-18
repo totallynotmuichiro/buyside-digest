@@ -1,0 +1,120 @@
+<?php
+
+	$fundIds = md_get_users_subscribed_funds();
+
+	$tickerIds = md_get_users_subscribed_tickers();
+
+
+	if ( (empty($fundIds)) && (empty($tickerIds)) ){
+		echo "<p>You haven't subscribed to any Funds or Tickers yet, go and save some to view them here!</p>";
+	} else {
+		echo "<div class='recommended'>";
+			// Display Funds
+				if (!empty($fundIds)) {
+					$content_feed = new WP_Query(array(
+						'post_type' => 'any',
+						'posts_per_page' => -1,
+						'post__in' => $fundIds,
+						'orderby' => 'menu_order',
+						'order' => 'ASC',
+					));
+
+					if ($content_feed->have_posts()) :
+						while ($content_feed->have_posts()) : $content_feed->the_post();
+							global $post;
+
+		                    $fund_id = $post->ID;
+
+							echo "<div id='md-recommended-fund-id-".$fund_id."' class='recommended-item'>";
+								
+								echo "<div class='md-recommended-item-header'>";
+									echo "<a href=".get_permalink().">";
+										echo "<h2 class='md-heading-title md-fund-heading-title'>".get_the_title()."</h2>";
+									echo "</a>";
+
+									echo "<button id='md_fund_subscribe_btn_id_".$fund_id."' class='md-fund-subscribe-btn md-users-favourites-fund-unsubscribe-btn md-fund-subscribe-btn--subscribed' data-fund-id='".$fund_id."'>Untrack</button>";
+
+								echo "</div>";
+							
+								// Get the letters 
+			                    	global $wpdb;
+			                    	$letters_array = array();
+				                    $jet_table_name = $wpdb->prefix.'jet_rel_default';          
+				                    $posts_table_name = $wpdb->prefix.'posts';          
+		           				    $letters = $wpdb->get_results("SELECT * FROM ".$jet_table_name." AS jet_rel INNER JOIN ".$posts_table_name." AS posts ON jet_rel.child_object_id = posts.ID WHERE jet_rel.parent_object_id = '".$fund_id."' AND posts.post_status = 'publish' AND posts.post_date >= curdate() - INTERVAL DAYOFWEEK(curdate())+28 DAY AND posts.post_date < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY");
+
+							       	echo "<ul>";
+								        if ($letters){
+		          							foreach( $letters as $letter ) {
+		            							$letter_id = $letter->child_object_id;
+		            							$letter_title = $letter->post_title;
+		            							$leffer_url = get_the_permalink($letter_id);
+		            							echo "<li><a href='".$leffer_url."'>".$letter_title."</a></li>";
+		          							}
+		        						}
+	          						echo "</ul>";
+
+								echo "<a class='md-link-btn md-fund-link-btn' href=".get_permalink().">View Fund</a>";
+							echo "</div>";
+						
+
+
+						endwhile;
+					endif;
+
+					wp_reset_query();
+				}
+
+
+			// Display Tickers
+				if (!empty($tickerIds)) {
+					foreach ($tickerIds as $tickerId){
+						$ticker_title = get_term($tickerId)->name;
+						$ticker_slug = get_term($tickerId)->slug;
+						$ticker_url = get_site_url()."/tickers/".$ticker_slug;
+						// md_get_letters_ids_for_tickers expects to receive an array so convert $tickerId to array
+							$ticker_array = array($tickerId);
+					
+							echo "<div id='md-recommended-ticker-id-".$tickerId."' class='recommended-item'>";
+								
+								echo "<div class='md-recommended-item-header'>";
+									echo "<a href=".$ticker_url.">";
+										echo "<h2 class='md-heading-title md-ticker-heading-title'>".$ticker_title."</h2>";
+									echo "</a>";
+
+									echo "<button id='md_ticker_subscribe_btn_id_".$tickerId."' class='md-ticker-subscribe-btn md-users-favourites-ticker-unsubscribe-btn md-ticker-subscribe-btn--subscribed' data-fund-id='".$tickerId."'>Untrack</button>";
+
+								echo "</div>";
+							
+								// Get the letters 
+									$letters = md_get_letters_ids_for_tickers($ticker_array);
+
+							       	echo "<ul>";
+								        if ($letters){
+		          							foreach( $letters as $letter ) {
+	            								$letter_id = $letter;
+		            							$letter_post  = get_post($letter_id);
+		            							$letter_title = get_the_title($letter_id);
+		            							$letter_url  = get_the_permalink($letter_id);
+												$letter_published_date = get_the_date('Y-m-d', $letter_id);
+												
+												if( (get_post_status ( $letter_id ) == 'publish') && (strtotime($letter_published_date) > strtotime('-60 days')) ){
+												   	echo "<li>";
+												   	echo "<a href='".$letter_url."'> ".$letter_title."</a><br>";
+												   	echo "</li>";
+												}
+		          							}
+		        						}
+	          						echo "</ul>";
+
+
+								echo "<a class='md-link-btn md-ticker-link-btn' href=".$ticker_url.">View Ticker</a>";
+							echo "</div>";
+
+
+
+					}
+				}
+
+			echo "</div><!-- /.recommended -->";
+		}

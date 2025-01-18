@@ -1,0 +1,120 @@
+
+.my-content-tabs .ld-profile-summary {display:none;}
+.my-content-tabs .learndash-wrapper .ld-item-list{
+	display:block;
+	margin:0;
+	padding:0;
+}
+
+.my-content-tabs .learndash-wrapper #ld-profile .ld-section-heading {
+display:none;
+}
+
+.my-content-tabs .learndash-wrapper .ld-item-list .ld-item-list-item {
+	margin:0 0 1em 0;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper{
+	margin:0 0 30px 0;
+	width:100%;
+	display:flex;
+	flex-direction:row;
+}
+
+
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title.elementor-active {
+	background:transparent !important;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title {
+	padding:0;
+	display:flex;
+	height:auto;
+	margin:0 10px 0 0;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title a{
+	border-radius: 5px 5px 5px 5px;
+	padding: 12px 30px 12px 30px !important;
+	text-decoration:none;
+	background:#2176AE;
+	color:#fff;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title a:hover {
+	background:#136195;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title.elementor-active a{
+	background:#FBB13C;
+}
+.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title.elementor-active a:hover{
+	background: #fd979f;
+}
+.my-content-tabs .elementor-tabs .elementor-tab-content{
+	padding:0;
+}
+
+.elementor-tab-mobile-title {
+	display:none;
+}
+
+
+.recommended {
+	/*width:calc(100% + 20px);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;*/
+	width:100%;
+	display:block;
+	margin: -10px;
+}
+.recommended-item {
+	width: calc(33.33% - 20px);
+	margin: 10px;
+	background: #fff;
+}
+.funds-div, .tickers-div {
+        width:calc(100% + 20px);
+        display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+h2.md-ticker-heading-title{
+  word-wrap: break-word;
+}
+h2.md-fund-heading-title span::before{content:"last updated "}
+h2.md-fund-heading-title span {
+    font-size: .8rem;
+    color: #999;
+    display: block;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 1024px)
+{ 
+	.recommended-item  {
+	width:calc(50% - 20px);
+	}
+	
+}
+@media only screen and (max-width: 768px)
+{ 
+	.recommended {
+	width:100%;
+	margin:0;
+	}
+	.recommended-item  {
+	width:100%;
+	margin:0 0 10px 0;
+	}
+	.my-content-tabs .elementor-tabs .elementor-tabs-wrapper {
+	flex-direction:column;
+	}
+	.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title {
+	width:100%;
+	margin:0 0 10px 0;
+	}
+	.my-content-tabs .elementor-tabs .elementor-tabs-wrapper .elementor-tab-desktop-title a {
+	width:100%;
+	text-align:center;
+	}
+	
+}

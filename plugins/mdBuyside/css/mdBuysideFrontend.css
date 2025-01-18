@@ -1,0 +1,84 @@
+
+button.md-ticker-subscribe-btn,
+button.md-ticker-subscribe-btn--not-subscribed {
+  background-color: transparent;
+  color: #61CE70;
+  border: 1px solid #61CE70;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+  button.md-ticker-subscribe-btn:hover {
+    background-color: #61CE70;
+    color: #fff;
+  }
+
+  button.md-ticker-subscribe-btn:focus {
+    background-color: #61CE70;
+    color: #fff;
+  }
+
+
+button.md-fund-subscribe-btn,
+button.md-fund-subscribe-btn--not-subscribed {
+  background-color: transparent;
+  color: #c36;
+  border: 1px solid #c36;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+  button.md-fund-subscribe-btn:hover {
+    background-color: #c36;
+    color: #fff;
+  }
+
+  button.md-fund-subscribe-btn:focus {
+    background-color: #c36;
+    color: #fff;
+  }
+
+
+  .recommended-item {
+    padding: 1em;
+  }
+
+  .md-heading-title {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    font-weight: normal;
+  }
+
+    .md-fund-heading-title {
+      color: #0F3A4F !important;
+    }
+
+    .md-ticker-heading-title {
+      color: #0F3A4F !important;
+    }
+
+
+  a.md-link-btn {
+    display: block;
+    width: 70%;
+    margin: 0 15%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.2em;
+    padding: 0.5em;
+    margin-top: 1em;
+  }
+
+    a.md-fund-link-btn {
+      background: #9C5600;
+      color: #fff !important;
+    }
+
+    a.md-ticker-link-btn {
+      background: #9C5600;
+      color: #fff !important;
+    }
