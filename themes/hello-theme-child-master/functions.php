@@ -3891,3 +3891,33 @@ function welcome_aboard() {
 
 // Register the shortcode with WordPress
 add_shortcode('welcome_aboard', 'welcome_aboard');
+
+
+/**
+ * Enqueue script for fund follow link
+ * 
+ * This script will only be enqueued if the user is not logged in and the current page is a single fund page
+ * and updated the "Fund Follow" link to redirect to the login page if the user is not logged in.
+ * 
+ * @return void
+ */
+function bsd_fund_follow_script() {
+    if ( ! is_user_logged_in() && is_singular( 'funds' ) ) {
+        wp_enqueue_script( 'bsd-fund-follow-link', get_stylesheet_directory_uri() . '/assets/js/fund-follow.js', array(), '1.0', true );
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'bsd_fund_follow_script' );
+
+function load_investor_page_css() {
+    if (is_page_template('page-investors.php')) {
+        wp_enqueue_style(
+            'investor-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-investors.css',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_investor_page_css');
