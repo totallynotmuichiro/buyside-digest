@@ -28,6 +28,7 @@ $skip_link_url = apply_filters( 'hello_elementor_skip_link_url', '#content' );
 
 <?php wp_body_open(); ?>
 
+<?php if ( is_front_page() ) : ?>
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -61,7 +62,9 @@ $skip_link_url = apply_filters( 'hello_elementor_skip_link_url', '#content' );
   "locale": "en"
 }
   </script>
+
 </div>
+<?php endif; ?>
 
 <?php if ( $enable_skip_link ) { ?>
 <a class="skip-link screen-reader-text" href="<?php echo esc_url( $skip_link_url ); ?>"><?php echo esc_html__( 'Skip to content', 'hello-elementor' ); ?></a>
