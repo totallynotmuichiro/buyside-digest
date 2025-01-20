@@ -3921,3 +3921,81 @@ function load_investor_page_css() {
 }
 
 add_action('wp_enqueue_scripts', 'load_investor_page_css');
+
+/**
+ * Custom URL Rewrite for investor page
+ * 
+ * This code will enable the creation of a custom URL for the investor page
+ * that can be accessed by visiting `https://example.com/investor/username`
+ * 
+ * @since 1.0.0
+ */
+add_action('init', function() {
+    /**
+     * Add a custom URL rewrite rule to WordPress
+     * 
+     * The first parameter is the regex pattern to match the URL
+     * The second parameter is the WordPress query string to execute
+     * The third parameter is the priority of the rule
+     */
+    add_rewrite_rule('^investor/([^/]*)/?$', 'index.php?investor_slug=$matches[1]', 'top');
+});
+
+/**
+ * Add a custom query var to WordPress
+ * 
+ * The custom query var is used to store the value of the `investor_slug`
+ * query string parameter.
+ * 
+ * @param array $vars Array of query vars
+ * @return array Modified array of query vars
+ */
+add_filter('query_vars', function($vars) {
+    $vars[] = 'investor_slug';
+    return $vars;
+});
+
+/**
+ * Filter the template file to include for the custom URL
+ * 
+ * If the `investor_slug` query var is set, then use the custom template
+ * file for the investor page.
+ * 
+ * @param string $template Path to the template file
+ * @return string Modified path to the template file
+ */
+add_filter('template_include', function($template) {
+    if (get_query_var('investor_slug')) {
+        $custom_template = locate_template('page-investor.php');
+        if ($custom_template) {
+            return $custom_template;
+        }
+    }
+
+    return $template;
+});
+
+
+// Load Single Investor page CSS
+function load_single_investor_page_css() {
+    if ( get_query_var('investor_slug') ) {
+        // Enqueue the CSS file
+        wp_enqueue_style(
+            'investor-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-investor.css',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_single_investor_page_css');
+add_filter( 'body_class', function( $classes ) {
+    $classes[] = 'page-template';
+    $classes[] = 'page-template-page-investors';
+    return $classes;
+});add_filter( 'body_class', function( $classes ) {
+    $classes[] = 'page-template';
+    $classes[] = 'page-template-page-investors';
+    return $classes;
+});
