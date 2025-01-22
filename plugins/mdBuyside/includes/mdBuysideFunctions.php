@@ -1014,9 +1014,9 @@ function md_display_fund_table_shortcode()
             }
         }
     }
+    $search_query = isset( $search_query ) ? $search_query : '';
 
     // Build the Table HTML
-
     $table_html = md_create_fund_letters_table_html(
         $fund_letters_array,
         $page_url,
