@@ -170,15 +170,51 @@ get_header();
                     </div>
                 <?php endforeach; ?>
 
-                <input type="submit" class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" value="Search" />
-                <input type="reset" class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" value="Reset" onclick="window.location.href = '<?php echo get_permalink(); ?>'" />
+                <input 
+                    type="submit" 
+                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" 
+                    value="Search" 
+                />
+                <input 
+                    type="reset" 
+                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" 
+                    value="Reset" 
+                    onclick="window.location.href = '<?php echo get_permalink(); ?>'" 
+                />
             </div>
 
             <?php if (! empty($paginated_investors)) : ?>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
                     <?php foreach ($paginated_investors as $investor): ?>
                         <!-- Investor Card -->
-                        <div class="border text-card-foreground w-full max-w-md mx-auto bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-pointer">
+                         <?php 
+                            $investor_slug = str_replace(' ', '-', strtolower($investor['name']));
+                         ?>
+                        <!-- Add href only if cik is not empty -->
+                        <a
+                            <?php if (!empty($investor['cik'])): ?>
+                                href="<?php echo get_permalink() . $investor_slug; ?>"
+                            <?php endif; ?>
+                            class="
+                                border
+                                text-card-foreground
+                                w-full
+                                max-w-md
+                                mx-auto
+                                bg-white
+                                shadow-lg
+                                rounded-xl
+                                overflow-hidden
+                                hover:shadow-xl
+                                transition
+                                duration-300
+                                ease-in-out
+                                transform
+                                hover:-translate-y-1
+                                hover:scale-105
+                                <?php echo !empty($investor['cik']) ? 'cursor-pointer' : ''; ?>
+                            "
+                        >
                             <div class="p-6">
                                 <div class="flex items-center space-x-4 mb-4">
                                     <span class="relative flex shrink-0 overflow-hidden rounded-full h-16 w-16">
@@ -239,7 +275,7 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
 
