@@ -3,41 +3,117 @@
 Template Name: Investors
 */
 
-// Include the investor data
-include 'investor-data.php';
+// Fetch investors from the API
+$investors = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
+
+if (is_array($investors)) {
+    $investors = json_decode($investors['body'], true);
+}
+
+// Define the dropdown options
+$options = array(
+    'value' => array(
+        'All' => 'all',
+        '<$1M' => 'less-than-1m',
+        '$1M-$10M' => '1m-to-10m',
+        '$10M-$50M' => '10m-to-50m',
+        '>$50M' => 'greater-than-50m',
+    ),
+    'num-stocks' => array(
+        'All' => 'all',
+        '1-10' => '1-to-10',
+        '11-50' => '11-to-50',
+        '51-100' => '51-to-100',
+        '>100' => 'greater-than-100',
+    ),
+    'turnover-ratio' => array(
+        'All' => 'all',
+        '<10%' => 'less-than-10',
+        '10%-20%' => '10-to-20',
+        '20%-50%' => '20-to-50',
+        '>50%' => 'greater-than-50',
+    ),
+);
 
 // Pagination settings
 $items_per_page = 9;
 $current_page = isset($_GET['page-number']) ? max(1, intval($_GET['page-number'])) : 1;
 
 // Get the query parameters
-$country = isset($_GET['country']) ? $_GET['country'] : 'all';
-$investorType = isset($_GET['investor-type']) ? $_GET['investor-type'] : 'all';
-$totalValue = isset($_GET['total-value']) ? $_GET['total-value'] : 'all';
+$value = isset($_GET['value']) ? $_GET['value'] : 'all';
 $numStocks = isset($_GET['num-stocks']) ? $_GET['num-stocks'] : 'all';
 $turnoverRatio = isset($_GET['turnover-ratio']) ? $_GET['turnover-ratio'] : 'all';
 $investorName = isset($_GET['investor-name']) ? $_GET['investor-name'] : '';
 
 // Filter the investors based on the query parameters
-$investors = array_filter($investors, function($investor) use ($country, $investorType, $totalValue, $numStocks, $turnoverRatio, $investorName) {
-    if ($country !== 'all' && $investor['Country'] !== $country) {
-        return false;
+$investors = array_filter($investors, function($investor) use ($value, $numStocks, $turnoverRatio, $investorName) {
+    // Extract numeric value from "Value $X.XX Mil/Bil" format
+    if ($value !== 'all') {
+        preg_match('/\$([0-9.]+)\s*(Mil|Bil)/', $investor['value'], $matches);
+        $investorValue = isset($matches[1]) ? floatval($matches[1]) : 0;
+        $unit = isset($matches[2]) ? $matches[2] : 'Mil';
+        
+        // Convert Billion to Million for consistent comparison
+        if ($unit === 'Bil') {
+            $investorValue *= 1000;
+        }
+        
+        switch($value) {
+            case 'less-than-1m':
+                if ($investorValue >= 1) return false;
+                break;
+            case '1m-to-10m':
+                if ($investorValue < 1 || $investorValue > 10) return false;
+                break;
+            case '10m-to-50m':
+                if ($investorValue < 10 || $investorValue > 50) return false;
+                break;
+            case 'greater-than-50m':
+                if ($investorValue <= 50) return false;
+                break;
+        }
     }
 
-    if ($investorType !== 'all' && $investor['type'] !== $investorType) {
-        return false;
+    // Extract number of stocks from "X Stocks (Y new)" format
+    if ($numStocks !== 'all') {
+        preg_match('/(\d+)\s+Stocks/', $investor['stocks_info'], $matches);
+        $stockCount = isset($matches[1]) ? intval($matches[1]) : 0;
+        
+        switch($numStocks) {
+            case '1-to-10':
+                if ($stockCount < 1 || $stockCount > 10) return false;
+                break;
+            case '11-to-50':
+                if ($stockCount < 11 || $stockCount > 50) return false;
+                break;
+            case '51-to-100':
+                if ($stockCount < 51 || $stockCount > 100) return false;
+                break;
+            case 'greater-than-100':
+                if ($stockCount <= 100) return false;
+                break;
+        }
     }
 
-    if ($totalValue !== 'all' && $investor['total_value'] !== $totalValue) {
-        return false;
-    }
+    // Extract turnover percentage from "36%" format
+    if ($turnoverRatio !== 'all') {
+        preg_match('/(\d+)%/', $investor['turnover'], $matches);
+        $turnoverPercentage = isset($matches[1]) ? intval($matches[1]) : 0;
 
-    if ($numStocks !== 'all' && $investor['no_of_stocks'] !== $numStocks) {
-        return false;
-    }
-
-    if ($turnoverRatio !== 'all' && $investor['turnover_ratio'] !== $turnoverRatio) {
-        return false;
+        switch($turnoverRatio) {
+            case 'less-than-10':
+                if ($turnoverPercentage >= 10) return false;
+                break;
+            case '10-to-20':
+                if ($turnoverPercentage < 10 || $turnoverPercentage > 20) return false;
+                break;
+            case '20-to-50':
+                if ($turnoverPercentage < 20 || $turnoverPercentage > 50) return false;
+                break;
+            case 'greater-than-50':
+                if ($turnoverPercentage <= 50) return false;
+                break;
+        }
     }
 
     if (!empty($investorName) && stripos($investor['name'], $investorName) === false) {
@@ -71,7 +147,6 @@ function get_pagination_url($page) {
 get_header();
 ?>
 
-<!-- TradingView Widget BEGIN -->
 <section class="bsd-container">
     <div class="container mx-auto px-4 lg:px-20 my-5">
         <form action="" method="get">
@@ -99,60 +174,126 @@ get_header();
                 <input type="reset" class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" value="Reset" onclick="window.location.href = '<?php echo get_permalink(); ?>'" />
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
-                <?php foreach ($paginated_investors as $investor): ?>
-                    <div class="bg-slate-100 shadow-md p-4 rounded-md">
-                        <h2 class="text-2xl"><?php echo esc_html($investor['name']); ?></h2>
-                        <p><?php echo esc_html($investor['description']); ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            <?php if (! empty($paginated_investors)) : ?>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
+                    <?php foreach ($paginated_investors as $investor): ?>
+                        <!-- Investor Card -->
+                        <div class="border text-card-foreground w-full max-w-md mx-auto bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-pointer">
+                            <div class="p-6">
+                                <div class="flex items-center space-x-4 mb-4">
+                                    <span class="relative flex shrink-0 overflow-hidden rounded-full h-16 w-16">
+                                        <?php 
+                                            $response = wp_remote_head($investor['image_path'], ['timeout' => 1]);
 
-            <?php if ($total_pages > 1): ?>
-            <div class="flex justify-center items-center space-x-2 my-8">
-                <?php if ($current_page > 1): ?>
-                    <a href="<?php echo esc_url(get_pagination_url($current_page - 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
-                        Previous
-                    </a>
-                <?php endif; ?>
+                                            if ( wp_remote_retrieve_response_code( $response ) === 404 || empty($investor['image_path']) ) {
+                                                $investor['image_path'] = 'https://ui-avatars.com/api/?name=' . urlencode($investor['name']) . '&background=0d3e6f&color=fff';
+                                            }
+                                        ?>
+                                        <img
+                                            class="aspect-square h-full w-full object-cover"
+                                            alt="<?php echo esc_attr($investor['name']); ?>"
+                                            src="<?php echo esc_url($investor['image_path']); ?>"
+                                        >
+                                    </span>
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-800">
+                                            <?php echo esc_html($investor['name']); ?>
+                                        </h2>
+                                        <p class="text-sm text-gray-600">
+                                            <?php echo esc_html($investor['company']); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 mt-4">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Value</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            <?php
+                                            $value = str_replace('Value ', '', $investor['value']);
+                                            echo empty($value) ? '-' : $value;
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Stocks</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            <?php echo esc_html($investor['stocks_info']); ?>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Turnover</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            <?php 
+                                            $turnover = str_replace('Turnover ', '', $investor['turnover']);
+                                            echo empty($turnover) ? '-' : $turnover;
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">CIK</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            <?php 
+                                                echo $investor['cik'] ? $investor['cik'] : '-';
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
 
-                <?php
-                // Calculate range of pages to show
-                $range = 2;
-                $start_page = max(1, $current_page - $range);
-                $end_page = min($total_pages, $current_page + $range);
-
-                // Show first page if not in range
-                if ($start_page > 1): ?>
-                    <a href="<?php echo esc_url(get_pagination_url(1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">1</a>
-                    <?php if ($start_page > 2): ?>
-                        <span class="px-4 py-2 text-slate-600">...</span>
+                <?php if ($total_pages > 1): ?>
+                <div class="flex justify-center items-center space-x-2 my-8">
+                    <?php if ($current_page > 1): ?>
+                        <a href="<?php echo esc_url(get_pagination_url($current_page - 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
+                            Previous
+                        </a>
                     <?php endif; ?>
-                <?php endif; ?>
 
-                <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
-                    <?php if ($i === $current_page): ?>
-                        <span class="px-4 py-2 border rounded-md bg-primary text-white"><?php echo $i; ?></span>
-                    <?php else: ?>
-                        <a href="<?php echo esc_url(get_pagination_url($i)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $i; ?></a>
+                    <?php
+                    // Calculate range of pages to show
+                    $range = 2;
+                    $start_page = max(1, $current_page - $range);
+                    $end_page = min($total_pages, $current_page + $range);
+
+                    // Show first page if not in range
+                    if ($start_page > 1): ?>
+                        <a href="<?php echo esc_url(get_pagination_url(1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">1</a>
+                        <?php if ($start_page > 2): ?>
+                            <span class="px-4 py-2 text-slate-600">...</span>
+                        <?php endif; ?>
                     <?php endif; ?>
-                <?php endfor; ?>
 
-                <?php
-                // Show last page if not in range
-                if ($end_page < $total_pages): ?>
-                    <?php if ($end_page < $total_pages - 1): ?>
-                        <span class="px-4 py-2 text-slate-600">...</span>
+                    <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
+                        <?php if ($i === $current_page): ?>
+                            <span class="px-4 py-2 border rounded-md bg-primary text-white"><?php echo $i; ?></span>
+                        <?php else: ?>
+                            <a href="<?php echo esc_url(get_pagination_url($i)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $i; ?></a>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+
+                    <?php
+                    // Show last page if not in range
+                    if ($end_page < $total_pages): ?>
+                        <?php if ($end_page < $total_pages - 1): ?>
+                            <span class="px-4 py-2 text-slate-600">...</span>
+                        <?php endif; ?>
+                        <a href="<?php echo esc_url(get_pagination_url($total_pages)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $total_pages; ?></a>
                     <?php endif; ?>
-                    <a href="<?php echo esc_url(get_pagination_url($total_pages)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $total_pages; ?></a>
+
+                    <?php if ($current_page < $total_pages): ?>
+                        <a href="<?php echo esc_url(get_pagination_url($current_page + 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
+                            Next
+                        </a>
+                    <?php endif; ?>
+                </div>
                 <?php endif; ?>
 
-                <?php if ($current_page < $total_pages): ?>
-                    <a href="<?php echo esc_url(get_pagination_url($current_page + 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
-                        Next
-                    </a>
-                <?php endif; ?>
-            </div>
+            <?php else : ?>
+                <div class="my-5 md:my-10">
+                    <p class="text-center text-lg font-medium text-slate-600">No investors found.</p>
+                </div>
             <?php endif; ?>
         </form>
     </div>
