@@ -503,12 +503,15 @@ function callback_send_import_start_email_cron_callback()
 		// Email Headers
         $headers = array(
             'From: Buyside Monitor <netqomuser3@gmail.com>',
-            'X-ElasticEmail-Channel: ' . $channel,
         );
 		
+        $temp_channel_name = get_option( 'ee_channel_name' );
+
         // Send email
-         wp_mail($user_email, $subject, $full_mail_content, $headers);
-		
+        update_option('ee_channel_name', $channel );
+        wp_mail($user_email, $subject, $full_mail_content, $headers);
+        update_option('ee_channel_name', $temp_channel_name );
+
         // Delete data from the cron table after processing
         $crontable_name = $wpdb->prefix . 'useremail_cron';
 
@@ -3909,7 +3912,14 @@ function bsd_fund_follow_script() {
 
 add_action( 'wp_enqueue_scripts', 'bsd_fund_follow_script' );
 
-function load_investor_page_css() {
+/**
+ * Load CSS for investors page
+ * 
+ * This function will enqueue a custom CSS file for the investors page if the current page is using the page-investors.php template.
+ * 
+ * @since 1.0.0
+ */
+function load_investors_page_css() {
     if (is_page_template('page-investors.php')) {
         wp_enqueue_style(
             'investor-page-style',
@@ -3920,7 +3930,7 @@ function load_investor_page_css() {
     }
 }
 
-add_action('wp_enqueue_scripts', 'load_investor_page_css');
+add_action('wp_enqueue_scripts', 'load_investors_page_css');
 
 /**
  * Custom URL Rewrite for investor page
