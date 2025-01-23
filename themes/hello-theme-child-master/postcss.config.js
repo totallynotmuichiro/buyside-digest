@@ -3,7 +3,7 @@ module.exports = {
       require('tailwindcss'),
       require('autoprefixer'),
       require('postcss-prefix-selector')({
-        prefix: '.page-template.page-template-page-investors .bsd-container',
+        prefix: '.page-template.page-template-page-investor .bsd-container',
         exclude: ['html', 'body', ':root'],
         transform: function (prefix, selector, prefixedSelector) {
           if (selector.indexOf(prefix) === 0) {

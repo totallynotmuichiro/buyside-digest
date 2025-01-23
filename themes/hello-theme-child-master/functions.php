@@ -4000,12 +4000,11 @@ function load_single_investor_page_css() {
 }
 
 add_action('wp_enqueue_scripts', 'load_single_investor_page_css');
+
 add_filter( 'body_class', function( $classes ) {
-    $classes[] = 'page-template';
-    $classes[] = 'page-template-page-investors';
-    return $classes;
-});add_filter( 'body_class', function( $classes ) {
-    $classes[] = 'page-template';
-    $classes[] = 'page-template-page-investors';
+    if ( get_query_var('investor_slug') ) {
+        $classes[] = 'page-template';
+        $classes[] = 'page-template-page-investor';
+    }
     return $classes;
 });
