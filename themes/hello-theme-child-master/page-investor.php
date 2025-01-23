@@ -6,8 +6,15 @@ $investor_slug  = get_query_var('investor_slug');
 $investor_data  = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=' . str_replace('-', ' ', $investor_slug));
 $investors_data = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
 
-if (is_array($investor_data)) {
-    $investor_data = json_decode($investor_data['body'], true)[0];
+if (is_array($investor_data) && !empty($investor_data['body'])) {
+    $decoded_data = json_decode($investor_data['body'], true);
+    if (is_array($decoded_data) && !empty($decoded_data)) {
+        $investor_data = $decoded_data[0];
+    } else {
+        get_template_part('template-parts/investor/investor-no-data-found');
+    }
+} else {
+    get_template_part('template-parts/investor/investor-no-data-found');
 }
 
 if (is_array($investors_data)) {

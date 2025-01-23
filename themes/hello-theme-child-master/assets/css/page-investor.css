@@ -558,6 +558,21 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .mb-3 {
   margin-bottom: 0.75rem;
 }
+.page-template.page-template-page-investor .bsd-container .mb-4 {
+  margin-bottom: 1rem;
+}
+.page-template.page-template-page-investor .bsd-container .mb-8 {
+  margin-bottom: 2rem;
+}
+.page-template.page-template-page-investor .bsd-container .mb-10 {
+  margin-bottom: 2.5rem;
+}
+.page-template.page-template-page-investor .bsd-container .mb-6 {
+  margin-bottom: 1.5rem;
+}
+.page-template.page-template-page-investor .bsd-container .inline-block {
+  display: inline-block;
+}
 .page-template.page-template-page-investor .bsd-container .flex {
   display: flex;
 }
@@ -567,17 +582,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .grid {
   display: grid;
 }
-.page-template.page-template-page-investor .bsd-container .h-12 {
-  height: 3rem;
-}
 .page-template.page-template-page-investor .bsd-container .h-20 {
   height: 5rem;
+}
+.page-template.page-template-page-investor .bsd-container .min-h-screen {
+  min-height: 100vh;
 }
 .page-template.page-template-page-investor .bsd-container .w-20 {
   width: 5rem;
 }
 .page-template.page-template-page-investor .bsd-container .w-full {
   width: 100%;
+}
+.page-template.page-template-page-investor .bsd-container .max-w-2xl {
+  max-width: 42rem;
 }
 .page-template.page-template-page-investor .bsd-container .flex-1 {
   flex: 1 1 0%;
@@ -591,6 +609,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .border-collapse {
   border-collapse: collapse;
 }
+.page-template.page-template-page-investor .bsd-container .transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .page-template.page-template-page-investor .bsd-container .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -602,6 +623,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-investor .bsd-container .items-center {
   align-items: center;
+}
+.page-template.page-template-page-investor .bsd-container .justify-center {
+  justify-content: center;
 }
 .page-template.page-template-page-investor .bsd-container .gap-2 {
   gap: 0.5rem;
@@ -661,6 +685,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
+.page-template.page-template-page-investor .bsd-container .bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
 .page-template.page-template-page-investor .bsd-container .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -693,6 +721,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
+.page-template.page-template-page-investor .bsd-container .px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.page-template.page-template-page-investor .bsd-container .py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.page-template.page-template-page-investor .bsd-container .py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 .page-template.page-template-page-investor .bsd-container .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -704,6 +744,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-investor .bsd-container .text-right {
   text-align: right;
+}
+.page-template.page-template-page-investor .bsd-container .text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .page-template.page-template-page-investor .bsd-container .text-lg {
   font-size: 1.125rem;
@@ -720,6 +764,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.page-template.page-template-page-investor .bsd-container .text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 .page-template.page-template-page-investor .bsd-container .font-bold {
   font-weight: 700;
@@ -768,6 +816,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.page-template.page-template-page-investor .bsd-container .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.page-template.page-template-page-investor .bsd-container .duration-300 {
+  transition-duration: 300ms;
+}
+.page-template.page-template-page-investor .bsd-container .ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 /* Make scrollbar thinner and more consistent across browsers */
 .page-template.page-template-page-investor .bsd-container ::-webkit-scrollbar {
@@ -792,9 +853,24 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 /* End of scrollbar styles */
 
+.page-template.page-template-page-investor .bsd-container .hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .page-template.page-template-page-investor .bsd-container .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+
+.page-template.page-template-page-investor .bsd-container .hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+}
+
+.page-template.page-template-page-investor .bsd-container .hover\:bg-primary\/80:hover {
+  background-color: rgb(13 62 111 / 0.8);
 }
 
 .page-template.page-template-page-investor .bsd-container .hover\:text-gray-700:hover {
