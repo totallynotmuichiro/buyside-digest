@@ -46,19 +46,19 @@ $turnoverRatio = isset($_GET['turnover-ratio']) ? $_GET['turnover-ratio'] : 'all
 $investorName = isset($_GET['investor-name']) ? $_GET['investor-name'] : '';
 
 // Filter the investors based on the query parameters
-$investors = array_filter($investors, function($investor) use ($value, $numStocks, $turnoverRatio, $investorName) {
+$investors = array_filter($investors, function ($investor) use ($value, $numStocks, $turnoverRatio, $investorName) {
     // Extract numeric value from "Value $X.XX Mil/Bil" format
     if ($value !== 'all') {
         preg_match('/\$([0-9.]+)\s*(Mil|Bil)/', $investor['value'], $matches);
         $investorValue = isset($matches[1]) ? floatval($matches[1]) : 0;
         $unit = isset($matches[2]) ? $matches[2] : 'Mil';
-        
+
         // Convert Billion to Million for consistent comparison
         if ($unit === 'Bil') {
             $investorValue *= 1000;
         }
-        
-        switch($value) {
+
+        switch ($value) {
             case 'less-than-1m':
                 if ($investorValue >= 1) return false;
                 break;
@@ -78,8 +78,8 @@ $investors = array_filter($investors, function($investor) use ($value, $numStock
     if ($numStocks !== 'all') {
         preg_match('/(\d+)\s+Stocks/', $investor['stocks_info'], $matches);
         $stockCount = isset($matches[1]) ? intval($matches[1]) : 0;
-        
-        switch($numStocks) {
+
+        switch ($numStocks) {
             case '1-to-10':
                 if ($stockCount < 1 || $stockCount > 10) return false;
                 break;
@@ -100,7 +100,7 @@ $investors = array_filter($investors, function($investor) use ($value, $numStock
         preg_match('/(\d+)%/', $investor['turnover'], $matches);
         $turnoverPercentage = isset($matches[1]) ? intval($matches[1]) : 0;
 
-        switch($turnoverRatio) {
+        switch ($turnoverRatio) {
             case 'less-than-10':
                 if ($turnoverPercentage >= 10) return false;
                 break;
@@ -132,13 +132,15 @@ $offset = ($current_page - 1) * $items_per_page;
 // Slice the array for current page
 $paginated_investors = array_slice($investors, $offset, $items_per_page);
 
-function toCamelCase($string) {
+function toCamelCase($string)
+{
     $string = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
     return lcfirst($string);
 }
 
 // Function to generate pagination URL
-function get_pagination_url($page) {
+function get_pagination_url($page)
+{
     $params = $_GET;
     $params['page-number'] = $page;
     return '?' . http_build_query($params);
@@ -170,30 +172,28 @@ get_header();
                     </div>
                 <?php endforeach; ?>
 
-                <input 
-                    type="submit" 
-                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" 
-                    value="Search" 
-                />
-                <input 
-                    type="reset" 
-                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto" 
-                    value="Reset" 
-                    onclick="window.location.href = '<?php echo get_permalink(); ?>'" 
-                />
+                <input
+                    type="submit"
+                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto"
+                    value="Search" />
+                <input
+                    type="reset"
+                    class="bg-primary hover:bg-secondary border-0 text-white px-10 py-2 h-full w-full lg:w-auto"
+                    value="Reset"
+                    onclick="window.location.href = '<?php echo get_permalink(); ?>'" />
             </div>
 
             <?php if (! empty($paginated_investors)) : ?>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
                     <?php foreach ($paginated_investors as $investor): ?>
                         <!-- Investor Card -->
-                         <?php 
-                            $investor_slug = str_replace(' ', '-', strtolower($investor['name']));
-                         ?>
+                        <?php
+                        $investor_slug = str_replace(' ', '-', strtolower($investor['name']));
+                        ?>
                         <!-- Add href only if cik is not empty -->
                         <a
                             <?php if (!empty($investor['cik'])): ?>
-                                href="<?php echo get_permalink() . $investor_slug; ?>"
+                            href="<?php echo get_permalink() . $investor_slug; ?>"
                             <?php endif; ?>
                             class="
                                 border
@@ -213,23 +213,21 @@ get_header();
                                 hover:-translate-y-1
                                 hover:scale-105
                                 <?php echo !empty($investor['cik']) ? 'cursor-pointer' : ''; ?>
-                            "
-                        >
+                            ">
                             <div class="p-6">
                                 <div class="flex items-center space-x-4 mb-4">
                                     <span class="relative flex shrink-0 overflow-hidden rounded-full h-16 w-16">
-                                        <?php 
-                                            $response = wp_remote_head($investor['image_path'], ['timeout' => 1]);
+                                        <?php
+                                        $response = wp_remote_head($investor['image_path'], ['timeout' => 1]);
 
-                                            if ( wp_remote_retrieve_response_code( $response ) === 404 || empty($investor['image_path']) ) {
-                                                $investor['image_path'] = 'https://ui-avatars.com/api/?name=' . urlencode($investor['name']) . '&background=0d3e6f&color=fff';
-                                            }
+                                        if (wp_remote_retrieve_response_code($response) === 404 || empty($investor['image_path'])) {
+                                            $investor['image_path'] = 'https://ui-avatars.com/api/?name=' . urlencode($investor['name']) . '&background=0d3e6f&color=fff';
+                                        }
                                         ?>
                                         <img
                                             class="aspect-square h-full w-full object-cover"
                                             alt="<?php echo esc_attr($investor['name']); ?>"
-                                            src="<?php echo esc_url($investor['image_path']); ?>"
-                                        >
+                                            src="<?php echo esc_url($investor['image_path']); ?>">
                                     </span>
                                     <div>
                                         <h2 class="text-2xl font-bold text-gray-800">
@@ -259,7 +257,7 @@ get_header();
                                     <div>
                                         <p class="text-sm font-medium text-gray-500">Turnover</p>
                                         <p class="text-lg font-semibold text-gray-900">
-                                            <?php 
+                                            <?php
                                             $turnover = str_replace('Turnover ', '', $investor['turnover']);
                                             echo empty($turnover) ? '-' : $turnover;
                                             ?>
@@ -268,8 +266,8 @@ get_header();
                                     <div>
                                         <p class="text-sm font-medium text-gray-500">CIK</p>
                                         <p class="text-lg font-semibold text-gray-900">
-                                            <?php 
-                                                echo $investor['cik'] ? $investor['cik'] : '-';
+                                            <?php
+                                            echo $investor['cik'] ? $investor['cik'] : '-';
                                             ?>
                                         </p>
                                     </div>
@@ -280,50 +278,50 @@ get_header();
                 </div>
 
                 <?php if ($total_pages > 1): ?>
-                <div class="flex justify-center items-center space-x-2 my-8">
-                    <?php if ($current_page > 1): ?>
-                        <a href="<?php echo esc_url(get_pagination_url($current_page - 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
-                            Previous
-                        </a>
-                    <?php endif; ?>
-
-                    <?php
-                    // Calculate range of pages to show
-                    $range = 2;
-                    $start_page = max(1, $current_page - $range);
-                    $end_page = min($total_pages, $current_page + $range);
-
-                    // Show first page if not in range
-                    if ($start_page > 1): ?>
-                        <a href="<?php echo esc_url(get_pagination_url(1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">1</a>
-                        <?php if ($start_page > 2): ?>
-                            <span class="px-4 py-2 text-slate-600">...</span>
+                    <div class="flex justify-center items-center space-x-2 my-8">
+                        <?php if ($current_page > 1): ?>
+                            <a href="<?php echo esc_url(get_pagination_url($current_page - 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
+                                Previous
+                            </a>
                         <?php endif; ?>
-                    <?php endif; ?>
 
-                    <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
-                        <?php if ($i === $current_page): ?>
-                            <span class="px-4 py-2 border rounded-md bg-primary text-white"><?php echo $i; ?></span>
-                        <?php else: ?>
-                            <a href="<?php echo esc_url(get_pagination_url($i)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $i; ?></a>
+                        <?php
+                        // Calculate range of pages to show
+                        $range = 2;
+                        $start_page = max(1, $current_page - $range);
+                        $end_page = min($total_pages, $current_page + $range);
+
+                        // Show first page if not in range
+                        if ($start_page > 1): ?>
+                            <a href="<?php echo esc_url(get_pagination_url(1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">1</a>
+                            <?php if ($start_page > 2): ?>
+                                <span class="px-4 py-2 text-slate-600">...</span>
+                            <?php endif; ?>
                         <?php endif; ?>
-                    <?php endfor; ?>
 
-                    <?php
-                    // Show last page if not in range
-                    if ($end_page < $total_pages): ?>
-                        <?php if ($end_page < $total_pages - 1): ?>
-                            <span class="px-4 py-2 text-slate-600">...</span>
+                        <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
+                            <?php if ($i === $current_page): ?>
+                                <span class="px-4 py-2 border rounded-md bg-primary text-white"><?php echo $i; ?></span>
+                            <?php else: ?>
+                                <a href="<?php echo esc_url(get_pagination_url($i)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $i; ?></a>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+
+                        <?php
+                        // Show last page if not in range
+                        if ($end_page < $total_pages): ?>
+                            <?php if ($end_page < $total_pages - 1): ?>
+                                <span class="px-4 py-2 text-slate-600">...</span>
+                            <?php endif; ?>
+                            <a href="<?php echo esc_url(get_pagination_url($total_pages)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $total_pages; ?></a>
                         <?php endif; ?>
-                        <a href="<?php echo esc_url(get_pagination_url($total_pages)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600"><?php echo $total_pages; ?></a>
-                    <?php endif; ?>
 
-                    <?php if ($current_page < $total_pages): ?>
-                        <a href="<?php echo esc_url(get_pagination_url($current_page + 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
-                            Next
-                        </a>
-                    <?php endif; ?>
-                </div>
+                        <?php if ($current_page < $total_pages): ?>
+                            <a href="<?php echo esc_url(get_pagination_url($current_page + 1)); ?>" class="px-4 py-2 border rounded-md hover:bg-slate-100 text-slate-600">
+                                Next
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 <?php endif; ?>
 
             <?php else : ?>
