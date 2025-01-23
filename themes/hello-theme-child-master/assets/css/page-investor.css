@@ -532,34 +532,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     max-width: 1536px;
   }
 }
-.page-template.page-template-page-investor .bsd-container .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.page-template.page-template-page-investor .bsd-container .sticky {
+  position: sticky;
 }
-.page-template.page-template-page-investor .bsd-container .col-span-12 {
-  grid-column: span 12 / span 12;
+.page-template.page-template-page-investor .bsd-container .left-0 {
+  left: 0px;
 }
-.page-template.page-template-page-investor .bsd-container .col-span-4 {
-  grid-column: span 4 / span 4;
-}
-.page-template.page-template-page-investor .bsd-container .col-span-6 {
-  grid-column: span 6 / span 6;
-}
-.page-template.page-template-page-investor .bsd-container .col-span-5 {
-  grid-column: span 5 / span 5;
+.page-template.page-template-page-investor .bsd-container .z-10 {
+  z-index: 10;
 }
 .page-template.page-template-page-investor .bsd-container .col-span-2 {
   grid-column: span 2 / span 2;
-}
-.page-template.page-template-page-investor .bsd-container .col-span-3 {
-  grid-column: span 3 / span 3;
 }
 .page-template.page-template-page-investor .bsd-container .mx-auto {
   margin-left: auto;
@@ -569,69 +552,32 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
-.page-template.page-template-page-investor .bsd-container .mb-2 {
-  margin-bottom: 0.5rem;
-}
-.page-template.page-template-page-investor .bsd-container .mb-4 {
-  margin-bottom: 1rem;
-}
-.page-template.page-template-page-investor .bsd-container .mt-6 {
-  margin-top: 1.5rem;
+.page-template.page-template-page-investor .bsd-container .mb-0 {
+  margin-bottom: 0px;
 }
 .page-template.page-template-page-investor .bsd-container .mb-3 {
   margin-bottom: 0.75rem;
 }
-.page-template.page-template-page-investor .bsd-container .-mb-px {
-  margin-bottom: -1px;
-}
-.page-template.page-template-page-investor .bsd-container .block {
-  display: block;
-}
 .page-template.page-template-page-investor .bsd-container .flex {
   display: flex;
+}
+.page-template.page-template-page-investor .bsd-container .table {
+  display: table;
 }
 .page-template.page-template-page-investor .bsd-container .grid {
   display: grid;
 }
-.page-template.page-template-page-investor .bsd-container .hidden {
-  display: none;
-}
-.page-template.page-template-page-investor .bsd-container .size-4 {
-  width: 1rem;
-  height: 1rem;
-}
-.page-template.page-template-page-investor .bsd-container .h-48 {
-  height: 12rem;
-}
-.page-template.page-template-page-investor .bsd-container .h-28 {
-  height: 7rem;
+.page-template.page-template-page-investor .bsd-container .h-12 {
+  height: 3rem;
 }
 .page-template.page-template-page-investor .bsd-container .h-20 {
   height: 5rem;
 }
-.page-template.page-template-page-investor .bsd-container .h-16 {
-  height: 4rem;
-}
-.page-template.page-template-page-investor .bsd-container .w-48 {
-  width: 12rem;
-}
-.page-template.page-template-page-investor .bsd-container .w-full {
-  width: 100%;
-}
-.page-template.page-template-page-investor .bsd-container .w-24 {
-  width: 6rem;
-}
-.page-template.page-template-page-investor .bsd-container .w-28 {
-  width: 7rem;
-}
 .page-template.page-template-page-investor .bsd-container .w-20 {
   width: 5rem;
 }
-.page-template.page-template-page-investor .bsd-container .w-16 {
-  width: 4rem;
-}
-.page-template.page-template-page-investor .bsd-container .max-w-2xl {
-  max-width: 42rem;
+.page-template.page-template-page-investor .bsd-container .w-full {
+  width: 100%;
 }
 .page-template.page-template-page-investor .bsd-container .flex-1 {
   flex: 1 1 0%;
@@ -639,14 +585,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .shrink-0 {
   flex-shrink: 0;
 }
-.page-template.page-template-page-investor .bsd-container .grid-cols-12 {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+.page-template.page-template-page-investor .bsd-container .table-auto {
+  table-layout: auto;
 }
-.page-template.page-template-page-investor .bsd-container .grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.page-template.page-template-page-investor .bsd-container .border-collapse {
+  border-collapse: collapse;
 }
 .page-template.page-template-page-investor .bsd-container .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.page-template.page-template-page-investor .bsd-container .grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .page-template.page-template-page-investor .bsd-container .flex-col {
   flex-direction: column;
@@ -657,22 +606,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .gap-2 {
   gap: 0.5rem;
 }
-.page-template.page-template-page-investor .bsd-container .gap-4 {
-  gap: 1rem;
-}
-.page-template.page-template-page-investor .bsd-container .gap-1 {
-  gap: 0.25rem;
-}
 .page-template.page-template-page-investor .bsd-container .gap-3 {
   gap: 0.75rem;
 }
-.page-template.page-template-page-investor .bsd-container .gap-6 {
-  gap: 1.5rem;
-}
-.page-template.page-template-page-investor .bsd-container .space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+.page-template.page-template-page-investor .bsd-container .gap-4 {
+  gap: 1rem;
 }
 .page-template.page-template-page-investor .bsd-container .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -681,6 +619,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-investor .bsd-container .overflow-hidden {
   overflow: hidden;
+}
+.page-template.page-template-page-investor .bsd-container .overflow-x-auto {
+  overflow-x: auto;
+}
+.page-template.page-template-page-investor .bsd-container .whitespace-nowrap {
+  white-space: nowrap;
 }
 .page-template.page-template-page-investor .bsd-container .rounded-full {
   border-radius: 9999px;
@@ -691,79 +635,75 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .rounded-xl {
   border-radius: 0.75rem;
 }
-.page-template.page-template-page-investor .bsd-container .rounded-md {
-  border-radius: 0.375rem;
-}
 .page-template.page-template-page-investor .bsd-container .border {
   border-width: 1px;
 }
 .page-template.page-template-page-investor .bsd-container .border-b {
   border-bottom-width: 1px;
 }
-.page-template.page-template-page-investor .bsd-container .border-b-2 {
-  border-bottom-width: 2px;
-}
-.page-template.page-template-page-investor .bsd-container .border-gray-200 {
+.page-template.page-template-page-investor .bsd-container .border-gray-300 {
   --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
-.page-template.page-template-page-investor .bsd-container .border-sky-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(14 165 233 / var(--tw-border-opacity, 1));
-}
-.page-template.page-template-page-investor .bsd-container .border-transparent {
-  border-color: transparent;
+.page-template.page-template-page-investor .bsd-container .\!bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
 }
 .page-template.page-template-page-investor .bsd-container .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
+.page-template.page-template-page-investor .bsd-container .bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(13 62 111 / var(--tw-bg-opacity, 1));
+}
 .page-template.page-template-page-investor .bsd-container .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-.page-template.page-template-page-investor .bsd-container .bg-slate-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity, 1));
-}
-.page-template.page-template-page-investor .bsd-container .bg-slate-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1));
-}
-.page-template.page-template-page-investor .bsd-container .bg-blue-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
 }
 .page-template.page-template-page-investor .bsd-container .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.page-template.page-template-page-investor .bsd-container .p-1 {
+  padding: 0.25rem;
+}
 .page-template.page-template-page-investor .bsd-container .p-2 {
   padding: 0.5rem;
 }
-.page-template.page-template-page-investor .bsd-container .p-6 {
-  padding: 1.5rem;
+.page-template.page-template-page-investor .bsd-container .p-4 {
+  padding: 1rem;
 }
 .page-template.page-template-page-investor .bsd-container .p-5 {
   padding: 1.25rem;
+}
+.page-template.page-template-page-investor .bsd-container .\!py-1 {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+.page-template.page-template-page-investor .bsd-container .px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 .page-template.page-template-page-investor .bsd-container .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.page-template.page-template-page-investor .bsd-container .px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+.page-template.page-template-page-investor .bsd-container .py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
-.page-template.page-template-page-investor .bsd-container .pb-4 {
-  padding-bottom: 1rem;
+.page-template.page-template-page-investor .bsd-container .pb-1 {
+  padding-bottom: 0.25rem;
+}
+.page-template.page-template-page-investor .bsd-container .text-left {
+  text-align: left;
 }
 .page-template.page-template-page-investor .bsd-container .text-center {
   text-align: center;
 }
-.page-template.page-template-page-investor .bsd-container .text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.page-template.page-template-page-investor .bsd-container .text-right {
+  text-align: right;
 }
 .page-template.page-template-page-investor .bsd-container .text-lg {
   font-size: 1.125rem;
@@ -776,14 +716,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-.page-template.page-template-page-investor .bsd-container .text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-.page-template.page-template-page-investor .bsd-container .text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 .page-template.page-template-page-investor .bsd-container .text-xs {
   font-size: 0.75rem;
@@ -814,9 +746,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
-.page-template.page-template-page-investor .bsd-container .text-sky-600 {
+.page-template.page-template-page-investor .bsd-container .text-green-500 {
   --tw-text-opacity: 1;
-  color: rgb(2 132 199 / var(--tw-text-opacity, 1));
+  color: rgb(34 197 94 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-investor .bsd-container .text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-investor .bsd-container .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 .page-template.page-template-page-investor .bsd-container .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -828,52 +768,41 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.page-template.page-template-page-investor .bsd-container .transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+
+/* Make scrollbar thinner and more consistent across browsers */
+.page-template.page-template-page-investor .bsd-container ::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    border-radius: 10px;
 }
-.page-template.page-template-page-investor .bsd-container .hover\:border-gray-300:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
+
+.page-template.page-template-page-investor .bsd-container ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
 }
+
+.page-template.page-template-page-investor .bsd-container ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.page-template.page-template-page-investor .bsd-container ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* End of scrollbar styles */
+
+.page-template.page-template-page-investor .bsd-container .hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
+}
+
 .page-template.page-template-page-investor .bsd-container .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
-@media (min-width: 640px) {
 
-  .page-template.page-template-page-investor .bsd-container .sm\:block {
-    display: block;
-  }
-
-  .page-template.page-template-page-investor .bsd-container .sm\:hidden {
-    display: none;
-  }
-}
 @media (min-width: 768px) {
-
-  .page-template.page-template-page-investor .bsd-container .md\:col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-
-  .page-template.page-template-page-investor .bsd-container .md\:col-span-3 {
-    grid-column: span 3 / span 3;
-  }
-
-  .page-template.page-template-page-investor .bsd-container .md\:col-span-5 {
-    grid-column: span 5 / span 5;
-  }
-
-  .page-template.page-template-page-investor .bsd-container .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .page-template.page-template-page-investor .bsd-container .md\:grid-cols-12 {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
 
   .page-template.page-template-page-investor .bsd-container .md\:flex-row {
     flex-direction: row;
@@ -883,10 +812,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     align-items: flex-start;
   }
 
-  .page-template.page-template-page-investor .bsd-container .md\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  .page-template.page-template-page-investor .bsd-container .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .page-template.page-template-page-investor .bsd-container .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
@@ -895,28 +824,31 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
-  .page-template.page-template-page-investor .bsd-container .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1rem * var(--tw-space-x-reverse));
-    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
   .page-template.page-template-page-investor .bsd-container .md\:text-left {
     text-align: left;
   }
 }
+
 @media (min-width: 1024px) {
 
-  .page-template.page-template-page-investor .bsd-container .lg\:col-span-4 {
-    grid-column: span 4 / span 4;
+  .page-template.page-template-page-investor .bsd-container .lg\:col-span-12 {
+    grid-column: span 12 / span 12;
   }
 
   .page-template.page-template-page-investor .bsd-container .lg\:col-span-3 {
     grid-column: span 3 / span 3;
   }
 
+  .page-template.page-template-page-investor .bsd-container .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
   .page-template.page-template-page-investor .bsd-container .lg\:col-span-5 {
     grid-column: span 5 / span 5;
+  }
+
+  .page-template.page-template-page-investor .bsd-container .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
   }
 
   .page-template.page-template-page-investor .bsd-container .lg\:grid-cols-12 {
@@ -927,8 +859,4 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     padding-left: 5rem;
     padding-right: 5rem;
   }
-}
-.page-template.page-template-page-investor .bsd-container .rtl\:rotate-180:where([dir="rtl"], [dir="rtl"] *) {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }

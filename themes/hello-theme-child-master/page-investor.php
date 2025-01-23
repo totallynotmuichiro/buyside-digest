@@ -24,6 +24,7 @@ if (is_array($investors_data)) {
 }
 
 $top_holdings = get_top_holdings($investor_data['holdings'], 5);
+$current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'summary';
 
 get_header(); ?>
 
@@ -84,6 +85,45 @@ get_header(); ?>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus minus error facilis, recusandae magnam hic adipisci nobis aliquam. Voluptatum unde veniam sunt dolorem explicabo, quibusdam vel labore! Laudantium ratione error maxime nostrum dolores explicabo incidunt id architecto mollitia distinctio! Commodi modi accusantium ratione sunt quae eum quasi enim facilis. Facilis?
                 </p>
             </div>
+            <!-- Tabs -->
+            <div class="lg:col-span-12 border text-card-foreground w-full mx-auto bg-white shadow-md rounded-xl overflow-hidden p-1" data-v0-t="card">
+                <nav class="flex gap-2" aria-label="Tabs">
+                    <?php
+                    $current_tab_style = 'bg-primary text-white';
+                    $other_tab_style = 'text-gray-500 hover:bg-gray-50 hover:text-gray-700';
+                    ?>
+                    <a
+                        href="<?php echo get_permalink() . '?tab=summary'; ?>"
+                        class="shrink-0 rounded-lg p-2 text-sm font-medium <?php echo $current_tab === 'summary' ? $current_tab_style : $other_tab_style; ?>"
+                    >
+                        Summary
+                    </a>
+                    <a
+                        href="<?php echo get_permalink() . '?tab=top-picks'; ?>"
+                        class="shrink-0 rounded-lg p-2 text-sm font-medium <?php echo $current_tab === 'top-picks' ? $current_tab_style : $other_tab_style; ?>"
+                    >
+                        Top Picks
+                    </a>
+                    <a
+                        href="<?php echo get_permalink() . '?tab=current-portfolio'; ?>"
+                        class="shrink-0 rounded-lg p-2 text-sm font-medium <?php echo $current_tab === 'current-portfolio' ? $current_tab_style : $other_tab_style; ?>"
+                    >
+                        Current Portfolio
+                    </a>
+                </nav>
+            </div>
+
+            <?php
+            if ($current_tab === 'summary') {
+                set_query_var('investor_data', $investor_data);
+                get_template_part('template-parts/investor/investor-summary');
+            } else if ($current_tab === 'top-picks') {
+                get_template_part('template-parts/investor/top-picks');
+            } else if ($current_tab === 'current-portfolio') {
+                get_template_part('template-parts/investor/current-portfolio');
+            }
+            ?>
+
         </div>
     </div>
 </section>
