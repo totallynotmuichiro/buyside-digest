@@ -2,6 +2,11 @@
 $investor_data = get_query_var('investor_data');
 $holdings = array_slice($investor_data['holdings'], 0, 10);
 
+// Sort by value in descending order
+usort($holdings, function ($a, $b) {
+    return $b['value'] - $a['value'];
+});
+
 function format_value($value) {
     $value = floatval(str_replace(['%', ','], '', $value));
     $class = $value >= 0 ? 'text-green-500' : 'text-red-500';
