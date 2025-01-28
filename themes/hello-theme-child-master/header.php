@@ -52,6 +52,7 @@ $skip_link_url = apply_filters( 'hello_elementor_skip_link_url', '#content' );
     }
   ],
   "isTransparent": false,
+  "displayMode": "regular",
   "showSymbolLogo": true,
   "colorTheme": "light",
   "locale": "en"
