@@ -4006,3 +4006,19 @@ add_filter( 'body_class', function( $classes ) {
     }
     return $classes;
 });
+
+
+// Load Landing page CSS
+function load_landing_page_css() {
+    if (is_page_template('page-landing.php')) {
+        // Enqueue the CSS file
+        wp_enqueue_style(
+            'landing-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-landing.css',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_landing_page_css');

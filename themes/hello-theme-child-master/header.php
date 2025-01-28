@@ -28,41 +28,35 @@ $skip_link_url = apply_filters( 'hello_elementor_skip_link_url', '#content' );
 
 <?php wp_body_open(); ?>
 
-<?php if ( is_front_page() ) : ?>
+<?php if ( is_page('landing') ) : ?>
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
+ {
   "symbols": [
     {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500 Index"
+      "description": "LIFFF",
+      "proName": "OTC:LIFFF"
     },
     {
-      "proName": "FOREXCOM:NSXUSD",
-      "title": "US 100 Cash CFD"
+      "description": "UROY",
+      "proName": "NASDAQ:UROY"
     },
     {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR to USD"
+      "description": "DEVS",
+      "proName": "NASDAQ:DEVS"
     },
     {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "Bitcoin"
-    },
-    {
-      "proName": "BITSTAMP:ETHUSD",
-      "title": "Ethereum"
+      "description": "UX1!",
+      "proName": "COMEX:UX1!"
     }
   ],
-  "showSymbolLogo": true,
   "isTransparent": false,
-  "displayMode": "adaptive",
+  "showSymbolLogo": true,
   "colorTheme": "light",
   "locale": "en"
 }
   </script>
-
 </div>
 <?php endif; ?>
 
