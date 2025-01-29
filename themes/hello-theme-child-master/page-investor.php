@@ -106,12 +106,6 @@ get_header(); ?>
                         Summary
                     </a>
                     <a
-                        href="<?php echo get_permalink() . '?tab=top-picks'; ?>"
-                        class="shrink-0 rounded-lg p-2 text-sm font-medium <?php echo $current_tab === 'top-picks' ? $current_tab_style : $other_tab_style; ?>"
-                    >
-                        Top Picks
-                    </a>
-                    <a
                         href="<?php echo get_permalink() . '?tab=current-portfolio'; ?>"
                         class="shrink-0 rounded-lg p-2 text-sm font-medium <?php echo $current_tab === 'current-portfolio' ? $current_tab_style : $other_tab_style; ?>"
                     >
@@ -121,13 +115,11 @@ get_header(); ?>
             </div>
 
             <?php
+            set_query_var('investor_data', $investor_data);
             if ($current_tab === 'summary') {
-                set_query_var('investor_data', $investor_data);
                 get_template_part('template-parts/investor/investor-summary');
-            } else if ($current_tab === 'top-picks') {
-                get_template_part('template-parts/investor/top-picks');
             } else if ($current_tab === 'current-portfolio') {
-                get_template_part('template-parts/investor/current-portfolio');
+                get_template_part('template-parts/investor/investor-current-portfolio');
             }
             ?>
 

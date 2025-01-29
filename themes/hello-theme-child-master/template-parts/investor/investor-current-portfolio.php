@@ -1,12 +1,11 @@
 <?php
 $investor_data = get_query_var('investor_data');
-// Sort by value in descending order
-usort($investor_data['holdings'], function ($a, $b) {
+
+$holdings = $investor_data['holdings'];
+
+usort($holdings, function ($a, $b) {
     return $b['value'] - $a['value'];
 });
-
-// Get top 10 holdings
-$holdings = array_slice($investor_data['holdings'], 0, 10);
 
 function format_value($value) {
     $value = floatval(str_replace(['%', ','], '', $value));
