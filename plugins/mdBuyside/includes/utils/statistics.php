@@ -92,7 +92,7 @@ function bsd_export_email_stats_to_csv( $date ) {
         $date = date( 'Y-m-d' );
     }
 
-    $fund_channel = "fund " . $date;
+    $fund_channel = "funds " . $date;
     $ticker_channel = "tickers " . $date;
 
     $fund_stats = bsd_get_email_stats( $fund_channel );

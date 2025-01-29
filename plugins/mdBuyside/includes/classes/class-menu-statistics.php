@@ -89,7 +89,7 @@ class BSD_Statistics {
 		};
 
 		// Fetch statistics for both Fund and Ticker.
-		$fund_stats   = $fetch_stats( 'fund ' . $selected_date );
+		$fund_stats   = $fetch_stats( 'funds ' . $selected_date );
 		$ticker_stats = $fetch_stats( 'tickers ' . $selected_date );
 		?>
 		<div class="bsd-stats-section">
