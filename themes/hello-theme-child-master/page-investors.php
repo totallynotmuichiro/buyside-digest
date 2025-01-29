@@ -36,7 +36,7 @@ $options = array(
 );
 
 // Pagination settings
-$items_per_page = 9;
+$items_per_page = 15;
 $current_page = isset($_GET['page-number']) ? max(1, intval($_GET['page-number'])) : 1;
 
 // Get the query parameters
@@ -184,7 +184,7 @@ get_header();
             </div>
 
             <?php if (! empty($paginated_investors)) : ?>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-5">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 my-5">
                     <?php foreach ($paginated_investors as $investor): ?>
                         <!-- Investor Card -->
                         <?php
@@ -233,7 +233,7 @@ get_header();
                                         <h2 class="text-2xl font-bold text-gray-800">
                                             <?php echo esc_html($investor['name']); ?>
                                         </h2>
-                                        <p class="text-sm text-gray-600">
+                                        <p class="text-sm text-gray-600 capitalize">
                                             <?php echo esc_html($investor['company']); ?>
                                         </p>
                                     </div>
@@ -264,10 +264,10 @@ get_header();
                                         </p>
                                     </div>
                                     <div>
-                                        <p class="text-sm font-medium text-gray-500">CIK</p>
+                                        <p class="text-sm font-medium text-gray-500">Date of Filing</p>
                                         <p class="text-lg font-semibold text-gray-900">
                                             <?php
-                                            echo $investor['cik'] ? $investor['cik'] : '-';
+                                            echo $investor['portfolio_date'] ? $investor['portfolio_date'] : '-';
                                             ?>
                                         </p>
                                     </div>
