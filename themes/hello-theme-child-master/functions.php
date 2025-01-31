@@ -2196,9 +2196,6 @@ function callback_fund_view_posts() {
                 if($twitter_link){
                     echo '<a href="'.$twitter_link.'" target="_blank">View Twitter</a>';
                 }
-                if($investor_ink != ''){ 
-                    echo '<a href="'.$investor_ink.'" target="_blank">View Bio</a>';
-                }
                 ?>
                 
             </div>
