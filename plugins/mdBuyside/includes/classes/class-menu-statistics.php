@@ -15,6 +15,7 @@ class BSD_Statistics {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_statistics_page' ) );
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
 	}
 
 	/**
@@ -32,6 +33,70 @@ class BSD_Statistics {
 			'dashicons-chart-bar',
 			2
 		);
+	}
+	
+	public function enqueue_scripts() {
+
+		$current_page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+		if ($current_page !== 'bsd-statistics') {
+			return;
+		}
+
+		wp_enqueue_script(
+			'bsd-statistics-script',
+			BSD_ROOT_URL . '/js/bsd-statistics.js',
+			array('flatpickr-js'),
+			'1.0',
+			true,
+		);
+
+		// Enqueue Flatpickr CSS
+		wp_enqueue_style(
+			'flatpickr-css',
+			'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css',
+			array(),
+			'4.6.13'
+		);
+
+		// Enqueue Flatpickr JS
+		wp_enqueue_script(
+			'flatpickr-js',
+			'https://cdn.jsdelivr.net/npm/flatpickr',
+			array(),
+			'4.6.13',
+			true
+		);
+
+		$channels = $this->getAllChannels();
+
+		wp_localize_script(
+            'bsd-statistics-script',
+            'bsdStatistics',
+            array(
+				'channels' => $channels,
+            )
+        );
+	}
+
+	private function getAllChannels() {
+		$ee_options = get_option( 'ee_options' );
+		$api_key = isset($ee_options['ee_apikey']) ? $ee_options['ee_apikey'] : '';
+
+		if ( $api_key == '' ) return array();
+
+		$url = 'https://api.smtprelay.co/v3/channels';
+		
+		$response = wp_remote_get( $url, array(
+			'headers' => array(
+				'X-ElasticEmail-ApiKey' => $api_key
+			),
+			'timeout' => 15,
+		) );
+		
+		$data = wp_remote_retrieve_body( $response );
+		$channels = json_decode($data);
+
+		return $channels;
 	}
 
 	/**
