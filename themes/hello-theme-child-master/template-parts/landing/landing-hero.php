@@ -5,7 +5,7 @@
                 <span class="text-territory font-bold">Unlock</span>
                 the Wisdom of the Markets <span class="text-territory font-bold"> One Quarterly Investor </span> Letter at a Time.
             </h1>
-            <form class="flex flex-nowrap justify-center items-center bg-gray-100 p-1 rounded-full w-full xl:w-full animate-appear free_sign_up">
+            <form class="flex flex-row flex-nowrap justify-center items-center bg-gray-100 p-1 rounded-full w-full xl:w-full animate-appear free_sign_up">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#444" class="w-8 h-8 ml-4">
                     <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
                 </svg>
@@ -13,7 +13,7 @@
                     <label for="hero-field" class="leading-7 text-sm text-gray-600 sr-only">Email</label>
                     <input name="user_email" type="text" placeholder="Enter your email" id="hero-field" class="w-full border-0 px-2 bg-gray-100 rounded bg-opacity-50 focus:ring-1 focus:bg-transparent text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out focus:outline-none">
                 </div>
-                <button type="submit" class="inline-flex text-white bg-primary border-0 py-3 px-8 focus:outline-none hover:bg-primary/90 rounded-full text-lg !w-auto">Sign Up Free</button>
+                <button type="submit" class="inline-flex justify-center items-center text-white bg-primary border-0 p-2 text-sm md:py-3 md:px-8 focus:outline-none hover:bg-primary/90 rounded-full md:text-lg !w-auto">Sign Up Free</button>
                 <button class="popmake-12669 pum-trigger" style="cursor: pointer;">Click to open free Sign Up form</button>
             </form>
             <div class="flex justify-center items-center space-x-1 mt-5 group">

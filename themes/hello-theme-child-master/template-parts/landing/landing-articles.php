@@ -23,7 +23,7 @@ $articles = array_slice($articles, 0, 5);
 ?>
 
 <section class="my-5">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-1/4 text-center">
+    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
         Letter Commentaries
     </h2>
     <div class="mt-6 grid grid-cols-1 md:grid-cols-8 gap-6">
