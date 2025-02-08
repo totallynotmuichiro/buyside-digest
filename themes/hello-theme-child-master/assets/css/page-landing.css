@@ -579,6 +579,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.page-template.page-template-page-landing .bsd-container .my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
 .page-template.page-template-page-landing .bsd-container .mb-0 {
   margin-bottom: 0px;
 }
@@ -633,6 +637,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .mt-4 {
   margin-top: 1rem;
 }
+.page-template.page-template-page-landing .bsd-container .mt-1 {
+  margin-top: 0.25rem;
+}
 .page-template.page-template-page-landing .bsd-container .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -644,6 +651,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+.page-template.page-template-page-landing .bsd-container .line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 .page-template.page-template-page-landing .bsd-container .inline-block {
   display: inline-block;
@@ -701,6 +714,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .h-40 {
   height: 10rem;
+}
+.page-template.page-template-page-landing .bsd-container .h-\[350px\] {
+  height: 350px;
 }
 .page-template.page-template-page-landing .bsd-container .min-h-screen {
   min-height: 100vh;
@@ -762,6 +778,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .w-32 {
   width: 8rem;
+}
+.page-template.page-template-page-landing .bsd-container .w-2\/4 {
+  width: 50%;
+}
+.page-template.page-template-page-landing .bsd-container .w-1\/4 {
+  width: 25%;
 }
 .page-template.page-template-page-landing .bsd-container .max-w-2xl {
   max-width: 42rem;

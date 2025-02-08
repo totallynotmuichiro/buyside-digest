@@ -1,4 +1,4 @@
-<section class="bg-blue-50/40 sm:grid sm:grid-cols-2">
+<section class="bg-blue-50/40 sm:grid sm:grid-cols-2 my-10">
     <div class="p-8 md:p-12 lg:px-16 lg:py-24 flex flex-col justify-center w-full">
         <div class="mx-auto max-w-xl text-center sm:text-left">
             <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
