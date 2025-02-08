@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="w-full max-w-full flex flex-row lg:flex-col items-center bg-white shadow-lg border border-gray-200 p-4 rounded-xl text-left transform transition duration-300 hover:scale-105">
+<div class="lg:hidden w-full max-w-full flex flex-row lg:flex-col items-center bg-white shadow-lg border border-gray-200 p-4 rounded-xl text-left transform transition duration-300 hover:scale-105">
     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/watchlist.png" alt="Watchlist Preview" class="w-32 h-32 rounded-lg shadow-md lg:w-full lg:h-auto lg:mb-4">
     <div class="flex-1 ml-4 lg:ml-0">
         <h2 class="text-lg font-extrabold text-gray-800">My Watchlist</h2>
