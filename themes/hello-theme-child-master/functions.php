@@ -3212,6 +3212,7 @@ ob_start();
 add_shortcode('elevetor_articles_list','callback_elevetor_articles_list');
 function callback_elevetor_articles_list(){
     // Set up default attributes
+    $atts = isset($atts) ? $atts : array();
     $atts = shortcode_atts(array(
         'posts_per_page' => -1, // Default number of posts per page
     ), $atts);
