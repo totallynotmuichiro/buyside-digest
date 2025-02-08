@@ -663,6 +663,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .h-8 {
   height: 2rem;
 }
+.page-template.page-template-page-landing .bsd-container .h-24 {
+  height: 6rem;
+}
+.page-template.page-template-page-landing .bsd-container .h-32 {
+  height: 8rem;
+}
+.page-template.page-template-page-landing .bsd-container .h-52 {
+  height: 13rem;
+}
 .page-template.page-template-page-landing .bsd-container .min-h-screen {
   min-height: 100vh;
 }
@@ -850,6 +859,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .rounded-xl {
   border-radius: 0.75rem;
 }
+.page-template.page-template-page-landing .bsd-container .rounded-t-lg {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
 .page-template.page-template-page-landing .bsd-container .border {
   border-width: 1px;
 }
@@ -888,6 +901,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
+}
+.page-template.page-template-page-landing .bsd-container .bg-cover {
+  background-size: cover;
 }
 .page-template.page-template-page-landing .bsd-container .object-cover {
   -o-object-fit: cover;
@@ -1303,6 +1319,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     margin-bottom: 0px;
   }
 
+  .page-template.page-template-page-landing .bsd-container .md\:h-32 {
+    height: 8rem;
+  }
+
   .page-template.page-template-page-landing .bsd-container .md\:w-1\/2 {
     width: 50%;
   }
@@ -1546,6 +1566,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
   .page-template.page-template-page-landing .bsd-container .xl\:w-\[50\%\] {
     width: 50%;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .xl\:w-3\/5 {
+    width: 60%;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .xl\:w-2\/5 {
+    width: 40%;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .xl\:flex-row {
+    flex-direction: row;
   }
 
   .page-template.page-template-page-landing .bsd-container .xl\:text-5xl {
