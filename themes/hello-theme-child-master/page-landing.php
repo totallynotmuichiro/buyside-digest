@@ -13,6 +13,7 @@
                     <?php get_template_part('template-parts/landing/landing', 'blog'); ?>
                     <?php get_template_part('template-parts/landing/landing', 'news'); ?>
                 </div>
+                <?php get_template_part('template-parts/landing/landing', 'cta-tracking'); ?>
                 <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
             </section>
             <aside class="w-full lg:w-[23%] bg-gray-200 flex justify-center items-center">
