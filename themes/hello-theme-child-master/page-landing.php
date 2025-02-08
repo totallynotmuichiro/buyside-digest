@@ -9,9 +9,14 @@
         <?php get_template_part('template-parts/landing/landing', 'hero'); ?>
         <?php get_template_part('template-parts/landing/landing', 'signup'); ?>
         <div class="flex flex-col md:flex-row gap-5 mx-5 md:mx-16">
-            <section class="h-56 lg:flex-[10] bg-emerald-300">
+            <section class="lg:flex-[10]">
+                <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
+                <?php get_template_part('template-parts/landing/landing', 'blog'); ?>
+                <?php get_template_part('template-parts/landing/landing', 'news'); ?>
             </section>
-            <aside class="h-56 lg:flex-[3] bg-red-200"></aside>
+            <aside class="lg:flex-[3] bg-gray-200 flex justify-center items-center">
+                sidebar
+            </aside>
         </div>
     </main>
 
