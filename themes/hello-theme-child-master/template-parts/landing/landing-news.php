@@ -24,32 +24,39 @@ usort($newsItems, function ($a, $b) {
     return strlen($b['title']) - strlen($a['title']); // Longer titles come first
 });
 
-$newsItems = array_slice($newsItems, 0, 6);
+$newsItems = array_slice($newsItems, 0, 8);
+$images = [7, 8, 9, 10, 11, 12, 13, 14, 15];
+shuffle($images);
 ?>
 
 <section class="my-5 w-full xl:w-3/5">
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-1/2 text-center">
-       BSDs in the News
+        BSDs in the News
     </h2>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <?php foreach ($newsItems as $newsItem): ?>
-            <a class="flex flex-col h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all hover:scale-" href="<?php echo $newsItem['link'] ?>" target="_blank">
-                <div class="mb-2">
-                    <span class="bg-primary text-[11px] rounded-sm text-white px-2 py-1"><?php echo $newsItem["source_name"] ?></span>
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <?php foreach ($newsItems as $index => $newsItem): ?>
+            <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $newsItem['link'] ?>" target="_blank">
+                <img
+                    class="h-full w-32 xl:w-20 2xl:w-32 object-cover rounded-md"
+                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$index] ?>.jpg"
+                    alt="<?php echo $newsItem['title']; ?>" />
+                <div>
+                    <h3 class="leading-tight font-semibold group-hover:underline line-clamp-2">
+                        <?php echo $newsItem['title'] ?>
+                    </h3>
+                    <p class="text-sm line-clamp-3 mt-2">
+                        <?php echo $newsItem['description'] ?>
+                    </p>
+                    <div class="text-sm space-x-2 mt-2">
+                        <span>
+                            <?php $timestamp = strtotime($newsItem['published_date']);
+                            $readable_date = gmdate('F j, Y', $timestamp);
+                            echo $readable_date;
+                            ?>
+                        </span>
+                    </div>
                 </div>
-                <h3 class="leading-tight font-medium group-hover:underline line-clamp-2">
-                    <?php echo $newsItem['title'] ?>
-                </h3>
-                <p class="text-sm line-clamp-2 mt-2">
-                    <?php echo $newsItem['description'] ?>
-                </p>
-                <div class="text-sm space-x-2 mt-2">
-                    <span>
-                        <?php $timestamp = strtotime($newsItem['published_date']);
-                        $readable_date = gmdate('F j, Y', $timestamp);
-                        echo $readable_date; ?>
-                    </span>
-                </div>
+
             </a>
         <?php endforeach ?>
     </div>
