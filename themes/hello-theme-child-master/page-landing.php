@@ -16,8 +16,9 @@
                 <?php get_template_part('template-parts/landing/landing', 'cta-1'); ?>
                 <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
             </section>
-            <aside class="w-full lg:w-[23%] flex flex-col items-center">
+            <aside class="w-full lg:w-[23%] flex flex-col">
                 <?php get_template_part('template-parts/landing/landing', 'watchlist'); ?>
+                <?php get_template_part('template-parts/landing/landing', 'popular-tools'); ?>
             </aside>
         </div>
     </main>
