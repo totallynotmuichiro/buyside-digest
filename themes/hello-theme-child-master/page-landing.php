@@ -16,8 +16,8 @@
                 <?php get_template_part('template-parts/landing/landing', 'cta-1'); ?>
                 <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
             </section>
-            <aside class="w-full lg:w-[23%] bg-gray-200 flex justify-center items-center">
-                sidebar
+            <aside class="w-full lg:w-[23%] flex flex-col items-center">
+                <?php get_template_part('template-parts/landing/landing', 'watchlist'); ?>
             </aside>
         </div>
     </main>

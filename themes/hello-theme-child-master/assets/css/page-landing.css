@@ -583,6 +583,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.page-template.page-template-page-landing .bsd-container .my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
 .page-template.page-template-page-landing .bsd-container .mb-0 {
   margin-bottom: 0px;
 }
@@ -731,6 +735,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   width: -moz-fit-content;
   width: fit-content;
 }
+.page-template.page-template-page-landing .bsd-container .w-96 {
+  width: 24rem;
+}
 .page-template.page-template-page-landing .bsd-container .max-w-2xl {
   max-width: 42rem;
 }
@@ -739,6 +746,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .max-w-xl {
   max-width: 36rem;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-lg {
+  max-width: 32rem;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-sm {
+  max-width: 24rem;
 }
 .page-template.page-template-page-landing .bsd-container .flex-1 {
   flex: 1 1 0%;
@@ -847,6 +860,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .whitespace-nowrap {
   white-space: nowrap;
 }
+.page-template.page-template-page-landing .bsd-container .text-wrap {
+  text-wrap: wrap;
+}
 .page-template.page-template-page-landing .bsd-container .rounded {
   border-radius: 0.25rem;
 }
@@ -886,6 +902,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
+.page-template.page-template-page-landing .bsd-container .border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .\!bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1)) !important;
@@ -913,6 +933,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
+.page-template.page-template-page-landing .bsd-container .bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -938,6 +962,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .p-8 {
   padding: 2rem;
+}
+.page-template.page-template-page-landing .bsd-container .p-6 {
+  padding: 1.5rem;
 }
 .page-template.page-template-page-landing .bsd-container .\!py-1 {
   padding-top: 0.25rem !important;
@@ -1057,6 +1084,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .font-semibold {
   font-weight: 600;
+}
+.page-template.page-template-page-landing .bsd-container .font-extrabold {
+  font-weight: 800;
 }
 .page-template.page-template-page-landing .bsd-container .uppercase {
   text-transform: uppercase;
@@ -1209,6 +1239,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 .page-template.page-template-page-landing .bsd-container .hover\:bg-transparent:hover {
   background-color: transparent;
+}
+
+.page-template.page-template-page-landing .bsd-container .hover\:bg-green-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
 }
 
 .page-template.page-template-page-landing .bsd-container .hover\:text-gray-700:hover {
