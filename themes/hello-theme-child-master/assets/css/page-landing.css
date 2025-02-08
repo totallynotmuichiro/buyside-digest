@@ -1221,6 +1221,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.page-template.page-template-page-landing .bsd-container .hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
 .page-template.page-template-page-landing .bsd-container .focus\:border-secondary:focus {
   --tw-border-opacity: 1;
   border-color: rgb(131 73 2 / var(--tw-border-opacity, 1));
