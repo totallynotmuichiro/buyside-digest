@@ -6,6 +6,7 @@ module.exports = {
       colors : {
         'primary': '#0d3e6f',
         'secondary': '#834902',
+		'territory': "#ffae00",
       },
       animation: {
   			appear: 'appear 0.6s forwards ease-out',
