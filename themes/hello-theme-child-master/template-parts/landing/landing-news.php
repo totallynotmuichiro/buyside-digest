@@ -1,85 +1,95 @@
 <?php
-function get_cached_news_items() {
-    // Try to get cached data first
-    $cached_news = get_transient('sectobs_news_items');
-    if ($cached_news !== false) {
-        return $cached_news;
-    }
+$cache_key = 'cached_yahoo_articles';
+$cached_articles = get_transient($cache_key);
 
-    // If no cache, fetch fresh data
-    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/news-articles/", array( 'timeout' => 5000 ));
+if ($cached_articles === false) {
+    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/yahoo-articles/");
+
     if (wp_remote_retrieve_response_code($response) !== 200) {
-        return [];
+        return;
     }
-    
+
     $data = wp_remote_retrieve_body($response);
-    $newsItems = json_decode($data, true);
+    $articles = json_decode($data, true);
 
-    // Function to check if a blog has all required fields
-    function has_all_required_news_data($newsItem) {
-        return !empty($newsItem['source_name']) && 
-               !empty($newsItem['title']) && 
-               !empty($newsItem['link']) && 
-               !empty($newsItem['published_date']) && 
-               !empty($newsItem['description']);
-    }
-
-    // Sorting: Prioritize complete blogs, then sort by published date
-    usort($newsItems, function ($a, $b) {
-        $a_complete = has_all_required_news_data($a);
-        $b_complete = has_all_required_news_data($b);
-
-        if ($a_complete !== $b_complete) {
-            return $b_complete - $a_complete; // Complete blogs come first
+    $uniqueTitles = [];
+    $articles = array_filter($articles, function ($item) use (&$uniqueTitles) {
+        if (!in_array($item['title'], $uniqueTitles)) {
+            $uniqueTitles[] = $item['title'];
+            return true;
         }
+        return false;
+    });
 
+    // Sort by published_date (assuming it follows a sortable date format)
+    usort($articles, function ($a, $b) {
         return strtotime($b['published_date']) - strtotime($a['published_date']);
     });
 
-    $newsItems = array_slice($newsItems, 0, 8);
-    
-    set_transient('sectobs_news_items', $newsItems, 18000);
-    
-    return $newsItems;
+    // Get the latest 5 articles
+    $articles = array_slice($articles, 0, 5);
+
+    set_transient($cache_key, $articles, 18000);
+} else {
+    $articles = $cached_articles;
 }
-
-// Get the news items
-$newsItems = get_cached_news_items();
-
-// Generate image array
-$images = range(7, 15);
-shuffle($images);
 ?>
 
-<section class="my-5 w-full">
+<section class="my-5">
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
         BSDs in the News
     </h2>
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <?php foreach ($newsItems as $index => $newsItem): ?>
-            <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $newsItem['link'] ?>" target="_blank">
-                <img
-                    class="h-full w-32 xl:w-20 2xl:w-32 object-cover rounded-md"
-                    src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$index] ?>.jpg"
-                    alt="<?php echo $newsItem['title']; ?>" />
-                <div>
-                    <h3 class="leading-tight font-semibold group-hover:underline line-clamp-2">
-                        <?php echo $newsItem['title'] ?>
-                    </h3>
-                    <p class="text-sm line-clamp-3 mt-2">
-                        <?php echo $newsItem['description'] ?>
-                    </p>
-                    <div class="text-sm space-x-2 mt-2">
-                        <span>
-                            <?php $timestamp = strtotime($newsItem['published_date']);
-                            $readable_date = gmdate('F j, Y', $timestamp);
-                            echo $readable_date;
-                            ?>
-                        </span>
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-8 gap-6">
+        <div class="col-span-5 md:col-span-3 lg:col-span-4">
+            <div class="overflow-hidden">
+                <a target="_blank" rel="noopener noreferrer">
+                    <img src="<?php echo $articles[0]['image_url'] ? $articles[0]['image_url'] :  get_stylesheet_directory_uri() . '/assets/img/newsletter.jpg' ?>" alt="Article Image" class="w-full h-[350px] object-cover rounded-md">
+                    <div class="pt-4">
+                        <h3 class="text-lg font-medium leading-tight mb-2">
+                            <?php echo $articles[0]['title'] ?>
+                        </h3>
+                        <p class="text-sm line-clamp-2 mt-1">
+                            <?php echo $articles[0]['content']; ?>
+                        </p>
+                        <div class="text-sm text-date space-x-2 mt-1 font-medium">
+                            <span>
+                                <?php
+                                $timestamp = strtotime($articles[0]['published_date']);
+                                $readable_date = gmdate('F j, Y', $timestamp);
+                                echo $readable_date;
+                                ?>
+                            </span>
+                            <span>|</span>
+                            <span><?php echo $articles[0]['author']; ?></span>
+                        </div>
                     </div>
+                </a>
+            </div>
+        </div>
+        <?php
+        array_shift($articles);
+        ?>
+        <div class="col-span-5 lg:col-span-4 space-y-6">
+            <?php foreach ($articles as $article): ?>
+                <div class="flex items-center overflow-hidden">
+                    <a target="_blank" rel="noopener noreferrer" class="flex">
+                        <img src="<?php echo $article['image_url'] ? $article['image_url'] : get_stylesheet_directory_uri() . '/assets/img/newsletter.jpg' ?>" alt="<?php echo $article['title']; ?>" class="w-28 h-18 object-cover rounded-md">
+                        <div class="pl-5">
+                            <h3 class="leading-tight font-medium text-lg line-clamp-1"><?php echo $article['title']; ?></h3>
+                            <p class="text-sm line-clamp-2 mt-2">
+                                <?php echo $article['content']; ?>
+                            </p>
+                            <p class="text-sm mt-1 font-medium">
+                                <?php
+                                $timestamp = strtotime($article['published_date']);
+                                $readable_date = gmdate('F j, Y', $timestamp);
+                                echo $readable_date;
+                                ?>
+                            </p>
+                        </div>
+                    </a>
                 </div>
-
-            </a>
-        <?php endforeach ?>
+            <?php endforeach ?>
+        </div>
     </div>
 </section>
