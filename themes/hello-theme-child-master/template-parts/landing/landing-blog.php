@@ -21,7 +21,7 @@ usort($blogs, function ($a, $b) {
         return $b_complete - $a_complete; // Complete blogs come first
     }
 
-    return strlen($b['title']) - strlen($a['title']); // Longer titles come first
+    return strtotime($b['published_date']) - strtotime($a['published_date']);
 });
 
 $blogs = array_slice($blogs, 0, 6);

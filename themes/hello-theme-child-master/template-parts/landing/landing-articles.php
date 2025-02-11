@@ -1,25 +1,39 @@
 <?php
-$response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/yahoo-articles/");
-if (wp_remote_retrieve_response_code($response) !== 200) {
-    return;
-}
-$data = wp_remote_retrieve_body($response);
-$articles = json_decode($data, true);
+$cache_key = 'cached_yahoo_articles';
+$cached_articles = get_transient($cache_key);
 
-$uniqueTitles = [];
-$articles = array_filter($articles, function ($item) use (&$uniqueTitles) {
-    if (!in_array($item['title'], $uniqueTitles)) {
-        $uniqueTitles[] = $item['title'];
-        return true;
+if ($cached_articles === false) {
+    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/yahoo-articles/");
+
+    if (wp_remote_retrieve_response_code($response) !== 200) {
+        return;
     }
-    return false;
-});
 
-$articles = array_slice($articles, 0, 5);
+    $data = wp_remote_retrieve_body($response);
+    $articles = json_decode($data, true);
 
-// echo '<pre>';
-// print_r($articles);
-// echo '</pre>';
+    $uniqueTitles = [];
+    $articles = array_filter($articles, function ($item) use (&$uniqueTitles) {
+        if (!in_array($item['title'], $uniqueTitles)) {
+            $uniqueTitles[] = $item['title'];
+            return true;
+        }
+        return false;
+    });
+
+    // Sort by published_date (assuming it follows a sortable date format)
+    usort($articles, function ($a, $b) {
+        return strtotime($b['published_date']) - strtotime($a['published_date']);
+    });
+
+    // Get the latest 5 articles
+    $articles = array_slice($articles, 0, 5);
+
+    // Cache the response for 1 hour (3600 seconds)
+    set_transient($cache_key, $articles, 18000);
+} else {
+    $articles = $cached_articles;
+}
 ?>
 
 <section class="my-5">
@@ -30,7 +44,7 @@ $articles = array_slice($articles, 0, 5);
         <div class="col-span-5 md:col-span-3 lg:col-span-4">
             <div class="overflow-hidden">
                 <a target="_blank" rel="noopener noreferrer">
-                    <img src="<?php echo $articles[0]['image_url'] ?>" alt="Article Image" class="w-full h-[350px] object-cover rounded-md">
+                    <img src="<?php echo $articles[0]['image_url'] ? $articles[0]['image_url'] :  get_stylesheet_directory_uri() . '/assets/img/newsletter.jpg' ?>" alt="Article Image" class="w-full h-[350px] object-cover rounded-md">
                     <div class="pt-4">
                         <h3 class="text-lg font-medium leading-tight mb-2">
                             <?php echo $articles[0]['title'] ?>
@@ -60,7 +74,7 @@ $articles = array_slice($articles, 0, 5);
             <?php foreach ($articles as $article): ?>
                 <div class="flex items-center overflow-hidden">
                     <a target="_blank" rel="noopener noreferrer" class="flex">
-                        <img src="<?php echo $article['image_url'] ?>" alt="South Korea’s KHNP Signs Long-Term Uranium Agreement With Centrus Energy" class="w-28 h-18 object-cover rounded-md">
+                        <img src="<?php echo $article['image_url'] ? $article['image_url'] : get_stylesheet_directory_uri() . '/assets/img/newsletter.jpg' ?>" alt="<?php echo $article['title']; ?>" class="w-28 h-18 object-cover rounded-md">
                         <div class="pl-5">
                             <h3 class="leading-tight font-medium text-lg line-clamp-1"><?php echo $article['title']; ?></h3>
                             <p class="text-sm line-clamp-2 mt-2">
