@@ -29,7 +29,6 @@ if ($cached_articles === false) {
     // Get the latest 5 articles
     $articles = array_slice($articles, 0, 5);
 
-    // Cache the response for 1 hour (3600 seconds)
     set_transient($cache_key, $articles, 18000);
 } else {
     $articles = $cached_articles;

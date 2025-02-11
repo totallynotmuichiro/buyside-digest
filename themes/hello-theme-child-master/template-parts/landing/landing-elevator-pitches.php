@@ -42,7 +42,7 @@ if ($weekly_pitches->have_posts()) : ?>
                 $elevator_pitches_letters = get_field('elevator_pitches_letters');
                 $letters_pdf = get_post_meta($elevator_pitches_letters, 'letter-link', true);
                 ?>
-                <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-sm space-x-4 transition-all transform duration-300 hover:scale-105 rounded-lg">
+                <div class="flex items-center bg-gray-100 p-4 shadow-sm space-x-4 transition-all transform duration-300 hover:scale-105 rounded-lg">
                     <!-- Logo (Fixed for proper scaling) -->
                     <?php if (has_post_thumbnail()) : ?>
                         <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-20 h-20 flex items-center justify-center  p-2 rounded-md overflow-hidden">

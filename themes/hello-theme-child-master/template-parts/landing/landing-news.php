@@ -1,36 +1,58 @@
 <?php
-$response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/news-articles/");
-if (wp_remote_retrieve_response_code($response) !== 200) {
-    return;
-}
-$data = wp_remote_retrieve_body($response);
-$newsItems = json_decode($data, true);
-
-// Function to check if a blog has all required fields
-function has_all_required_news_data($newsItem)
-{
-    return !empty($newsItem['source_name']) && !empty($newsItem['title']) && !empty($newsItem['link']) && !empty($newsItem['published_date']) && !empty($newsItem['description']);
-}
-
-// Sorting: Prioritize complete blogs, then sort by title length
-usort($newsItems, function ($a, $b) {
-    $a_complete = has_all_required_news_data($a);
-    $b_complete = has_all_required_news_data($b);
-
-    if ($a_complete !== $b_complete) {
-        return $b_complete - $a_complete; // Complete blogs come first
+function get_cached_news_items() {
+    // Try to get cached data first
+    $cached_news = get_transient('sectobs_news_items');
+    if ($cached_news !== false) {
+        return $cached_news;
     }
 
-    return strtotime($b['published_date']) - strtotime($a['published_date']); // Longer titles come first
-});
+    // If no cache, fetch fresh data
+    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/news-articles/", array( 'timeout' => 5000 ));
+    if (wp_remote_retrieve_response_code($response) !== 200) {
+        return [];
+    }
+    
+    $data = wp_remote_retrieve_body($response);
+    $newsItems = json_decode($data, true);
 
-$newsItems = array_slice($newsItems, 0, 8);
-$images = [7, 8, 9, 10, 11, 12, 13, 14, 15];
+    // Function to check if a blog has all required fields
+    function has_all_required_news_data($newsItem) {
+        return !empty($newsItem['source_name']) && 
+               !empty($newsItem['title']) && 
+               !empty($newsItem['link']) && 
+               !empty($newsItem['published_date']) && 
+               !empty($newsItem['description']);
+    }
+
+    // Sorting: Prioritize complete blogs, then sort by published date
+    usort($newsItems, function ($a, $b) {
+        $a_complete = has_all_required_news_data($a);
+        $b_complete = has_all_required_news_data($b);
+
+        if ($a_complete !== $b_complete) {
+            return $b_complete - $a_complete; // Complete blogs come first
+        }
+
+        return strtotime($b['published_date']) - strtotime($a['published_date']);
+    });
+
+    $newsItems = array_slice($newsItems, 0, 8);
+    
+    set_transient('sectobs_news_items', $newsItems, 18000);
+    
+    return $newsItems;
+}
+
+// Get the news items
+$newsItems = get_cached_news_items();
+
+// Generate image array
+$images = range(7, 15);
 shuffle($images);
 ?>
 
-<section class="my-5 w-full xl:w-3/5">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/2 text-center">
+<section class="my-5 w-full">
+    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
         BSDs in the News
     </h2>
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
