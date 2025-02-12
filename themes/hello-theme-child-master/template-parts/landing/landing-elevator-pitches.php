@@ -45,7 +45,7 @@ if ($weekly_pitches->have_posts()) : ?>
                 <div class="flex items-center bg-gray-100 p-4 shadow-sm space-x-4 transition-all transform duration-300 hover:scale-105 rounded-lg">
                     <!-- Logo (Fixed for proper scaling) -->
                     <?php if (has_post_thumbnail()) : ?>
-                        <a href="<?php the_permalink(); ?>" class="flex-shrink-0 w-20 h-20 flex items-center justify-center  p-2 rounded-md overflow-hidden">
+                        <a href="<?php the_permalink(); ?>" class="lg:hidden xl:flex flex-shrink-0 w-20 h-20 flex items-center justify-center  p-2 rounded-md overflow-hidden">
                             <?php
                             $image_id = get_post_thumbnail_id();
                             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
@@ -54,25 +54,47 @@ if ($weekly_pitches->have_posts()) : ?>
                             <img
                                 src="<?php echo esc_url($image_url); ?>"
                                 alt="<?php echo esc_attr($image_alt); ?>"
-                                class="max-w-full max-h-full w-auto h-auto object-contain mix-blend-multiply" />
+                                class="max-w-full max-h-full w-auto h-auto object-contain mix-blend-multiply " />
                         </a>
                     <?php endif; ?>
                     <div class="flex-1">
                         <!-- Title -->
-                        <h3 class="text-lg font-semibold text-gray-900">
-                            <a href="<?php the_permalink(); ?>" class="hover:underline"><?php the_title(); ?></a>
+                        <h3 class="text-gray-900">
+                            <a href="<?php the_permalink(); ?>" class="hover:underline font-semibold !text-lg"><?php the_title(); ?></a>
                         </h3>
-                        <!-- Fund & Ticker -->
-                        <p class="font-semibold text-sm">Fund: <?= esc_html($fund_name); ?> </p>
-                        <p class="font-semibold text-sm">Ticker: <?= $ticker_term ? '<a href="' . esc_url(get_term_link($tickers)) . '" class="text-blue-600 hover:underline">' . esc_html($ticker_name) . '</a>' : 'No Ticker'; ?> </p>
+                        <!-- Meta data -->
+                        <div class="grid grid-cols-[auto_1fr] lg:flex lg:flex-col 2xl:grid 2xl:grid-cols-[auto_1fr] gap-x-4 gap-y-1 mt-1">
+                            <p class="text-sm col-span-2">
+                                <span class="font-semibold"> Fund: </span>
+                                <?php echo esc_html($fund_name); ?>
+                            </p>
+                            <p class="font-semibold text-sm col-span-2">
+                                Ticker: <?php echo $ticker_term ? '<a href="' . esc_url(get_term_link($tickers)) . '" class="text-blue-600 hover:underline">' . esc_html($ticker_name) . '</a>' : 'No Ticker'; ?>
+                            </p>
+
+                            <?php if (have_rows('data_values')) : ?>
+                                <?php while (have_rows('data_values')) : the_row(); ?>
+                                    <?php if ($add_values_here = get_sub_field('add_values_here')) : ?>
+                                        <?php $parts = explode(":", $add_values_here); ?>
+                                        <div class="flex justify-between items-center text-sm min-w-0">
+                                            <span class="font-semibold whitespace-nowrap"><?php echo esc_html($parts[0]) . ': '; ?></span>
+                                            <span class="ml-1 flex-1 truncate"><?php echo esc_html($parts[1]); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                        </div>
                         <!-- View Letter & Fund Buttons -->
-                        <div class="flex space-x-2">
+                        <div class="flex space-x-2 mt-1">
                             <?php if ($letters_pdf) : ?>
                                 <a href="<?= esc_url($letters_pdf); ?>" target="_blank" class="text-sm text-blue-600 hover:underline mt-1 block">View Letter</a>
                             <?php endif; ?>
                             <?php if ($fund_link) : ?>
                                 <a href="<?= esc_url($fund_link); ?>" target="_blank" class="text-sm text-blue-600 hover:underline mt-1 block">View Fund</a>
                             <?php endif; ?>
+                        </div>
+                        <div class="elev-pitch-stats">
+
                         </div>
                     </div>
                 </div>
