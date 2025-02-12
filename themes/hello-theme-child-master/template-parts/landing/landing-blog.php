@@ -55,7 +55,7 @@ shuffle($images);
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
         Must Read Blogs
     </h2>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <?php foreach ($blogs as $index => $blog): ?>
             <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $blog['link'] ?>" target="_blank">
                 <img
