@@ -543,6 +543,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   white-space: nowrap;
   border-width: 0;
 }
+.page-template.page-template-page-landing .bsd-container .fixed {
+  position: fixed;
+}
 .page-template.page-template-page-landing .bsd-container .absolute {
   position: absolute;
 }
@@ -558,8 +561,23 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .left-0 {
   left: 0px;
 }
+.page-template.page-template-page-landing .bsd-container .left-\[50\%\] {
+  left: 50%;
+}
+.page-template.page-template-page-landing .bsd-container .top-\[50\%\] {
+  top: 50%;
+}
+.page-template.page-template-page-landing .bsd-container .right-4 {
+  right: 1rem;
+}
+.page-template.page-template-page-landing .bsd-container .top-4 {
+  top: 1rem;
+}
 .page-template.page-template-page-landing .bsd-container .z-10 {
   z-index: 10;
+}
+.page-template.page-template-page-landing .bsd-container .z-50 {
+  z-index: 50;
 }
 .page-template.page-template-page-landing .bsd-container .col-span-2 {
   grid-column: span 2 / span 2;
@@ -590,6 +608,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}
+.page-template.page-template-page-landing .bsd-container .-mx-6 {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 .page-template.page-template-page-landing .bsd-container .mb-0 {
   margin-bottom: 0px;
@@ -644,6 +666,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .ml-1 {
   margin-left: 0.25rem;
+}
+.page-template.page-template-page-landing .bsd-container .mt-8 {
+  margin-top: 2rem;
 }
 .page-template.page-template-page-landing .bsd-container .line-clamp-1 {
   overflow: hidden;
@@ -708,8 +733,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .h-full {
   height: 100%;
 }
+.page-template.page-template-page-landing .bsd-container .h-\[400px\] {
+  height: 400px;
+}
+.page-template.page-template-page-landing .bsd-container .h-screen {
+  height: 100vh;
+}
 .page-template.page-template-page-landing .bsd-container .max-h-full {
   max-height: 100%;
+}
+.page-template.page-template-page-landing .bsd-container .max-h-\[90vh\] {
+  max-height: 90vh;
 }
 .page-template.page-template-page-landing .bsd-container .min-h-screen {
   min-height: 100vh;
@@ -751,6 +785,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .w-full {
   width: 100%;
 }
+.page-template.page-template-page-landing .bsd-container .w-screen {
+  width: 100vw;
+}
 .page-template.page-template-page-landing .bsd-container .min-w-0 {
   min-width: 0px;
 }
@@ -787,6 +824,21 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .max-w-56 {
   max-width: 14rem;
 }
+.page-template.page-template-page-landing .bsd-container .max-w-3xl {
+  max-width: 48rem;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-5xl {
+  max-width: 64rem;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-none {
+  max-width: none;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-6xl {
+  max-width: 72rem;
+}
+.page-template.page-template-page-landing .bsd-container .max-w-7xl {
+  max-width: 80rem;
+}
 .page-template.page-template-page-landing .bsd-container .flex-1 {
   flex: 1 1 0%;
 }
@@ -801,6 +853,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .border-collapse {
   border-collapse: collapse;
+}
+.page-template.page-template-page-landing .bsd-container .-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.page-template.page-template-page-landing .bsd-container .-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .page-template.page-template-page-landing .bsd-container .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -933,6 +993,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .overflow-x-auto {
   overflow-x: auto;
 }
+.page-template.page-template-page-landing .bsd-container .overflow-y-auto {
+  overflow-y: auto;
+}
 .page-template.page-template-page-landing .bsd-container .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -964,6 +1027,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .rounded-xl {
   border-radius: 0.75rem;
+}
+.page-template.page-template-page-landing .bsd-container .rounded-none {
+  border-radius: 0px;
 }
 .page-template.page-template-page-landing .bsd-container .rounded-r-lg {
   border-top-right-radius: 0.5rem;
@@ -1005,6 +1071,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.page-template.page-template-page-landing .bsd-container .bg-black\/80 {
+  background-color: rgb(0 0 0 / 0.8);
+}
+.page-template.page-template-page-landing .bsd-container .bg-black\/90 {
+  background-color: rgb(0 0 0 / 0.9);
+}
+.page-template.page-template-page-landing .bsd-container .bg-black\/50 {
+  background-color: rgb(0 0 0 / 0.5);
+}
+.page-template.page-template-page-landing .bsd-container .bg-black\/60 {
+  background-color: rgb(0 0 0 / 0.6);
 }
 .page-template.page-template-page-landing .bsd-container .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1242,6 +1320,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.page-template.page-template-page-landing .bsd-container .shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 .page-template.page-template-page-landing .bsd-container .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1416,6 +1499,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     margin-right: 3rem;
   }
 
+  .page-template.page-template-page-landing .bsd-container .md\:-mx-10 {
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+  }
+
   .page-template.page-template-page-landing .bsd-container .md\:mb-0 {
     margin-bottom: 0px;
   }
@@ -1434,6 +1522,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
   .page-template.page-template-page-landing .bsd-container .md\:flex {
     display: flex;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .md\:h-\[500px\] {
+    height: 500px;
   }
 
   .page-template.page-template-page-landing .bsd-container .md\:w-1\/2 {
@@ -1488,8 +1580,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
+  .page-template.page-template-page-landing .bsd-container .md\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
   .page-template.page-template-page-landing .bsd-container .md\:p-12 {
     padding: 3rem;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .md\:p-10 {
+    padding: 2.5rem;
   }
 
   .page-template.page-template-page-landing .bsd-container .md\:px-8 {
@@ -1522,6 +1622,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   .page-template.page-template-page-landing .bsd-container .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 

@@ -4022,3 +4022,12 @@ function load_landing_page_css() {
 }
 
 add_action('wp_enqueue_scripts', 'load_landing_page_css');
+
+// Load Landing page JS
+function load_landing_page_script() {
+    if (is_page_template('page-landing.php')) {
+        wp_enqueue_script( 'bsd-page-landing', get_stylesheet_directory_uri() . '/assets/js/page-landing.js', array(), '1.0', true );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_landing_page_script');
