@@ -37,7 +37,7 @@ function get_cached_substack_posts() {
     }
 
     $finalPosts = array_values($filteredPosts);
-    $finalPosts = array_slice( $finalPosts, 0, 10 );
+    $finalPosts = array_slice( $finalPosts, 0, 12 );
 
     set_transient('sectobs_substack_posts', $finalPosts, 18000);
 
@@ -52,7 +52,7 @@ $substackPosts = get_cached_substack_posts();
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
        Substack
     </h2>
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <?php foreach ($substackPosts as $index => $post): ?>
             <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $post['url'] ?>" target="_blank">
                 <img
@@ -81,3 +81,5 @@ $substackPosts = get_cached_substack_posts();
         <?php endforeach ?>
     </div>
 </section>
+
+<?php wp_reset_postdata(); ?>
