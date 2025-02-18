@@ -13,6 +13,7 @@ get_header();
             <?php get_template_part('template-parts/landing/landing', 'news'); ?>
             <?php get_template_part('template-parts/landing/landing', 'cta-1'); ?>
             <?php get_template_part('template-parts/landing/landing', 'latest-letter'); ?>
+            <?php get_template_part('template-parts/landing/landing', 'recommended-funds'); ?>
             <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
         </section>
         <aside class="w-full lg:w-[23%] flex flex-col">

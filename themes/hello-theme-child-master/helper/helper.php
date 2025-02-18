@@ -105,4 +105,63 @@ class BSD_Helper {
         return ! empty( $letter_link ) ? $letter_link : '';
     }
 
+    public static function get_fund_CAGR( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '-';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'return-since-inception', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '-';
+    }
+
+    public static function get_fund_quarterly( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '-';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'quarterly', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '-';
+    }
+
+    public static function get_fund_ytd( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '-';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'ytd', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '-';
+    }
+
+    public static function get_fund_website_link( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'website-link', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '';
+    }
+
+    public static function get_fund_twitter_link( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'twitter-link', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '';
+    }
+
+    public static function get_fund_investor_name( $fund_id ) {
+        if ( ! $fund_id || ! is_numeric( $fund_id ) ) {
+            return '-';
+        }
+
+        $letter_link =  get_post_meta( $fund_id, 'investor-name', true );
+
+        return ! empty( $letter_link ) ? $letter_link : '-';
+    }
 }
