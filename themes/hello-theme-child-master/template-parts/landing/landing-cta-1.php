@@ -22,7 +22,7 @@
     <div class="hidden md:block relative h-auto">
         <img
             alt="CTA"
-            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cta.jpg"
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cta-1.jpg"
             class="absolute inset-0 h-full w-full object-cover rounded-r-lg" />
     </div>
 </section>

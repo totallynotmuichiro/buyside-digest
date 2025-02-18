@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="w-full md:w-[40%] 2xl:w-[50%]">
-            <img class="object-cover object-center rounded animate-appear" alt="hero" src="/wp-content/uploads/2024/04/banner-img.png">
+            <img class="object-cover object-center rounded animate-appear" alt="hero" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/hero.png">
         </div>
     </div>
 </section>
