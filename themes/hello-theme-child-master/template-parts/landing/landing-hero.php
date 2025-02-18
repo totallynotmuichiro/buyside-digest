@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="w-full md:w-[40%] 2xl:w-[50%]">
-            <img class="object-cover object-center rounded animate-appear" alt="hero" src="http://bsd-test.local/wp-content/uploads/2024/04/banner-img.png">
+            <img class="object-cover object-center rounded animate-appear" alt="hero" src="/wp-content/uploads/2024/04/banner-img.png">
         </div>
     </div>
 </section>
