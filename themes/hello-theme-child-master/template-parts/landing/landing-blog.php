@@ -36,9 +36,9 @@ function get_cached_blog_items() {
         return strtotime($b['published_date']) - strtotime($a['published_date']);
     });
 
-    $blogs = array_slice($blogs, 0, 6);
+    $blogs = array_slice($blogs, 0, 10);
     
-    set_transient('sectobs_blog_items', $blogs, 18000);
+    set_transient('sectobs_blog_items', $blogs, 3600);
     
     return $blogs;
 }
@@ -47,7 +47,7 @@ function get_cached_blog_items() {
 $blogs = get_cached_blog_items();
 
 // Generate image array
-$images = range(1, 6);
+$images = range(1, 10);
 shuffle($images);
 ?>
 
@@ -59,7 +59,7 @@ shuffle($images);
         <?php foreach ($blogs as $index => $blog): ?>
             <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $blog['link'] ?>" target="_blank">
                 <img
-                    class="h-full w-32 xl:w-20 2xl:w-32 object-cover rounded-md"
+                    class="h-full w-32 xl:w-20 2xl:w-32 object-cover aspect-square rounded-md"
                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$index] ?>.jpg"
                     alt="<?php echo $blog['title']; ?>" />
                 <div>

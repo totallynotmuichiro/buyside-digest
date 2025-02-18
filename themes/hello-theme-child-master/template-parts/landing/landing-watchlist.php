@@ -6,7 +6,7 @@
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/watchlist.png" alt="Watchlist Preview" class="mx-auto ">
     </div>
     <div class="mt-5">
-        <a href="/register" class="bg-green-600 text-white px-5 py-3 rounded-lg text-sm text-wrap font-bold shadow-md hover:bg-green-700 transition duration-200">
+        <a href="/register" class="bg-primary text-white px-5 py-3 rounded-lg text-sm text-wrap font-bold shadow-md hover:bg-primary/95 transition duration-200">
             Login / Create Free Account
         </a>
     </div>
@@ -19,7 +19,7 @@
         <hr class="my-2 border-gray-300">
         <p class="text-sm text-gray-600">Keep Track of the Symbols You Follow With Free Watchlists</p>
         <div class="mt-3 lg:mt-4">
-            <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-green-700 transition duration-200 w-full lg:w-auto">
+            <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:bg-primary/95 transition duration-200 w-full lg:w-auto">
                 Login / Create Free Account
             </button>
         </div>
