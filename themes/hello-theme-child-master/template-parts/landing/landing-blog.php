@@ -52,14 +52,14 @@ shuffle($images);
 ?>
 
 <section class="my-5 w-full">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
+    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
         Must Read Blogs
     </h2>
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <?php foreach ($blogs as $index => $blog): ?>
             <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $blog['link'] ?>" target="_blank">
                 <img
-                    class="h-full w-32 xl:w-20 2xl:w-32 object-cover aspect-square rounded-md"
+                    class="w-32 h-full object-cover rounded-md aspect-square"
                     src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$index] ?>.jpg"
                     alt="<?php echo $blog['title']; ?>" />
                 <div>

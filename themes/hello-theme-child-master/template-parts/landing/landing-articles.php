@@ -54,7 +54,7 @@ shuffle($images);
 ?>
 
 <section class="my-5 w-full">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/5 text-center">
+    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
         News from the Buy Side
     </h2>
     <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">

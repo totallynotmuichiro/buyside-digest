@@ -98,7 +98,7 @@ $total_articles = count($articles);
 <?php endforeach; ?>
 
 <section class="my-5">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-5 py-2 w-fit lg:w-1/4 text-center">
+    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
         BSDs in the News
     </h2>
     <div class="mt-6 grid grid-cols-1 md:grid-cols-8 gap-6">
