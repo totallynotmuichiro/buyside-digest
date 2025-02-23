@@ -17,12 +17,13 @@ get_header();
             <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
         </section>
         <aside class="w-full lg:w-[23%] flex flex-col">
-            <?php get_template_part('template-parts/landing/landing', 'watchlist'); ?>
             <?php get_template_part('template-parts/landing/landing', 'popular-tools'); ?>
+            <?php get_template_part('template-parts/landing/landing', 'watchlist'); ?>
             <?php get_template_part('template-parts/landing/landing', 'elevator-pitches'); ?>
         </aside>
     </div>
     <div class="mx-5 md:mx-12">
+        <?php get_template_part('template-parts/landing/landing', 'carousal'); ?>
         <?php get_template_part('template-parts/landing/landing', 'substack'); ?>
         <?php get_template_part('template-parts/landing/landing', 'cta-2'); ?>
     </div>

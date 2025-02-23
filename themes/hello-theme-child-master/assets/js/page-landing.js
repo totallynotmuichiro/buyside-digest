@@ -60,3 +60,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Swiper
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+        // Responsive breakpoints
+        breakpoints: {
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 2,
+            },
+            // when window width is >= 1024px
+            1024: {
+                slidesPerView: 3,
+            },
+            // when window width is >= 1280px
+            1280: {
+                slidesPerView: 4,
+            }
+        }
+    });
+});

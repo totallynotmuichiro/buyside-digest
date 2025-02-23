@@ -129,4 +129,37 @@ class BSD_API {
         $finalPosts = array_values($filteredPosts);
         return array_slice($finalPosts, 0, 12);
     }
+
+    public static function get_yt_videos() {
+        $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/youtube-videos/", array('timeout' => 5000));
+
+        if (wp_remote_retrieve_response_code($response) !== 200) {
+            return [];
+        }
+    
+        $data = wp_remote_retrieve_body($response);
+        $youtube_videos = json_decode($data, true);
+    
+        // Function to check if a post has all required fields
+        function has_all_required_video_data($post) {
+            return !empty($post['title']) &&
+                !empty($post['channel_name']) &&
+                !empty($post['description']) &&
+                !empty($post['video_id']) &&
+                !empty($post['published_date']);
+        }
+    
+        usort($youtube_videos, function ($a, $b) {
+            $a_complete = has_all_required_news_data($a);
+            $b_complete = has_all_required_news_data($b);
+
+            if ($a_complete !== $b_complete) {
+                return $b_complete - $a_complete; // Complete blogs come first
+            }
+
+            return strtotime($b['published_date']) - strtotime($a['published_date']);
+        });
+    
+        return $youtube_videos;
+    }
 }

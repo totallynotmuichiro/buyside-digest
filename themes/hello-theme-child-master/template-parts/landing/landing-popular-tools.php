@@ -1,4 +1,4 @@
-<section class="mt-10 w-full">
+<section class="w-full">
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-8 py-2 w-fit text-center">
         Popular Tools
     </h2>
