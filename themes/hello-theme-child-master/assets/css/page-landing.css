@@ -1402,6 +1402,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   background-color: rgb(13 62 111 / 0.95);
 }
 
+.page-template.page-template-page-landing .bsd-container .hover\:bg-blue-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
+}
+
 .page-template.page-template-page-landing .bsd-container .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
