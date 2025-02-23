@@ -1,40 +1,6 @@
 <?php
-function get_blog_items() {
-    // Fetch fresh data
-    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/blog-articles/", array( 'timeout' => 5000 ));
-    if (wp_remote_retrieve_response_code($response) !== 200) {
-        return [];
-    }
-    
-    $data = wp_remote_retrieve_body($response);
-    $blogs = json_decode($data, true);
-
-    // Function to check if a blog has all required fields
-    function has_all_required_data($blog) {
-        return !empty($blog['blog_name']) && 
-               !empty($blog['title']) && 
-               !empty($blog['link']) && 
-               !empty($blog['published_date']) && 
-               !empty($blog['excerpt']);
-    }
-
-    // Sorting: Prioritize complete blogs, then sort by published date
-    usort($blogs, function ($a, $b) {
-        $a_complete = has_all_required_data($a);
-        $b_complete = has_all_required_data($b);
-
-        if ($a_complete !== $b_complete) {
-            return $b_complete - $a_complete; // Complete blogs come first
-        }
-
-        return strtotime($b['published_date']) - strtotime($a['published_date']);
-    });
-
-    return array_slice($blogs, 0, 10);
-}
-
 // Get the blog items
-$blogs = get_blog_items();
+$blogs = BSD_API::get_blogs();
 
 // Generate image array
 $images = range(1, 10);

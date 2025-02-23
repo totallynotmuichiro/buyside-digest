@@ -1,42 +1,6 @@
 <?php
-function get_substack_posts() {
-    // Fetch fresh data
-    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/substack-articles/", array('timeout' => 5000));
-    if (wp_remote_retrieve_response_code($response) !== 200) {
-        return [];
-    }
-
-    $data = wp_remote_retrieve_body($response);
-    $substackPosts = json_decode($data, true);
-
-    // Function to check if a post has all required fields
-    function has_all_required_substack_data($post) {
-        return !empty($post['source_name']) &&
-            !empty($post['title']) &&
-            !empty($post['url']) &&
-            !empty($post['published_date']) &&
-            !empty($post['subtitle']) && 
-            !empty($post['cover_image']);
-    }
-
-    // Store only the latest article from each source_name
-    $filteredPosts = [];
-    foreach ($substackPosts as $post) {
-        if (has_all_required_substack_data($post)) {
-            $source = $post['source_name'];
-            if (!isset($filteredPosts[$source]) || strtotime($post['published_date']) > strtotime($filteredPosts[$source]['published_date'])) {
-                $filteredPosts[$source] = $post;
-            }
-        }
-    }
-
-    $finalPosts = array_values($filteredPosts);
-    echo count( $finalPosts );
-    return array_slice($finalPosts, 0, 12);
-}
-
 // Get the Substack posts
-$substackPosts = get_substack_posts();
+$substackPosts = BSD_API::get_substacks();
 ?>
 
 <section class="my-5 w-full">
