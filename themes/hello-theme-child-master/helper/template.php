@@ -1,6 +1,6 @@
 <?php 
 
-class BSD_Helper {
+class BSD_Template {
 
     public static function get_letter_quarter( $letter_id ) {
         if ( ! $letter_id || ! is_numeric( $letter_id ) ) {

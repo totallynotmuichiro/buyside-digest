@@ -1,36 +1,27 @@
 <?php
-$cache_key = 'cached_yahoo_articles';
-$cached_articles = get_transient($cache_key);
+$response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/yahoo-articles/");
 
-if ($cached_articles === false) {
-    $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/yahoo-articles/");
-
-    if (wp_remote_retrieve_response_code($response) !== 200) {
-        return;
-    }
-
-    $data = wp_remote_retrieve_body($response);
-    $articles = json_decode($data, true);
-
-    $uniqueTitles = [];
-    $articles = array_filter($articles, function ($item) use (&$uniqueTitles) {
-        if (!in_array($item['title'], $uniqueTitles)) {
-            $uniqueTitles[] = $item['title'];
-            return true;
-        }
-        return false;
-    });
-
-    usort($articles, function ($a, $b) {
-        return strtotime($b['published_date']) - strtotime($a['published_date']);
-    });
-
-    $articles = array_slice($articles, 0, 9);
-
-    set_transient($cache_key, $articles, 18000);
-} else {
-    $articles = $cached_articles;
+if (wp_remote_retrieve_response_code($response) !== 200) {
+    return;
 }
+
+$data = wp_remote_retrieve_body($response);
+$articles = json_decode($data, true);
+
+$uniqueTitles = [];
+$articles = array_filter($articles, function ($item) use (&$uniqueTitles) {
+    if (!in_array($item['title'], $uniqueTitles)) {
+        $uniqueTitles[] = $item['title'];
+        return true;
+    }
+    return false;
+});
+
+usort($articles, function ($a, $b) {
+    return strtotime($b['published_date']) - strtotime($a['published_date']);
+});
+
+$articles = array_slice($articles, 0, 9);
 
 // Safety check - ensure we have articles
 if (empty($articles)) {

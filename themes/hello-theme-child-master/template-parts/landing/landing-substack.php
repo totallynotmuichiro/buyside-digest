@@ -1,12 +1,6 @@
 <?php
-function get_cached_substack_posts() {
-    // Try to get cached data first
-    $cached_posts = get_transient('sectobs_substack_posts');
-    if ($cached_posts !== false) {
-        return $cached_posts;
-    }
-
-    // If no cache, fetch fresh data
+function get_substack_posts() {
+    // Fetch fresh data
     $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/substack-articles/", array('timeout' => 5000));
     if (wp_remote_retrieve_response_code($response) !== 200) {
         return [];
@@ -37,15 +31,12 @@ function get_cached_substack_posts() {
     }
 
     $finalPosts = array_values($filteredPosts);
-    $finalPosts = array_slice( $finalPosts, 0, 12 );
-
-    set_transient('sectobs_substack_posts', $finalPosts, 18000);
-
-    return $finalPosts;
+    echo count( $finalPosts );
+    return array_slice($finalPosts, 0, 12);
 }
 
 // Get the Substack posts
-$substackPosts = get_cached_substack_posts();
+$substackPosts = get_substack_posts();
 ?>
 
 <section class="my-5 w-full">

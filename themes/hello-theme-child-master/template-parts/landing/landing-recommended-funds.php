@@ -43,20 +43,20 @@ $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
                                     </a>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php echo BSD_Helper::get_fund_investor_name($fund['fund_id']) ?>
+                                    <?php echo BSD_Template::get_fund_investor_name($fund['fund_id']) ?>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php echo BSD_Helper::get_fund_CAGR($fund['fund_id']) ?>
+                                    <?php echo BSD_Template::get_fund_CAGR($fund['fund_id']) ?>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php echo BSD_Helper::get_fund_quarterly($fund['fund_id']) ?>
+                                    <?php echo BSD_Template::get_fund_quarterly($fund['fund_id']) ?>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php echo BSD_Helper::get_fund_ytd($fund['fund_id']) ?>
+                                    <?php echo BSD_Template::get_fund_ytd($fund['fund_id']) ?>
                                 </td>
 
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php $website_link = BSD_Helper::get_fund_website_link($fund['fund_id']); ?>
+                                    <?php $website_link = BSD_Template::get_fund_website_link($fund['fund_id']); ?>
                                     <?php if (!empty($website_link)) : ?>
                                         <a class="text-primary font-medium hover:underline" href="<?php echo $website_link; ?>">
                                             View
@@ -66,7 +66,7 @@ $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
                                     <?php endif; ?>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php $twitter_link = BSD_Helper::get_fund_twitter_link($fund['fund_id']); ?>
+                                    <?php $twitter_link = BSD_Template::get_fund_twitter_link($fund['fund_id']); ?>
                                     <?php if (!empty($twitter_link)) : ?>
                                         <a class="text-primary font-medium hover:underline" href="<?php echo $twitter_link; ?>">
                                             View

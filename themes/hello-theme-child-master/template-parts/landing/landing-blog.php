@@ -1,12 +1,6 @@
 <?php
-function get_cached_blog_items() {
-    // Try to get cached data first
-    $cached_blogs = get_transient('sectobs_blog_items');
-    if ($cached_blogs !== false) {
-        return $cached_blogs;
-    }
-
-    // If no cache, fetch fresh data
+function get_blog_items() {
+    // Fetch fresh data
     $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/blog-articles/", array( 'timeout' => 5000 ));
     if (wp_remote_retrieve_response_code($response) !== 200) {
         return [];
@@ -36,15 +30,11 @@ function get_cached_blog_items() {
         return strtotime($b['published_date']) - strtotime($a['published_date']);
     });
 
-    $blogs = array_slice($blogs, 0, 10);
-    
-    set_transient('sectobs_blog_items', $blogs, 3600);
-    
-    return $blogs;
+    return array_slice($blogs, 0, 10);
 }
 
 // Get the blog items
-$blogs = get_cached_blog_items();
+$blogs = get_blog_items();
 
 // Generate image array
 $images = range(1, 10);

@@ -1,13 +1,7 @@
 <?php
-function get_cached_news_items()
+function get_news_items()
 {
-    // Try to get cached data first
-    $cached_news = get_transient('sectobs_news_items');
-    if ($cached_news !== false) {
-        return $cached_news;
-    }
-
-    // If no cache, fetch fresh data
+    // Fetch fresh data
     $response = wp_remote_get("https://sectobsddjango-production.up.railway.app/api/news-articles/", array('timeout' => 5000));
     if (wp_remote_retrieve_response_code($response) !== 200) {
         return [];
@@ -40,13 +34,11 @@ function get_cached_news_items()
 
     $newsItems = array_slice($newsItems, 0, 8);
 
-    set_transient('sectobs_news_items', $newsItems, 18000);
-
     return $newsItems;
 }
 
 // Get the news items
-$newsItems = get_cached_news_items();
+$newsItems = get_news_items();
 
 // Generate image array
 $images = range(7, 15);

@@ -38,20 +38,20 @@ $letters = new WP_Query($args);
                         $letters->the_post() ?>
                         <tr class="bg-white even:bg-gray-100">
                             <td class="border-b border-gray-300 px-3 py-1 whitespace-nowrap">
-                                <?php echo BSD_Helper::get_letter_quarter(get_the_ID()); ?>
+                                <?php echo BSD_Template::get_letter_quarter(get_the_ID()); ?>
                             </td>
                             <td class="border-b border-gray-300 px-3 py-1 whitespace-nowrap">
                                 <a class="text-primary font-medium hover:underline"
-                                    href="<?php print_r(BSD_Helper::get_letter_fund_permalink(get_the_ID())); ?>">
-                                    <?php echo BSD_Helper::get_letter_fund_name(get_the_ID()); ?>
+                                    href="<?php print_r(BSD_Template::get_letter_fund_permalink(get_the_ID())); ?>">
+                                    <?php echo BSD_Template::get_letter_fund_name(get_the_ID()); ?>
                                 </a>
                             </td>
-                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Helper::get_letter_key_person(get_the_ID()); ?></td>
-                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Helper::get_letter_QTD(get_the_ID()); ?></td>
-                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Helper::get_letter_YTD(get_the_ID()); ?></td>
+                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Template::get_letter_key_person(get_the_ID()); ?></td>
+                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Template::get_letter_QTD(get_the_ID()); ?></td>
+                            <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap"><?php echo BSD_Template::get_letter_YTD(get_the_ID()); ?></td>
                             <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
                                 <?php
-                                $tickers = BSD_Helper::get_letter_tickers(get_the_ID());
+                                $tickers = BSD_Template::get_letter_tickers(get_the_ID());
 
                                 if (empty($tickers)) {
                                     echo '-';
@@ -66,7 +66,7 @@ $letters = new WP_Query($args);
                                 ?>
                             </td>
                             <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                <a class="text-primary font-medium hover:underline whitespace-nowrap" href="<?php echo BSD_Helper::get_letter_link(get_the_ID()); ?>">View</a>
+                                <a class="text-primary font-medium hover:underline whitespace-nowrap" href="<?php echo BSD_Template::get_letter_link(get_the_ID()); ?>">View</a>
                             </td>
                         </tr>
                     <?php endwhile ?>

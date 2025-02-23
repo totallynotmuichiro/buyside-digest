@@ -4042,4 +4042,4 @@ add_action('wp_enqueue_scripts', 'load_signup_page_script');
 
 
 // Helper functions
-require_once get_stylesheet_directory() . '/helper/helper.php';
+require_once get_stylesheet_directory() . '/helper/template.php';
