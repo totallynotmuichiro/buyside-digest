@@ -13,13 +13,9 @@ $fund_followers_query = "SELECT p.ID as fund_id, COUNT(DISTINCT fs.user_id) as f
 $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
 ?>
 
-<section class="my-5 w-full">
-    <div class="flex justify-between items-center">
-        <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
-            BSD Recommended Letters
-        </h2>
-    </div>
-    <div class="mt-6">
+<section class="mt-8 w-full">
+    <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">BSD Recommended Letters</h2>
+    <div>
         <div class="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             <table class="w-full border-collapse table-auto mb-0">
                 <thead>

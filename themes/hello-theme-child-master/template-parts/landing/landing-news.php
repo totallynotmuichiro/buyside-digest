@@ -6,89 +6,84 @@ if (empty($articles)) {
     return;
 }
 
-$images = [16,17,18,19,20,21,22,23,24,25];
+$images = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 shuffle($images);
 
 $total_articles = count($articles);
 ?>
 
-<section class="my-5">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
-        BSDs in the News
-    </h2>
-    <div class="mt-6 grid grid-cols-1 md:grid-cols-8 gap-6">
+<section class="mt-8">
+    <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">BSDs in the News</h2>
+    <div class="grid grid-cols-1 md:grid-cols-8 gap-6">
         <!-- Featured Article -->
         <?php if ($total_articles > 0): ?>
-            <div class="col-span-8 md:col-span-3 lg:col-span-4">
-                <div class="overflow-hidden">
-                    <a href="<?php echo $articles[0]['link'] ?>" class="block group" target="_blank">
-                        <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/finance-<?php echo $images[0] ?>.jpg"
-                            alt="Article Image"
-                            class="w-full h-[350px] object-cover rounded-md">
-                        <div class="pt-4">
-                            <h3 class="text-lg font-medium leading-tight mb-2 group-hover:underline">
-                                <?php echo $articles[0]['title'] ?>
+            <div class="col-span-8 md:col-span-4">
+                <a href="<?php echo $articles[0]['link'] ?>" class="block group relative overflow-hidden rounded-lg shadow-lg" target="_blank">
+                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/finance-<?php echo $images[0] ?>.jpg"
+                        alt="Article Image"
+                        class="w-full h-[400px] object-cover rounded-lg transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5 w-full">
+                        <h3 class="text-white text-lg font-semibold leading-tight mb-2 group-hover:underline">
+                            <?php echo $articles[0]['title'] ?>
+                        </h3>
+                        <div class="text-sm text-gray-300 space-x-2 mt-1 font-medium">
+                            <span>
+                                <?php
+                                $timestamp = strtotime($articles[0]['published_date']);
+                                echo gmdate('F j, Y', $timestamp);
+                                ?>
+                            </span>
+                            <span>|</span>
+                            <span><?php echo $articles[0]['author']; ?></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <?php endif; ?>
+
+        <!-- Secondary Articles (2-4) -->
+        <?php if ($total_articles > 1): ?>
+            <div class="col-span-8 lg:col-span-4 space-y-6">
+                <?php for ($i = 1; $i < min(5, $total_articles); $i++): ?>
+                    <a class="flex flex-row items-center gap-5 group rounded-lg transition-all" href="<?php echo $articles[$i]['link'] ?>" target="_blank">
+                        <img
+                            class="w-20 object-cover rounded-md aspect-square"
+                            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
+                            alt="<?php echo $articles[$i]['title']; ?>" />
+                        <div class="flex flex-col justify-center">
+                            <h3 class="leading-tight font-semibold group-hover:text-blue-600 line-clamp-2">
+                                <?php echo $articles[$i]['title']; ?>
                             </h3>
-                            <div class="text-sm text-date space-x-2 mt-1 font-medium">
+                            <div class="text-sm space-x-2 mt-2">
                                 <span>
                                     <?php
-                                    $timestamp = strtotime($articles[0]['published_date']);
+                                    $timestamp = strtotime($articles[$i]['published_date']);
                                     $readable_date = gmdate('F j, Y', $timestamp);
                                     echo $readable_date;
                                     ?>
                                 </span>
                                 <span>|</span>
-                                <span><?php echo $articles[0]['author']; ?></span>
+                                <span><?php echo $articles[$i]['author']; ?></span>
                             </div>
                         </div>
                     </a>
-                </div>
-            </div>
-        <?php endif; ?>
-
-        <!-- Secondary Articles (2-5) -->
-        <?php if ($total_articles > 1): ?>
-            <div class="col-span-8 lg:col-span-4 space-y-6">
-                <?php for ($i = 1; $i < min(6, $total_articles); $i++): ?>
-                    <div class="flex items-center overflow-hidden">
-                        <a href="<?php echo $articles[$i]['link'] ?>" class="flex group" target="_blank">
-                            <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
-                                alt="<?php echo $articles[$i]['title']; ?>"
-                                class="w-28 h-16 object-cover rounded-md">
-                            <div class="pl-5">
-                                <h3 class="leading-tight font-medium text-lg line-clamp-1 group-hover:underline">
-                                    <?php echo $articles[$i]['title']; ?>
-                                </h3>
-                                <div class="text-sm text-date space-x-2 mt-1 font-medium">
-                                    <span>
-                                        <?php
-                                        $timestamp = strtotime($articles[$i]['published_date']);
-                                        $readable_date = gmdate('F j, Y', $timestamp);
-                                        echo $readable_date;
-                                        ?>
-                                    </span>
-                                    <span>|</span>
-                                    <span><?php echo $articles[$i]['author']; ?></span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 <?php endfor; ?>
             </div>
         <?php endif; ?>
 
         <!-- Additional Articles (6-9) -->
-        <?php if ($total_articles > 6): ?>
-            <?php for ($i = 6; $i < min(10, $total_articles); $i++): ?>
-                <a href="<?php echo $articles[$i]['link'] ?>" class="flex overflow-hidden col-span-8 lg:col-span-4 group" target="_blank">
-                    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
-                        alt="<?php echo $articles[$i]['title']; ?>"
-                        class="h-16 object-cover rounded-md">
-                    <div class="pl-5">
-                        <h3 class="leading-tight font-medium text-lg line-clamp-1 group-hover:underline">
+        <?php if ($total_articles > 5): ?>
+            <?php for ($i = 5; $i < min(9, $total_articles); $i++): ?>
+                <a class="flex flex-row overflow-hidden col-span-8 lg:col-span-4 items-center gap-5 group rounded-lg transition-all" href="<?php echo $articles[$i]['link'] ?>" target="_blank">
+                    <img
+                        class="w-20 object-cover rounded-md aspect-square"
+                        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
+                        alt="<?php echo $articles[$i]['title']; ?>" />
+                    <div class="flex flex-col justify-center">
+                        <h3 class="leading-tight font-semibold group-hover:text-blue-600 line-clamp-2">
                             <?php echo $articles[$i]['title']; ?>
                         </h3>
-                        <div class="text-sm text-date space-x-2 mt-1 font-medium">
+                        <div class="text-sm space-x-2 mt-2">
                             <span>
                                 <?php
                                 $timestamp = strtotime($articles[$i]['published_date']);

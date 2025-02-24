@@ -9,16 +9,15 @@ $args = array(
 $letters = new WP_Query($args);
 ?>
 
-<section class="my-5 w-full">
-    <div class="flex justify-between items-center">
-        <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
-            Recently Posted Letters
-        </h2>
+<section class="mt-8 w-full">
+    <div class="flex justify-between border-b border-black/20 pb-2 mb-6 lg:mb-4">
+        <h2 class="flex text-xl items-center font-bold text-black/80 capitalize">Recently Posted Letters</h2>
         <a href="/hedge-fund-database/" class="border-[1.5px] border-primary hover:bg-primary/5 font-medium rounded-sm text-primary py-1 px-5">
             Full list
         </a>
     </div>
-    <div class="mt-6">
+
+    <div>
         <div class="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             <table class="w-full border-collapse table-auto mb-0">
                 <thead>

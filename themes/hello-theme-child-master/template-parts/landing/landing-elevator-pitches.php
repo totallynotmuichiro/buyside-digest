@@ -23,10 +23,8 @@ $args = array(
 );
 $weekly_pitches = new WP_Query($args);
 if ($weekly_pitches->have_posts()) : ?>
-    <section class="mt-10 w-full">
-        <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-8 py-2 w-fit text-center">
-            Elevator Pitches of the Week
-        </h2>
+    <section class="mt-8 w-full">
+        <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">Elevator Pitches of the Week</h2>
         <div class="space-y-5 mt-6">
             <?php while ($weekly_pitches->have_posts()) : $weekly_pitches->the_post(); ?>
                 <?php

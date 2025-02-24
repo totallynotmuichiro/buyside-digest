@@ -1,7 +1,6 @@
 <section class="w-full">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-8 py-2 w-fit text-center">
-        Popular Tools
-    </h2>
+    <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4 frank">Popular Tools</h2>
+
     <div class="mt-6 flex flex-col space-y-5">
         <a href="/hedge-fund-database/" class="bg-gray-100 hover:bg-gray-200 p-6 flex flex-col justify-center items-center transition-all transform duration-300 hover:scale-105 rounded-lg">
             <h3 class="font-semibold text-center text-xl">A Comprehensive Letter Database</h3>

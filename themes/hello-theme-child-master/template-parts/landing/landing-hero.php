@@ -1,11 +1,11 @@
 <section class="text-gray-600 body-font">
-    <div class="flex px-32 py-12 md:flex-row flex-col items-center">
+    <div class="flex mx-5 md:mx-32 py-12 md:flex-row flex-col items-center">
         <div class="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:w-[60%] xl:w-[50%]">
             <h1 class="title-font lg:text-4xl xl:text-5xl text-3xl mb-4 font-medium text-gray-900 animate-appear">
                 <span class="text-territory font-bold">Unlock</span>
                 the Wisdom of the Markets <span class="text-territory font-bold"> One Quarterly Investor </span> Letter at a Time.
             </h1>
-            <form class="flex flex-row flex-nowrap justify-center items-center bg-gray-100 p-1 rounded-full w-full xl:w-full animate-appear max-w-xl free_sign_up">
+            <form class="flex flex-row flex-nowrap justify-center items-center bg-gray-100 p-1 rounded-full w-full xl:w-full animate-appear md:max-w-xl free_sign_up">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#444" class="w-8 h-8 ml-4">
                     <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z" />
                 </svg>

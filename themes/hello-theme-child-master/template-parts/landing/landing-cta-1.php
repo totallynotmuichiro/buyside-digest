@@ -1,4 +1,4 @@
-<section class="bg-primary sm:grid sm:grid-cols-2 my-10 rounded-xl">
+<section class="bg-primary sm:grid sm:grid-cols-2 mt-8 rounded-xl">
     <div class="p-8 md:p-12 lg:px-12 lg:py-16 flex flex-col justify-center w-full">
         <div class="mx-auto text-center sm:text-left">
             <h2 class="text-2xl font-medium sm:font-bold text-white md:text-3xl">

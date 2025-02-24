@@ -4,10 +4,8 @@ $substackPosts = BSD_API::get_substacks();
 ?>
 
 <section class="my-5 w-full">
-    <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
-       Substack
-    </h2>
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+    <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2">Substack</h2>
+    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <?php foreach ($substackPosts as $index => $post): ?>
             <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border hover:bg-blue-50/40 transition-all" href="<?php echo $post['url'] ?>" target="_blank">
                 <img
