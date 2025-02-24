@@ -7,7 +7,7 @@ $images = range(1, 10);
 shuffle($images);
 ?>
 
-<section class="my-5 w-full">
+<section class="w-full">
     <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
         Must Read Blogs
     </h2>

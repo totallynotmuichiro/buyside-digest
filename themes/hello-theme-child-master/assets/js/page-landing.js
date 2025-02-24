@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             // when window width is >= 1280px
             1280: {
-                slidesPerView: 4,
+                slidesPerView: 4.5,
             }
         }
     });

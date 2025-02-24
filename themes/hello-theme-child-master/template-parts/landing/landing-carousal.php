@@ -6,9 +6,8 @@ $videos = BSD_API::get_yt_videos();
 <h2 class="bg-primary text-white text-lg lg:text-xl font-bold px-10 py-2 w-fit text-center">
     Must watch Videos
 </h2>
-<div class="swiper mySwiper">
-
-    <div class="swiper-wrapper">
+<div class="swiper mySwiper mt-6">
+    <div class="swiper-wrapper cursor-grab">
         <?php foreach ($videos as $video): ?>
             <div class="swiper-slide">
                 <div class="rounded-lg border bg-card text-card-foreground shadow-sm h-full">
