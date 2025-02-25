@@ -110,7 +110,6 @@ class BSD_API {
             return !empty($post['source_name']) &&
                 !empty($post['title']) &&
                 !empty($post['url']) &&
-                !empty($post['published_date']) &&
                 !empty($post['subtitle']) && 
                 !empty($post['cover_image']);
         }
@@ -118,15 +117,20 @@ class BSD_API {
         // Store only the latest article from each source_name
         $filteredPosts = [];
         foreach ($substackPosts as $post) {
-            if (has_all_required_substack_data($post)) {
-                $source = $post['source_name'];
-                if (!isset($filteredPosts[$source]) || strtotime($post['published_date']) > strtotime($filteredPosts[$source]['published_date'])) {
-                    $filteredPosts[$source] = $post;
-                }
+            $source = $post['source_name'];
+            if (!isset($filteredPosts[$source])) {
+                $filteredPosts[$source] = $post;
             }
         }
     
         $finalPosts = array_values($filteredPosts);
+
+        // Use current time as we are getting null in API
+        $finalPosts = array_map(function ($post) {
+            $post['published_date'] = current_time('F j, Y');
+            return $post;
+        }, $finalPosts);
+        
         return array_slice($finalPosts, 0, 12);
     }
 
