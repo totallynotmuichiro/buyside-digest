@@ -22,7 +22,6 @@ $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
                     <tr class="bg-primary text-white">
                         <th class="sticky left-0 bg-primary border-b border-gray-300 px-3 !py-1 z-10 text-left whitespace-nowrap">Fund</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Investor Name</th>
-                        <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">CAGR</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Quarterly</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">YTD</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Website</th>
@@ -40,9 +39,6 @@ $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
                                     <?php echo BSD_Template::get_fund_investor_name($fund['fund_id']) ?>
-                                </td>
-                                <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
-                                    <?php echo BSD_Template::get_fund_CAGR($fund['fund_id']) ?>
                                 </td>
                                 <td class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">
                                     <?php echo BSD_Template::get_fund_quarterly($fund['fund_id']) ?>

@@ -23,8 +23,8 @@ get_header();
         <?php get_template_part('template-parts/landing/landing', 'latest-letter'); ?>
         <?php get_template_part('template-parts/landing/landing', 'recommended-funds'); ?>
         <?php get_template_part('template-parts/landing/landing', 'articles'); ?>
+		<?php get_template_part('template-parts/landing/landing', 'substack'); ?>
         <?php get_template_part('template-parts/landing/landing', 'carousal'); ?>
-        <?php get_template_part('template-parts/landing/landing', 'substack'); ?>
         <?php get_template_part('template-parts/landing/landing', 'cta-2'); ?>
     </div>
 </main>
