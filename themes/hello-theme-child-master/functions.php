@@ -4031,7 +4031,7 @@ function load_landing_page_script() {
 
         // Enqueue Swiper JS
         wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
-        
+
         // Enqueue your custom JS
         wp_enqueue_script('bsd-page-landing', get_stylesheet_directory_uri() . '/assets/js/page-landing.js', array('swiper-js'), '1.0', true);
     }
@@ -4046,6 +4046,19 @@ function load_signup_page_script() {
 }
 
 add_action('wp_enqueue_scripts', 'load_signup_page_script');
+
+// Load Investor page JS
+function load_investor_page_script() {
+    if ( get_query_var('investor_slug') ) {
+        // Enqueue echarts JS
+        wp_enqueue_script('bsd-echarts-js', 'https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js', array(), '5.6.0', true);
+
+        // Enqueue your custom JS
+        wp_enqueue_script('bsd-page-investor', get_stylesheet_directory_uri() . '/assets/js/page-investor.js', array('bsd-echarts-js'), '1.0', true);
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_investor_page_script');
 
 // Helper functions
 require_once get_stylesheet_directory() . '/helper/template.php';
