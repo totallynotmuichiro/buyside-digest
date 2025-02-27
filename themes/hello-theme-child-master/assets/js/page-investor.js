@@ -1,3 +1,4 @@
+// Treemap chart
 document.addEventListener("DOMContentLoaded", async function () {
   try {
     // Get the investor name from the URL
@@ -181,12 +182,134 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     // Get and render the chart
-    const chartContainer = document.getElementById("main");
+    const chartContainer = document.getElementById("investor-treemap");
     const treeMapChart = echarts.init(chartContainer);
     treeMapChart.resize();
     treeMapChart.setOption(chartConfig);
     window.addEventListener("resize", () => treeMapChart.resize());
   } catch (error) {
     console.error("Error in chart initialization:", error);
+  }
+});
+
+// Pie chart
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    const url = window.location.href;
+    const cleanUrl = url.split("?")[0].replace(/\/$/, "");
+    let investorName = cleanUrl.split("/").pop();
+    investorName = investorName.replace(/-/g, " ");
+
+    const response = await fetch("/wp-content/uploads/data.json");
+    const data = await response.json();
+
+    const totalValue = data.reduce((acc, investor) => {
+      if (!investor || !investor.holdings) return acc;
+
+      return (
+        acc +
+        investor.holdings.reduce((sum, holding) => {
+          return sum + (holding?.value ?? 0);
+        }, 0)
+      );
+    }, 0);
+
+    const industries = data
+      ?.map((eachData) =>
+        eachData?.holdings?.map((holding) => holding?.industry)
+      )
+      .flat();
+
+    const allIndustries = new Set(industries);
+    const chartData = [];
+
+    for (const eachIndustries of allIndustries) {
+      const totalValueEachIndustries = data?.reduce((acc, investor) => {
+        return (
+          acc +
+          investor.holdings.reduce((sum, holding) => {
+            if (eachIndustries === holding?.industry) {
+              return sum + (holding?.value ?? 0);
+            } else {
+              return sum + 0;
+            }
+          }, 0)
+        );
+      }, 0);
+
+      chartData.push({
+        value: (totalValueEachIndustries / totalValue) * 100,
+        name: eachIndustries,
+      });
+    }
+
+    var dom = document.getElementById("investor-pie");
+    var myChart = echarts.init(dom);
+
+    const option = {
+      title: {
+        text: "Portfolio Data: 2024-12-01",
+        left: "left",
+        textStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+        },
+      },
+      tooltip: {
+        trigger: "item",
+        formatter: "{b}: {c} ({d}%)",
+      },
+      series: [
+        {
+          name: "Portfolio Allocation",
+          type: "pie",
+          radius: ["40%", "70%"],
+          center: ["50%", "50%"],
+          avoidLabelOverlap: false,
+          label: {
+            show: true,
+            position: "outside",
+            formatter: "{b}\n{d}%",
+          },
+          data: chartData.map((item) => {
+            return {
+              ...item,
+              percent:
+                (item.value / chartData.reduce((sum, i) => sum + i.value, 0)) *
+                100,
+            };
+          }),
+        },
+      ],
+      graphic: [
+        {
+          type: "image",
+          style: {
+            image: "https://ui-avatars.com/api/?name=" + investorName  + "&background=0d3e6f&color=fff",
+            width: 80,
+            height: 80,
+          },
+          clipPath: {
+            type: "circle",
+            shape: {
+              cx: 40,
+              cy: 40,
+              r: 40,
+            },
+          },
+          left: "center",
+          top: "center",
+        },
+      ],
+    };
+
+    if (option && typeof option === "object") {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener("resize", myChart.resize);
+  } catch (error) {
+    console.log("Error in chart initialization:", error);
+    alert("Error While fetching data");
   }
 });

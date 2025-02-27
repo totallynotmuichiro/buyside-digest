@@ -118,7 +118,8 @@ get_header(); ?>
             set_query_var('investor_data', $investor_data);
             if ($current_tab === 'summary') {
                 get_template_part('template-parts/investor/investor-summary');
-                get_template_part('template-parts/investor/investor', 'treemap', $investor_data);
+                get_template_part('template-parts/investor/investor', 'treemap');
+                get_template_part('template-parts/investor/investor', 'pie');
             } else if ($current_tab === 'current-portfolio') {
                 get_template_part('template-parts/investor/investor-current-portfolio');
             }
