@@ -17,6 +17,9 @@ function format_value($value) {
 ?>
 
 <div class="lg:col-span-12 border text-card-foreground w-full mx-auto bg-white shadow-md rounded-xl overflow-hidden p-4">
+    <h2 class="text-lg font-bold mb-4">
+        <?php echo !empty($investor_data['investor_name']) ? esc_html($investor_data['investor_name']) . ' Top Holdings' : 'Top Holdings'; ?>
+    </h2>
     <div class="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
         <table class="w-full border-collapse table-auto text-sm mb-0">
             <thead>

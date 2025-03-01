@@ -115,9 +115,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         left: "left",
         top: "top",
         textStyle: {
-          color: "#000",
           fontSize: 18,
-          fontWeight: 500,
+          fontWeight: "bold",
         },
       },
       tooltip: {
