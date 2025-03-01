@@ -21,8 +21,8 @@ $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
                 <thead>
                     <tr class="bg-primary text-white">
                         <th class="sticky left-0 bg-primary border-b border-gray-300 px-3 !py-1 z-10 text-left whitespace-nowrap">Fund</th>
-                        <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Investor Name</th>
-                        <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Quarterly</th>
+                        <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Key person</th>
+                        <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">QTD</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">YTD</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Website</th>
                         <th class="border-b border-gray-300 px-3 py-1 text-left whitespace-nowrap">Twitter</th>
