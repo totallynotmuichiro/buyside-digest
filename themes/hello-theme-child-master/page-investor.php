@@ -131,11 +131,12 @@ get_header(); ?>
             set_query_var('investor_data', $investor_data);
             if ($current_tab === 'summary') {
                 get_template_part('template-parts/investor/investor', 'top-holdings');
+                get_template_part('template-parts/investor/investor', 'top-hold', $investor_data);
+                get_template_part('template-parts/investor/investor', 'top-buys', $investor_data);
+                get_template_part('template-parts/investor/investor', 'top-sell', $investor_data);
+                get_template_part('template-parts/investor/investor', 'top-sector', $investor_data);
                 get_template_part('template-parts/investor/investor', 'treemap');
                 get_template_part('template-parts/investor/investor', 'pie');
-                get_template_part('template-parts/investor/investor', 'top-buys');
-                get_template_part('template-parts/investor/investor', 'top-buys');
-                get_template_part('template-parts/investor/investor', 'top-buys');
             } else if ($current_tab === 'current-portfolio') {
                 get_template_part('template-parts/investor/investor-current-portfolio');
             }

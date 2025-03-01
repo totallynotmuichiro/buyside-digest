@@ -3,7 +3,7 @@ $investor_holdings = (isset($args) && isset($args['holdings'])) ? $args['holding
 
 // Sort based on shares change percentage
 usort($investor_holdings, function ($a, $b) {
-    return $b['shares_change_pct'] <=> $a['shares_change_pct'];
+    return $b['value'] <=> $a['value'];
 });
 
 // Get top 5 holdings
@@ -14,7 +14,7 @@ $top_holdings = array_slice($investor_holdings, 0, 5);
     <div class="w-full bg-white rounded overflow-hidden">
         <div class="w-full bg-white rounded border-gray-300 overflow-hidden">
             <div class="p-4 pt-0 pl-2 border-b border-gray-200">
-                <h2 class="text-gray-800 text-lg font-bold">Top Buys (13F)</h2>
+                <h2 class="text-gray-800 text-lg font-bold">Holding Summary (13F)</h2>
             </div>
 
             <div class="p-0">
@@ -27,11 +27,13 @@ $top_holdings = array_slice($investor_holdings, 0, 5);
                 <!-- Table Rows - dynamically generated -->
                 <?php foreach ($top_holdings as $index => $holding): ?>
                     <div class="flex border-b border-gray-200 <?php echo BSD_Template::get_alternating_row_class($index); ?> py-3 px-4">
-                        <div class="w-1/2 flex items-center">
+                        <div class="w-3/4 flex items-center">
                             <span class="font-bold text-gray-800 text-sm"><?php echo $holding['ticker']; ?></span>
                             <p class="ml-2 text-primary font-medium text-xs truncate "><?php echo $holding['company_name']; ?></p>
                         </div>
-                        <div class="w-1/2 text-right text-green-600 text-sm"><?php echo number_format($holding['shares_change_pct'], 2); ?>%</div>
+                        <div class="w-1/4 text-right <?php echo BSD_Template::get_color_class($holding['shares_change_pct']); ?> text-sm">
+                            <?php echo ($holding['shares_change_pct'] >= 0 ? '+' : ''); ?><?php echo number_format($holding['shares_change_pct'], 2); ?>%
+                        </div>
                     </div>
                 <?php endforeach; ?>
 

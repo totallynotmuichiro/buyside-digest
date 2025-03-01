@@ -1,5 +1,8 @@
 // Treemap chart
 document.addEventListener("DOMContentLoaded", async function () {
+  if (!document.getElementById("investor-treemap")) {
+    return;
+  }
   try {
     // Get the investor name from the URL
     const url = window.location.href;
@@ -194,12 +197,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     treeMapChart.setOption(chartConfig);
     window.addEventListener("resize", () => treeMapChart.resize());
   } catch (error) {
-    console.error("Error in chart initialization:", error);
+    console.log("Error in chart initialization:", error);
   }
 });
 
 // Pie chart
 document.addEventListener("DOMContentLoaded", async function () {
+  if (!document.getElementById("investor-pie")) {
+    return;
+  }
   try {
     const url = window.location.href;
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
@@ -316,6 +322,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     window.addEventListener("resize", myChart.resize);
   } catch (error) {
     console.log("Error in chart initialization:", error);
-    alert("Error While fetching data");
   }
 });

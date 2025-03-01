@@ -755,6 +755,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .w-full {
   width: 100%;
 }
+.page-template.page-template-page-investor .bsd-container .w-1\/4 {
+  width: 25%;
+}
+.page-template.page-template-page-investor .bsd-container .w-3\/4 {
+  width: 75%;
+}
 .page-template.page-template-page-investor .bsd-container .min-w-0 {
   min-width: 0px;
 }
@@ -766,6 +772,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-investor .bsd-container .max-w-full {
   max-width: 100%;
+}
+.page-template.page-template-page-investor .bsd-container .max-w-\[150px\] {
+  max-width: 150px;
 }
 .page-template.page-template-page-investor .bsd-container .flex-1 {
   flex: 1 1 0%;
@@ -1155,6 +1164,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .pl-2 {
   padding-left: 0.5rem;
 }
+.page-template.page-template-page-investor .bsd-container .pt-1 {
+  padding-top: 0.25rem;
+}
+.page-template.page-template-page-investor .bsd-container .pt-0 {
+  padding-top: 0px;
+}
 .page-template.page-template-page-investor .bsd-container .text-left {
   text-align: left;
 }
@@ -1307,6 +1322,18 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-investor .bsd-container .text-teal-600 {
   --tw-text-opacity: 1;
   color: rgb(13 148 136 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-investor .bsd-container .text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-investor .bsd-container .text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-investor .bsd-container .text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 .page-template.page-template-page-investor .bsd-container .mix-blend-multiply {
   mix-blend-mode: multiply;
@@ -1748,6 +1775,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
   .page-template.page-template-page-investor .bsd-container .lg\:col-span-6 {
     grid-column: span 6 / span 6;
+  }
+
+  .page-template.page-template-page-investor .bsd-container .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
   }
 
   .page-template.page-template-page-investor .bsd-container .lg\:mb-4 {

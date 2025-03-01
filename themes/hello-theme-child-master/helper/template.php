@@ -164,4 +164,38 @@ class BSD_Template {
 
         return ! empty( $letter_link ) ? $letter_link : '-';
     }
+
+    /**
+     * Get alternating row background class
+     * 
+     * @param int $index Current row index
+     * @return string CSS class for row background
+     */
+    public static function get_alternating_row_class($index) {
+        return $index % 2 === 1 ? 'bg-gray-50 hover:bg-gray-100' : 'hover:bg-gray-50';
+    }
+
+    /**
+     * Get color class based on value
+     * 
+     * @param float $value Value to compare
+     * @return string CSS class for text color
+     */
+    public static function get_color_class($value) {
+        return $value >= 0 ? 'text-green-600' : 'text-red-600';
+    }
+
+    /**
+     * Truncate text with ellipsis if too long
+     * 
+     * @param string $text Text to truncate
+     * @param int $max_length Maximum length before truncating
+     * @param string $suffix String to append after truncation
+     * @return string Truncated text
+     */
+    public static function truncate_text($text, $max_length = 20, $suffix = '...') {
+        return strlen($text) > $max_length ? 
+            substr($text, 0, $max_length - strlen($suffix)) . $suffix : 
+            $text;
+    }
 }
