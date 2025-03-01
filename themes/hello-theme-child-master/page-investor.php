@@ -133,6 +133,9 @@ get_header(); ?>
                 get_template_part('template-parts/investor/investor', 'top-holdings');
                 get_template_part('template-parts/investor/investor', 'treemap');
                 get_template_part('template-parts/investor/investor', 'pie');
+                get_template_part('template-parts/investor/investor', 'top-buys');
+                get_template_part('template-parts/investor/investor', 'top-buys');
+                get_template_part('template-parts/investor/investor', 'top-buys');
             } else if ($current_tab === 'current-portfolio') {
                 get_template_part('template-parts/investor/investor-current-portfolio');
             }
