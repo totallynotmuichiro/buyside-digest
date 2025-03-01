@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     investorName = investorName.replace(/-/g, " ");
 
     // Fetch the data
-    const response = await fetch(`/wp-content/uploads/data.json`);
+    const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -48,14 +48,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Function to get color as per share change
     const getColorForChange = (sharesChange) => {
-      const maxChange = 5;
-      const saturation = Math.min(Math.abs(sharesChange) / maxChange, 1);
-      const alpha = 0.3 + saturation * 0.7;
-      return sharesChange > 0
-        ? `rgba(77, 175, 74, ${alpha})`
-        : `rgba(228, 26, 28, ${alpha})`;
+      const maxChange = 20; // Maximum value for scaling
+      const normalizedChange = Math.min(Math.abs(sharesChange) / maxChange, 1);
+      
+      // Exponential scaling for better contrast control
+      const intensity = Math.pow(normalizedChange, 1.2); 
+      
+      // Define the color range using HSL
+      const hue = sharesChange > 0 ? 120 : 0; // Green (120°) or Red (0°)
+      const saturation = 85; // Keep saturation high for vibrant colors
+      const minLightness = 35; // Prevent colors from being too dark
+      const maxLightness = 80; // Prevent colors from being too light
+      const lightness = maxLightness - intensity * (maxLightness - minLightness); 
+    
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     };
-
     // Convert the data to the format required by echarts
     const chartData = {
       name: "Financial Services",
@@ -167,11 +174,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 rich: {
                   a: {
                     color: "#fff",
-                    fontSize: 25,
+                    fontSize: 16,
                     fontWeight: 500,
                     padding: [0, 0, 5, 0],
                   },
-                  b: { color: "#fff", fontSize: 15, fontWeight: 300 },
+                  b: { color: "#fff", fontSize: 14, fontWeight: 300 },
                 },
                 padding: 10,
               },
@@ -200,7 +207,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let investorName = cleanUrl.split("/").pop();
     investorName = investorName.replace(/-/g, " ");
 
-    const response = await fetch("/wp-content/uploads/data.json");
+    const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
     const data = await response.json();
 
     const totalValue = data.reduce((acc, investor) => {
