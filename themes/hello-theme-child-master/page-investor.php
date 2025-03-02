@@ -64,7 +64,23 @@ get_header(); ?>
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
                                     <p class="text-xs font-medium text-gray-500">Value</p>
-                                    <p class="text-sm font-semibold text-gray-900"><?php echo !empty($investor_data['value']) ? $investor_data['value'] : '-'; ?></p>
+                                    <p class="text-sm font-semibold text-gray-900"><?php 
+                                        if (!empty($investor_data['value'])) {
+                                            $value = (float)$investor_data['value'];
+                                            if ($value >= 1000000000) {
+                                                echo number_format($value / 1000000000, 1) . 'B';
+                                            } elseif ($value >= 1000000) {
+                                                echo number_format($value / 1000000, 1) . 'M';
+                                            } elseif ($value >= 1000) {
+                                                echo number_format($value / 1000, 1) . 'K';
+                                            } else {
+                                                echo number_format($value);
+                                            }
+                                        } else {
+                                            echo '-';
+                                        }
+                                    ?></p>
+
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-gray-500">Stocks</p>

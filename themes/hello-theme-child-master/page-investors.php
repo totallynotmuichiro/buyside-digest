@@ -241,26 +241,27 @@ get_header();
                                 <div class="grid grid-cols-2 gap-4 mt-4">
                                     <div>
                                         <p class="text-sm font-medium text-gray-500">Value</p>
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            <?php
-                                            $value = str_replace('Value ', '', $investor['value']);
-                                            echo empty($value) ? '-' : $value;
-                                            ?>
-                                        </p>
+                                        <p class="text-lg font-semibold text-gray-900"><?php 
+                                        if (!empty($investor['value'])) {
+                                            $value = (float)$investor['value'];
+                                            if ($value >= 1000000000) {
+                                                echo number_format($value / 1000000000, 1) . 'B';
+                                            } elseif ($value >= 1000000) {
+                                                echo number_format($value / 1000000, 1) . 'M';
+                                            } elseif ($value >= 1000) {
+                                                echo number_format($value / 1000, 1) . 'K';
+                                            } else {
+                                                echo number_format($value);
+                                            }
+                                        } else {
+                                            echo '-';
+                                        }
+                                    ?></p>
                                     </div>
                                     <div>
                                         <p class="text-sm font-medium text-gray-500">Stocks</p>
                                         <p class="text-lg font-semibold text-gray-900">
                                             <?php echo esc_html($investor['stocks_info']); ?>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-500">Turnover</p>
-                                        <p class="text-lg font-semibold text-gray-900">
-                                            <?php
-                                            $turnover = str_replace('Turnover ', '', $investor['turnover']);
-                                            echo empty($turnover) ? '-' : $turnover;
-                                            ?>
                                         </p>
                                     </div>
                                     <div>
