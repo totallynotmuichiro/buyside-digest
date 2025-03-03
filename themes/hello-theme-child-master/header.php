@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the header
  *
@@ -7,69 +8,103 @@
  * @package HelloElementor
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (! defined('ABSPATH')) {
+  exit; // Exit if accessed directly.
 }
 
-$viewport_content = apply_filters( 'hello_elementor_viewport_content', 'width=device-width, initial-scale=1' );
-$enable_skip_link = apply_filters( 'hello_elementor_enable_skip_link', true );
-$skip_link_url = apply_filters( 'hello_elementor_skip_link_url', '#content' );
+$viewport_content = apply_filters('hello_elementor_viewport_content', 'width=device-width, initial-scale=1');
+$enable_skip_link = apply_filters('hello_elementor_enable_skip_link', true);
+$skip_link_url = apply_filters('hello_elementor_skip_link_url', '#content');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
+
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="<?php echo esc_attr( $viewport_content ); ?>">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<!-- <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/db5fab14888de1bd0ae4cb3c9/96f1769929aefaa14af988672.js");</script> -->
-	<?php wp_head(); ?>
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="<?php echo esc_attr($viewport_content); ?>">
+  <link rel="profile" href="https://gmpg.org/xfn/11">
+  <!-- <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/db5fab14888de1bd0ae4cb3c9/96f1769929aefaa14af988672.js");</script> -->
+  <?php wp_head(); ?>
 </head>
+
 <body <?php body_class(); ?>>
 
-<?php wp_body_open(); ?>
+  <?php wp_body_open(); ?>
 
-<?php if ( is_page('landing') ) : ?>
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
- {
-  "symbols": [
-    {
-      "description": "LIFFF",
-      "proName": "OTC:LIFFF"
-    },
-    {
-      "description": "UROY",
-      "proName": "NASDAQ:UROY"
-    },
-    {
-      "description": "DEVS",
-      "proName": "NASDAQ:DEVS"
-    },
-    {
-      "description": "UX1!",
-      "proName": "COMEX:UX1!"
+  <?php if (is_page('landing')) : ?>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [{
+              "description": "Google",
+              "proName": "NASDAQ:GOOG"
+            },
+            {
+              "description": "Amazon",
+              "proName": "NASDAQ:AMZN"
+            },
+            {
+              "description": "Nvidia",
+              "proName": "NASDAQ:NVDA"
+            },
+            {
+              "description": "",
+              "proName": "NASDAQ:MSFT"
+            },
+            {
+              "description": "",
+              "proName": "NASDAQ:AAPL"
+            },
+            {
+              "description": "",
+              "proName": "NASDAQ:META"
+            },
+            {
+              "description": "",
+              "proName": "NASDAQ:TSLA"
+            },
+            {
+              "description": "",
+              "proName": "NYSE:SCHW"
+            },
+            {
+              "description": "",
+              "proName": "NASDAQ:CSGP"
+            },
+            {
+              "description": "",
+              "proName": "NYSE:TSM"
+            },
+            {
+              "description": "",
+              "proName": "NYSE:GWRE"
+            },
+            {
+              "description": "",
+              "proName": "NYSE:KKR"
+            }
+          ],
+          "isTransparent": false,
+          "displayMode": "regular",
+          "showSymbolLogo": true,
+          "colorTheme": "light",
+          "locale": "en",
+          "percentage": false
+        }
+      </script>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($enable_skip_link) { ?>
+    <a class="skip-link screen-reader-text" href="<?php echo esc_url($skip_link_url); ?>"><?php echo esc_html__('Skip to content', 'hello-elementor'); ?></a>
+  <?php } ?>
+
+  <?php
+  if (! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header')) {
+    if (did_action('elementor/loaded') && hello_header_footer_experiment_active()) {
+      get_template_part('template-parts/dynamic-header');
+    } else {
+      get_template_part('template-parts/header');
     }
-  ],
-  "isTransparent": false,
-  "displayMode": "regular",
-  "showSymbolLogo": true,
-  "colorTheme": "light",
-  "locale": "en"
-}
-  </script>
-</div>
-<?php endif; ?>
-
-<?php if ( $enable_skip_link ) { ?>
-<a class="skip-link screen-reader-text" href="<?php echo esc_url( $skip_link_url ); ?>"><?php echo esc_html__( 'Skip to content', 'hello-elementor' ); ?></a>
-<?php } ?>
-
-<?php
-if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
-	if ( did_action( 'elementor/loaded' ) && hello_header_footer_experiment_active() ) {
-		get_template_part( 'template-parts/dynamic-header' );
-	} else {
-		get_template_part( 'template-parts/header' );
-	}
-}
+  }
