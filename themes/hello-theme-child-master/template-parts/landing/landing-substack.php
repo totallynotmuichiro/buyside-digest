@@ -16,9 +16,6 @@ $substackPosts = BSD_API::get_substacks();
                     <h3 class="leading-tight font-semibold group-hover:underline line-clamp-2">
                         <?php echo $post['title'] ?>
                     </h3>
-                    <p class="text-sm line-clamp-3 mt-2">
-                        <?php echo $post['subtitle'] ?>
-                    </p>
                     <div class="text-sm space-x-2 mt-2">
                         <span>
                             <?php $timestamp = strtotime($post['published_date']);
@@ -29,6 +26,9 @@ $substackPosts = BSD_API::get_substacks();
                         <span>|</span>
                         <span><?php echo $post['source_name']; ?></span>
                     </div>
+                    <p class="text-sm line-clamp-3 mt-2">
+                        <?php echo $post['subtitle'] ?>
+                    </p>
                 </div>
             </a>
         <?php endforeach ?>
