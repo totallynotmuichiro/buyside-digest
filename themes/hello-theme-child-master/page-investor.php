@@ -25,6 +25,8 @@ if (is_array($investors_data)) {
             $investor_data['value'] = $investor['value'];
             $investor_data['turnover'] = $investor['turnover'];
             $investor_data['image_path'] = $investor['image_path'];
+            $investor_data['about_investor'] = $investor['about_investor'];
+            $investor_data['investor_philosophy'] = $investor['investor_philosophy'];
             break;
         }
     }
@@ -111,14 +113,14 @@ get_header(); ?>
             <div class="lg:col-span-4 border text-card-foreground w-full mx-auto bg-white shadow-md rounded-xl overflow-hidden p-5" data-v0-t="card">
                 <h3 class="text-lg font-bold text-gray-800 text-center md:text-left">About Investor</h3>
                 <p class="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus minus error facilis, recusandae magnam hic adipisci nobis aliquam. Voluptatum unde veniam sunt dolorem explicabo, quibusdam vel labore! Laudantium ratione error maxime nostrum dolores explicabo incidunt id architecto mollitia distinctio! Commodi modi accusantium ratione sunt quae eum quasi enim facilis. Facilis? abo incidunt id architecto mollitia distinctio! Commodi modi accusantium ratione sunt quae eum quasi enim facilis. Facilis?
+                    <?php echo $investor_data['about_investor'] ?>
                 </p>
             </div>
             <!-- Philosophy -->
             <div class="lg:col-span-3 border text-card-foreground w-full mx-auto bg-white shadow-md rounded-xl overflow-hidden p-5" data-v0-t="card">
                 <h3 class="text-lg font-bold text-gray-800 text-center md:text-left">Investor Philosophy</h3>
                 <p class="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus minus error facilis, recusandae magnam hic adipisci nobis aliquam. Voluptatum unde veniam sunt dolorem explicabo, quibusdam vel labore! Laudantium ratione error maxime nostrum dolores explicabo incidunt id architecto mollitia distinctio! Commodi modi accusantium ratione sunt quae eum quasi enim facilis. Facilis?
+                    <?php echo $investor_data['investor_philosophy'] ?>
                 </p>
             </div>
             <!-- Tabs -->
