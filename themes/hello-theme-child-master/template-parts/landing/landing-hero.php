@@ -1,6 +1,6 @@
 <section class="text-gray-600 body-font">
     <div class="flex mx-5 md:mx-32 py-12 md:flex-row flex-col items-center">
-        <div class="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:w-[60%] xl:w-[50%]">
+        <div class="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:w-[60%] xl:w-[50%] relative">
             <h1 class="title-font lg:text-4xl xl:text-5xl text-3xl mb-4 font-medium text-gray-900 animate-appear">
                 <span class="text-territory font-bold">Unlock</span>
                 the Wisdom of the Markets <span class="text-territory font-bold"> One Quarterly Investor </span> Letter at a Time.
@@ -26,6 +26,7 @@
                     Learn More
                 </a>
             </div>
+            <img src=http://bsd-test.local/wp-content/uploads/2023/12/banner-arrows-1.png alt="banner arrows" class="hidden xl:block w-[60%] mt-5 absolute -right-28 z-50 -bottom-48">
         </div>
         <div class="w-full md:w-[40%] 2xl:w-[50%]">
             <img class="object-cover object-center rounded animate-appear" alt="hero" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/hero.png">

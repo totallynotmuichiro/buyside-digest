@@ -555,26 +555,53 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .inset-0 {
   inset: 0px;
 }
+.page-template.page-template-page-landing .bsd-container .bottom-0 {
+  bottom: 0px;
+}
 .page-template.page-template-page-landing .bsd-container .left-0 {
   left: 0px;
 }
 .page-template.page-template-page-landing .bsd-container .top-0 {
   top: 0px;
 }
-.page-template.page-template-page-landing .bsd-container .bottom-0 {
-  bottom: 0px;
+.page-template.page-template-page-landing .bsd-container .right-0 {
+  right: 0px;
+}
+.page-template.page-template-page-landing .bsd-container .-right-1\/2 {
+  right: -50%;
+}
+.page-template.page-template-page-landing .bsd-container .-right-20 {
+  right: -5rem;
+}
+.page-template.page-template-page-landing .bsd-container .-right-32 {
+  right: -8rem;
+}
+.page-template.page-template-page-landing .bsd-container .-bottom-24 {
+  bottom: -6rem;
+}
+.page-template.page-template-page-landing .bsd-container .-bottom-36 {
+  bottom: -9rem;
+}
+.page-template.page-template-page-landing .bsd-container .-bottom-48 {
+  bottom: -12rem;
+}
+.page-template.page-template-page-landing .bsd-container .-right-28 {
+  right: -7rem;
+}
+.page-template.page-template-page-landing .bsd-container .z-0 {
+  z-index: 0;
 }
 .page-template.page-template-page-landing .bsd-container .z-10 {
   z-index: 10;
+}
+.page-template.page-template-page-landing .bsd-container .z-50 {
+  z-index: 50;
 }
 .page-template.page-template-page-landing .bsd-container .col-span-2 {
   grid-column: span 2 / span 2;
 }
 .page-template.page-template-page-landing .bsd-container .col-span-8 {
   grid-column: span 8 / span 8;
-}
-.page-template.page-template-page-landing .bsd-container .row-span-3 {
-  grid-row: span 3 / span 3;
 }
 .page-template.page-template-page-landing .bsd-container .mx-5 {
   margin-left: 1.25rem;
@@ -583,10 +610,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-.page-template.page-template-page-landing .bsd-container .my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
 }
 .page-template.page-template-page-landing .bsd-container .my-2 {
   margin-top: 0.5rem;
@@ -599,10 +622,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-.page-template.page-template-page-landing .bsd-container .mx-12 {
-  margin-left: 3rem;
-  margin-right: 3rem;
 }
 .page-template.page-template-page-landing .bsd-container .mb-0 {
   margin-bottom: 0px;
@@ -625,8 +644,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .mb-6 {
   margin-bottom: 1.5rem;
 }
+.page-template.page-template-page-landing .bsd-container .mb-8 {
+  margin-bottom: 2rem;
+}
 .page-template.page-template-page-landing .bsd-container .ml-1 {
   margin-left: 0.25rem;
+}
+.page-template.page-template-page-landing .bsd-container .ml-2 {
+  margin-left: 0.5rem;
 }
 .page-template.page-template-page-landing .bsd-container .ml-4 {
   margin-left: 1rem;
@@ -634,14 +659,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .mr-2 {
   margin-right: 0.5rem;
 }
+.page-template.page-template-page-landing .bsd-container .mr-3 {
+  margin-right: 0.75rem;
+}
 .page-template.page-template-page-landing .bsd-container .mr-4 {
   margin-right: 1rem;
 }
 .page-template.page-template-page-landing .bsd-container .mt-1 {
   margin-top: 0.25rem;
-}
-.page-template.page-template-page-landing .bsd-container .mt-10 {
-  margin-top: 2.5rem;
 }
 .page-template.page-template-page-landing .bsd-container .mt-2 {
   margin-top: 0.5rem;
@@ -661,11 +686,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .mt-8 {
   margin-top: 2rem;
 }
-.page-template.page-template-page-landing .bsd-container .line-clamp-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+.page-template.page-template-page-landing .bsd-container .mb-20 {
+  margin-bottom: 5rem;
+}
+.page-template.page-template-page-landing .bsd-container .mb-36 {
+  margin-bottom: 9rem;
 }
 .page-template.page-template-page-landing .bsd-container .line-clamp-2 {
   overflow: hidden;
@@ -706,17 +731,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .aspect-square {
   aspect-ratio: 1 / 1;
 }
-.page-template.page-template-page-landing .bsd-container .aspect-video {
-  aspect-ratio: 16 / 9;
-}
 .page-template.page-template-page-landing .bsd-container .h-10 {
   height: 2.5rem;
 }
-.page-template.page-template-page-landing .bsd-container .h-16 {
-  height: 4rem;
-}
 .page-template.page-template-page-landing .bsd-container .h-20 {
   height: 5rem;
+}
+.page-template.page-template-page-landing .bsd-container .h-3 {
+  height: 0.75rem;
 }
 .page-template.page-template-page-landing .bsd-container .h-32 {
   height: 8rem;
@@ -724,23 +746,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .h-4 {
   height: 1rem;
 }
+.page-template.page-template-page-landing .bsd-container .h-5 {
+  height: 1.25rem;
+}
 .page-template.page-template-page-landing .bsd-container .h-8 {
   height: 2rem;
 }
-.page-template.page-template-page-landing .bsd-container .h-\[350px\] {
-  height: 350px;
+.page-template.page-template-page-landing .bsd-container .h-\[400px\] {
+  height: 400px;
 }
 .page-template.page-template-page-landing .bsd-container .h-auto {
   height: auto;
 }
 .page-template.page-template-page-landing .bsd-container .h-full {
   height: 100%;
-}
-.page-template.page-template-page-landing .bsd-container .h-\[4px\] {
-  height: 4px;
-}
-.page-template.page-template-page-landing .bsd-container .h-\[400px\] {
-  height: 400px;
 }
 .page-template.page-template-page-landing .bsd-container .max-h-full {
   max-height: 100%;
@@ -754,11 +773,23 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .w-1\/2 {
   width: 50%;
 }
+.page-template.page-template-page-landing .bsd-container .w-1\/4 {
+  width: 25%;
+}
+.page-template.page-template-page-landing .bsd-container .w-10 {
+  width: 2.5rem;
+}
 .page-template.page-template-page-landing .bsd-container .w-20 {
   width: 5rem;
 }
-.page-template.page-template-page-landing .bsd-container .w-28 {
-  width: 7rem;
+.page-template.page-template-page-landing .bsd-container .w-3 {
+  width: 0.75rem;
+}
+.page-template.page-template-page-landing .bsd-container .w-3\/4 {
+  width: 75%;
+}
+.page-template.page-template-page-landing .bsd-container .w-3\/5 {
+  width: 60%;
 }
 .page-template.page-template-page-landing .bsd-container .w-32 {
   width: 8rem;
@@ -769,6 +800,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .w-4\/5 {
   width: 80%;
 }
+.page-template.page-template-page-landing .bsd-container .w-5 {
+  width: 1.25rem;
+}
 .page-template.page-template-page-landing .bsd-container .w-5\/6 {
   width: 83.333333%;
 }
@@ -778,21 +812,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .w-auto {
   width: auto;
 }
-.page-template.page-template-page-landing .bsd-container .w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
-}
 .page-template.page-template-page-landing .bsd-container .w-full {
   width: 100%;
 }
-.page-template.page-template-page-landing .bsd-container .w-\[340px\] {
-  width: 340px;
+.page-template.page-template-page-landing .bsd-container .w-3\/6 {
+  width: 50%;
 }
-.page-template.page-template-page-landing .bsd-container .w-10 {
-  width: 2.5rem;
+.page-template.page-template-page-landing .bsd-container .w-\[60\%\] {
+  width: 60%;
 }
-.page-template.page-template-page-landing .bsd-container .w-24 {
-  width: 6rem;
+.page-template.page-template-page-landing .bsd-container .w-\[50\%\] {
+  width: 50%;
+}
+.page-template.page-template-page-landing .bsd-container .w-\[55\%\] {
+  width: 55%;
 }
 .page-template.page-template-page-landing .bsd-container .min-w-0 {
   min-width: 0px;
@@ -805,9 +838,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .max-w-full {
   max-width: 100%;
-}
-.page-template.page-template-page-landing .bsd-container .max-w-xl {
-  max-width: 36rem;
 }
 .page-template.page-template-page-landing .bsd-container .flex-1 {
   flex: 1 1 0%;
@@ -823,6 +853,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .border-collapse {
   border-collapse: collapse;
+}
+.page-template.page-template-page-landing .bsd-container .translate-x-1\/2 {
+  --tw-translate-x: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.page-template.page-template-page-landing .bsd-container .translate-x-\[60\%\] {
+  --tw-translate-x: 60%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .page-template.page-template-page-landing .bsd-container .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -851,8 +889,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .cursor-grab {
   cursor: grab;
 }
+.page-template.page-template-page-landing .bsd-container .cursor-not-allowed {
+  cursor: not-allowed;
+}
 .page-template.page-template-page-landing .bsd-container .cursor-pointer {
   cursor: pointer;
+}
+.page-template.page-template-page-landing .bsd-container .resize {
+  resize: both;
 }
 .page-template.page-template-page-landing .bsd-container .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -902,15 +946,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .gap-6 {
   gap: 1.5rem;
 }
-.page-template.page-template-page-landing .bsd-container .gap-8 {
-  gap: 2rem;
-}
 .page-template.page-template-page-landing .bsd-container .gap-x-4 {
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
 .page-template.page-template-page-landing .bsd-container .gap-y-1 {
   row-gap: 0.25rem;
+}
+.page-template.page-template-page-landing .bsd-container .-space-x-px > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(-1px * var(--tw-space-x-reverse));
+  margin-left: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
 }
 .page-template.page-template-page-landing .bsd-container .space-x-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -952,6 +998,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
+.page-template.page-template-page-landing .bsd-container .divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+.page-template.page-template-page-landing .bsd-container .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-divide-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .overflow-hidden {
   overflow: hidden;
 }
@@ -990,9 +1045,17 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .rounded-xl {
   border-radius: 0.75rem;
 }
+.page-template.page-template-page-landing .bsd-container .rounded-l-md {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
 .page-template.page-template-page-landing .bsd-container .rounded-r-lg {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+.page-template.page-template-page-landing .bsd-container .rounded-r-md {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
 }
 .page-template.page-template-page-landing .bsd-container .border {
   border-width: 1px;
@@ -1009,6 +1072,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .border-b-2 {
   border-bottom-width: 2px;
 }
+.page-template.page-template-page-landing .bsd-container .border-t {
+  border-top-width: 1px;
+}
+.page-template.page-template-page-landing .bsd-container .border-\[var\(--primary-color\)\] {
+  border-color: var(--primary-color);
+}
+.page-template.page-template-page-landing .bsd-container .border-black\/20 {
+  border-color: rgb(0 0 0 / 0.2);
+}
 .page-template.page-template-page-landing .bsd-container .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
@@ -1021,13 +1093,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-border-opacity: 1;
   border-color: rgb(13 62 111 / var(--tw-border-opacity, 1));
 }
-.page-template.page-template-page-landing .bsd-container .border-blue-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(59 130 246 / var(--tw-border-opacity, 1));
-}
-.page-template.page-template-page-landing .bsd-container .border-black\/20 {
-  border-color: rgb(0 0 0 / 0.2);
-}
 .page-template.page-template-page-landing .bsd-container .\!bg-inherit {
   background-color: inherit !important;
 }
@@ -1039,9 +1104,16 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-bg-opacity: 1;
   background-color: rgb(27 54 93 / var(--tw-bg-opacity, 1));
 }
+.page-template.page-template-page-landing .bsd-container .bg-\[var\(--primary-color\)\] {
+  background-color: var(--primary-color);
+}
 .page-template.page-template-page-landing .bsd-container .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+.page-template.page-template-page-landing .bsd-container .bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 .page-template.page-template-page-landing .bsd-container .bg-primary {
   --tw-bg-opacity: 1;
@@ -1056,9 +1128,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 }
 .page-template.page-template-page-landing .bsd-container .bg-white\/20 {
   background-color: rgb(255 255 255 / 0.2);
-}
-.page-template.page-template-page-landing .bsd-container .bg-primary\/70 {
-  background-color: rgb(13 62 111 / 0.7);
 }
 .page-template.page-template-page-landing .bsd-container .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1089,6 +1158,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .\!p-0 {
   padding: 0px !important;
 }
+.page-template.page-template-page-landing .bsd-container .p-0 {
+  padding: 0px;
+}
 .page-template.page-template-page-landing .bsd-container .p-1 {
   padding: 0.25rem;
 }
@@ -1111,10 +1183,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-top: 0.25rem !important;
   padding-bottom: 0.25rem !important;
 }
-.page-template.page-template-page-landing .bsd-container .px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
 .page-template.page-template-page-landing .bsd-container .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1122,10 +1190,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-}
-.page-template.page-template-page-landing .bsd-container .px-32 {
-  padding-left: 8rem;
-  padding-right: 8rem;
 }
 .page-template.page-template-page-landing .bsd-container .px-4 {
   padding-left: 1rem;
@@ -1171,6 +1235,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.page-template.page-template-page-landing .bsd-container .py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.page-template.page-template-page-landing .bsd-container .py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
 .page-template.page-template-page-landing .bsd-container .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1180,14 +1252,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .pb-\[56\.25\%\] {
   padding-bottom: 56.25%;
 }
-.page-template.page-template-page-landing .bsd-container .pl-5 {
-  padding-left: 1.25rem;
+.page-template.page-template-page-landing .bsd-container .pl-2 {
+  padding-left: 0.5rem;
 }
-.page-template.page-template-page-landing .bsd-container .pt-4 {
-  padding-top: 1rem;
-}
-.page-template.page-template-page-landing .bsd-container .pb-3 {
-  padding-bottom: 0.75rem;
+.page-template.page-template-page-landing .bsd-container .pt-0 {
+  padding-top: 0px;
 }
 .page-template.page-template-page-landing .bsd-container .text-left {
   text-align: left;
@@ -1234,9 +1303,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.page-template.page-template-page-landing .bsd-container .text-\[1rem\] {
-  font-size: 1rem;
-}
 .page-template.page-template-page-landing .bsd-container .font-bold {
   font-weight: 700;
 }
@@ -1270,12 +1336,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .tracking-tight {
   letter-spacing: -0.025em;
 }
-.page-template.page-template-page-landing .bsd-container .tracking-wide {
-  letter-spacing: 0.025em;
+.page-template.page-template-page-landing .bsd-container .tracking-wider {
+  letter-spacing: 0.05em;
 }
 .page-template.page-template-page-landing .bsd-container .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-landing .bsd-container .text-black\/80 {
+  color: rgb(0 0 0 / 0.8);
+}
+.page-template.page-template-page-landing .bsd-container .text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity, 1));
 }
 .page-template.page-template-page-landing .bsd-container .text-blue-600 {
   --tw-text-opacity: 1;
@@ -1288,6 +1361,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-landing .bsd-container .text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
+}
+.page-template.page-template-page-landing .bsd-container .text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 .page-template.page-template-page-landing .bsd-container .text-gray-500 {
   --tw-text-opacity: 1;
@@ -1313,6 +1394,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity, 1));
 }
+.page-template.page-template-page-landing .bsd-container .text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .text-primary {
   --tw-text-opacity: 1;
   color: rgb(13 62 111 / var(--tw-text-opacity, 1));
@@ -1321,6 +1406,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
+.page-template.page-template-page-landing .bsd-container .text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .text-territory {
   --tw-text-opacity: 1;
   color: rgb(255 174 0 / var(--tw-text-opacity, 1));
@@ -1328,16 +1417,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 .page-template.page-template-page-landing .bsd-container .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-.page-template.page-template-page-landing .bsd-container .text-black\/80 {
-  color: rgb(0 0 0 / 0.8);
-}
-.page-template.page-template-page-landing .bsd-container .text-black\/90 {
-  color: rgb(0 0 0 / 0.9);
-}
-.page-template.page-template-page-landing .bsd-container .text-gray-300 {
-  --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
 }
 .page-template.page-template-page-landing .bsd-container .mix-blend-multiply {
   mix-blend-mode: multiply;
@@ -1378,6 +1457,11 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.page-template.page-template-page-landing .bsd-container .transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .page-template.page-template-page-landing .bsd-container .transition-transform {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1395,236 +1479,268 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 /* Make scrollbar thinner and more consistent across browsers */
 .page-template.page-template-page-landing .bsd-container ::-webkit-scrollbar {
-    width: 8px;
-    height: 6px;
-    border-radius: 10px;
+  width: 8px;
+  height: 6px;
+  border-radius: 10px;
 }
 
 .page-template.page-template-page-landing .bsd-container ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 .page-template.page-template-page-landing .bsd-container ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 .page-template.page-template-page-landing .bsd-container ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 /* End of scrollbar styles */
 
+
+/* Single Largest buy */
+
+:root {
+  --primary-color: #0d3e6f; /* Your primary color */
+  --primary-faint: rgba(13, 62, 111, 0.1); /* Faint primary color */
+  --secondary-color: #9a5500;
+}
+
+body {
+  background-color: white; /* White background for body */
+  color: #333;
+}
+html,
+body {
+  overflow: hidden; /* Completely disables scrolling */
+}
+
+/* OR if you just want to hide the scrollbar but keep scrolling */
+html,
+body {
+  overflow: auto; /* Allows scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.page-template.page-template-page-landing .bsd-container html::-webkit-scrollbar,
+.page-template.page-template-page-landing .bsd-container body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.page-template.page-template-page-landing .bsd-container .container {
+  max-width: 90% !important; /* Adjusted for better fit */
+  margin: 0 auto;
+}
+
+.page-template.page-template-page-landing .bsd-container .primary-bg {
+  background-color: var(--primary-color);
+}
+
+.page-template.page-template-page-landing .bsd-container .secondary-bg {
+  background-color: var(--secondary-color);
+}
+
+.page-template.page-template-page-landing .bsd-container .primary-text {
+  color: var(--primary-color);
+}
+
+.page-template.page-template-page-landing .bsd-container .secondary-text {
+  color: var(--secondary-color);
+}
+
+/* Hide scrollbar but keep functionality */
+.page-template.page-template-page-landing .bsd-container .no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.page-template.page-template-page-landing .bsd-container .no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Faint primary color background */
+.page-template.page-template-page-landing .bsd-container .bg-primary-faint {
+  background-color: var(--primary-faint);
+}
+
+/* Ensure the table container scrolls horizontally */
+.page-template.page-template-page-landing .bsd-container .table-container {
+  overflow-x: auto;
+}
+
+/* Ensure the pagination stays fixed and does not scroll */
+.page-template.page-template-page-landing .bsd-container .pagination-container {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+}
 .page-template.page-template-page-landing .bsd-container .file\:border-0::file-selector-button {
   border-width: 0px;
 }
-
 .page-template.page-template-page-landing .bsd-container .file\:bg-transparent::file-selector-button {
   background-color: transparent;
 }
-
 .page-template.page-template-page-landing .bsd-container .file\:text-sm::file-selector-button {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-
 .page-template.page-template-page-landing .bsd-container .file\:font-medium::file-selector-button {
   font-weight: 500;
 }
-
 .page-template.page-template-page-landing .bsd-container .placeholder\:text-gray-500::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .placeholder\:text-gray-500::placeholder {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .after\:content-\[\'\2c \'\]::after {
   --tw-content: ',';
   content: var(--tw-content);
 }
-
 .page-template.page-template-page-landing .bsd-container .last\:after\:content-none:last-child::after {
   --tw-content: none;
   content: var(--tw-content);
 }
-
 .page-template.page-template-page-landing .bsd-container .even\:bg-gray-100:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:scale-105:hover {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
+.page-template.page-template-page-landing .bsd-container .hover\:border-\[var\(--primary-color\)\]:hover {
+  border-color: var(--primary-color);
+}
 .page-template.page-template-page-landing .bsd-container .hover\:bg-\[\#152a4a\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(21 42 74 / var(--tw-bg-opacity, 1));
 }
-
+.page-template.page-template-page-landing .bsd-container .hover\:bg-\[var\(--secondary-color\)\]:hover {
+  background-color: var(--secondary-color);
+}
 .page-template.page-template-page-landing .bsd-container .hover\:bg-blue-50\/40:hover {
   background-color: rgb(239 246 255 / 0.4);
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-primary\/5:hover {
   background-color: rgb(13 62 111 / 0.05);
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-primary\/80:hover {
   background-color: rgb(13 62 111 / 0.8);
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-primary\/90:hover {
   background-color: rgb(13 62 111 / 0.9);
 }
-
 .page-template.page-template-page-landing .bsd-container .hover\:bg-primary\/95:hover {
   background-color: rgb(13 62 111 / 0.95);
 }
-
-.page-template.page-template-page-landing .bsd-container .hover\:bg-gray-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
-}
-
 .page-template.page-template-page-landing .bsd-container .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
-
-.page-template.page-template-page-landing .bsd-container .hover\:text-primary:hover {
-  --tw-text-opacity: 1;
-  color: rgb(13 62 111 / var(--tw-text-opacity, 1));
-}
-
-.page-template.page-template-page-landing .bsd-container .hover\:text-primary\/80:hover {
-  color: rgb(13 62 111 / 0.8);
-}
-
 .page-template.page-template-page-landing .bsd-container .hover\:underline:hover {
   text-decoration-line: underline;
 }
-
-.page-template.page-template-page-landing .bsd-container .hover\:shadow-sm:hover {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .page-template.page-template-page-landing .bsd-container .focus\:border-secondary:focus {
   --tw-border-opacity: 1;
   border-color: rgb(131 73 2 / var(--tw-border-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .focus\:bg-transparent:focus {
   background-color: transparent;
 }
-
 .page-template.page-template-page-landing .bsd-container .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 .page-template.page-template-page-landing .bsd-container .focus\:ring-1:focus {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-
 .page-template.page-template-page-landing .bsd-container .focus\:ring-secondary:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(131 73 2 / var(--tw-ring-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .focus\:ring-yellow-400:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(250 204 21 / var(--tw-ring-opacity, 1));
 }
-
 .page-template.page-template-page-landing .bsd-container .focus-visible\:outline-none:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 .page-template.page-template-page-landing .bsd-container .focus-visible\:ring-0:focus-visible {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-
 .page-template.page-template-page-landing .bsd-container .focus-visible\:ring-2:focus-visible {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-
 .page-template.page-template-page-landing .bsd-container .focus-visible\:ring-offset-0:focus-visible {
   --tw-ring-offset-width: 0px;
 }
-
 .page-template.page-template-page-landing .bsd-container .focus-visible\:ring-offset-2:focus-visible {
   --tw-ring-offset-width: 2px;
 }
-
 .page-template.page-template-page-landing .bsd-container .disabled\:pointer-events-none:disabled {
   pointer-events: none;
 }
-
 .page-template.page-template-page-landing .bsd-container .disabled\:cursor-not-allowed:disabled {
   cursor: not-allowed;
 }
-
 .page-template.page-template-page-landing .bsd-container .disabled\:opacity-50:disabled {
   opacity: 0.5;
 }
-
 .page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:scale-105 {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
 .page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:fill-primary {
   fill: #0d3e6f;
 }
-
 .page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
-
-.page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(13 62 111 / var(--tw-text-opacity, 1));
-}
-
 .page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity, 1));
 }
-
+.page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(13 62 111 / var(--tw-text-opacity, 1));
+}
 .page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:underline {
   text-decoration-line: underline;
 }
-
+.page-template.page-template-page-landing .bsd-container .group:hover .group-hover\:opacity-80 {
+  opacity: 0.8;
+}
 @media (min-width: 640px) {
+
+  .page-template.page-template-page-landing .bsd-container .sm\:mt-0 {
+    margin-top: 0px;
+  }
 
   .page-template.page-template-page-landing .bsd-container .sm\:grid {
     display: grid;
@@ -1632,6 +1748,10 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
   .page-template.page-template-page-landing .bsd-container .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-template.page-template-page-landing .bsd-container .sm\:flex-row {
+    flex-direction: row;
   }
 
   .page-template.page-template-page-landing .bsd-container .sm\:text-left {
@@ -1647,12 +1767,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     font-weight: 700;
   }
 }
-
 @media (min-width: 768px) {
-
-  .page-template.page-template-page-landing .bsd-container .md\:col-span-3 {
-    grid-column: span 3 / span 3;
-  }
 
   .page-template.page-template-page-landing .bsd-container .md\:col-span-4 {
     grid-column: span 4 / span 4;
@@ -1746,11 +1861,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     padding-bottom: 0.75rem;
   }
 
-  .page-template.page-template-page-landing .bsd-container .md\:px-32 {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-
   .page-template.page-template-page-landing .bsd-container .md\:pl-16 {
     padding-left: 4rem;
   }
@@ -1772,17 +1882,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
-
-  .page-template.page-template-page-landing .bsd-container .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .page-template.page-template-page-landing .bsd-container .md\:text-\[1\.1rem\] {
-    font-size: 1.1rem;
-  }
 }
-
 @media (min-width: 1024px) {
 
   .page-template.page-template-page-landing .bsd-container .lg\:col-span-12 {
@@ -1801,6 +1901,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     grid-column: span 5 / span 5;
   }
 
+  .page-template.page-template-page-landing .bsd-container .lg\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .page-template.page-template-page-landing .bsd-container .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
   .page-template.page-template-page-landing .bsd-container .lg\:mb-4 {
     margin-bottom: 1rem;
   }
@@ -1811,10 +1919,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
   .page-template.page-template-page-landing .bsd-container .lg\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .page-template.page-template-page-landing .bsd-container .lg\:mb-6 {
-    margin-bottom: 1.5rem;
   }
 
   .page-template.page-template-page-landing .bsd-container .lg\:block {
@@ -1900,19 +2004,12 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
-
-  .page-template.page-template-page-landing .bsd-container .lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .page-template.page-template-page-landing .bsd-container .lg\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
 }
-
 @media (min-width: 1280px) {
+
+  .page-template.page-template-page-landing .bsd-container .xl\:block {
+    display: block;
+  }
 
   .page-template.page-template-page-landing .bsd-container .xl\:flex {
     display: flex;
@@ -1935,7 +2032,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     line-height: 1;
   }
 }
-
 @media (min-width: 1536px) {
 
   .page-template.page-template-page-landing .bsd-container .\32xl\:block {
