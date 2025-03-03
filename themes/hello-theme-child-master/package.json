@@ -7,8 +7,8 @@
       "tailwindcss": "^3.4.17"
     },
     "scripts": {
-      "build": "postcss ./input.css -o ./assets/css/page-largest-fund-buy.css",
-      "dev": "postcss ./input.css -o ./assets/css/page-largest-fund-buy.css --watch"
+      "build": "postcss ./input.css -o ./assets/css/page-landing.css",
+      "dev": "postcss ./input.css -o ./assets/css/page-landing.css --watch"
     }
   }
   
