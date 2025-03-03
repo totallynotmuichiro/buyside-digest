@@ -4060,6 +4060,68 @@ function load_investor_page_script() {
 
 add_action('wp_enqueue_scripts', 'load_investor_page_script');
 
+// Load Large Fund buy page CSS
+function load_large_fund_buy_page_css() {
+    if (is_page_template('page-largest-fund-buy.php')) {
+        // Enqueue the CSS file
+        wp_enqueue_style(
+            'large-fund-buy-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-largest-fund-buy.css',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_large_fund_buy_page_css'); 
+
+// Load Large Fund buy page JS
+function load_large_fund_buy_page_js() {
+    if (is_page_template('page-largest-fund-buy.php')) {
+        // Enqueue the JS file
+        wp_enqueue_script(
+            'large-fund-buy-page-script',
+            get_stylesheet_directory_uri() . '/assets/js/page-largest-fund-buy.js',
+            array(),
+            '1.0',
+            true
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_large_fund_buy_page_js');
+
+// Load Large Fund Buy Detail page CSS
+function load_large_fund_buy_detail_page_css() {
+    if (is_page_template('page-largest-fund-buy-detail.php')) {
+        // Enqueue the CSS file
+        wp_enqueue_style(
+            'large-fund-buy-detail-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-largest-fund-buy-detail.css',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_large_fund_buy_detail_page_css');
+
+// Load Large Fund Buy Detail page JS
+function load_large_fund_buy_detail_page_js() {
+    if (is_page_template('page-largest-fund-buy-detail.php')) {
+        // Enqueue the JS file
+        wp_enqueue_script(
+            'large-fund-buy-detail-page-script', 
+            get_stylesheet_directory_uri() . '/assets/js/page-largest-fund-buy-detail.js',
+            array(),
+            '1.0',
+            true
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_large_fund_buy_detail_page_js');
+
 // Helper functions
 require_once get_stylesheet_directory() . '/helper/template.php';
 require_once get_stylesheet_directory() . '/helper/api.php';

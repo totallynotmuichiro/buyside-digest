@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./page-investor.php", "./template-parts/investor/*.php", "./page-landing.php", "./template-parts/landing/*.php"],
+  content: ["./page-investor.php", "./template-parts/investor/*.php", "./page-landing.php", "./template-parts/landing/*.php", "./page-largest-fund-buy.php", "./template-parts/largest-fund-buy/*.php", "./page-portfolio.php", "./page-largest-fund-buy-detail.php", "./assets/js/*.js" ],
   theme: {
     extend: {
       colors : {
