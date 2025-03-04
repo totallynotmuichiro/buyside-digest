@@ -3,7 +3,7 @@
 require_once('utils.php');
 
 $investor_slug  = get_query_var('investor_slug');
-$investor_data  = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=' . str_replace('-', ' ', $investor_slug));
+$investor_data  = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=' . rawurldecode($investor_slug) );
 $investors_data = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
 
 if (is_array($investor_data) && !empty($investor_data['body'])) {

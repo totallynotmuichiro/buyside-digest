@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
     let investorName = cleanUrl.split("/").pop();
 
-    // Convert dashes to spaces
-    investorName = investorName.replace(/-/g, " ");
+    investorName = decodeURIComponent(investorName);
 
     // Fetch the data
     const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
@@ -210,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const url = window.location.href;
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
     let investorName = cleanUrl.split("/").pop();
-    investorName = investorName.replace(/-/g, " ");
+    investorName = decodeURIComponent(investorName);
 
     const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
     const data = await response.json();

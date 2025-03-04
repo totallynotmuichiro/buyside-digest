@@ -159,7 +159,13 @@ get_header();
                     <?php foreach ($paginated_investors as $investor): ?>
                         <!-- Investor Card -->
                         <?php
-                        $investor_slug = str_replace(' ', '-', strtolower($investor['name']));
+                        $investor_slug = strtolower($investor['name']);
+    
+                        // Replace multiple spaces with a single dash
+                        $investor_slug = preg_replace('/\s+/', '-', $investor_slug);
+                        
+                        // Remove any non-alphanumeric characters except hyphens
+                        $investor_slug = preg_replace('/[^a-z0-9-]/', '', $investor_slug);
                         ?>
                         <!-- Add href only if cik is not empty -->
                         <a
