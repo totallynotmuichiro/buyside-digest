@@ -11,6 +11,19 @@ function formatCurrency(value) {
   const billions = value / 1000000000;
   return `$ ${billions.toFixed(2)}B`;
 }
+function formatMarketCap(value) {
+  if (value >= 1e12) {
+    return `$${(value / 1e12).toFixed(2)}T`; // Trillions
+  } else if (value >= 1e9) {
+    return `$${(value / 1e9).toFixed(2)}B`; // Billions
+  } else if (value >= 1e6) {
+    return `$${(value / 1e6).toFixed(2)}M`; // Millions
+  } else if (value >= 1e3) {
+    return `$${(value / 1e3).toFixed(2)}K`; // Thousands
+  } else {
+    return `$${value.toFixed(2)}`; // Less than 1,000
+  }
+}
 
 // Fetch data from API
 async function fetchData() {
@@ -67,6 +80,13 @@ function sortCompanies() {
         valueB = b.company_name || "";
         break;
       case "investment":
+        valueA = a.total_investment_value || 0;
+        valueB = b.total_investment_value || 0;
+        break;
+      case "market_cap":
+        valueA = a.market_cap || 0;
+        valueB = b.market_cap || 0;
+        break;
       default:
         valueA = a.total_investment_value || 0;
         valueB = b.total_investment_value || 0;
@@ -83,7 +103,6 @@ function sortCompanies() {
     return currentSort.direction === "asc" ? valueA - valueB : valueB - valueA;
   });
 }
-
 // Create sort arrow SVGs with appropriate highlighting based on current sort
 function createSortArrows(column) {
   return `
@@ -112,6 +131,7 @@ function setupSortHeaders() {
     { id: "ticker", text: "Stock", column: "ticker" },
     { id: "company", text: "Company Name", column: "company" },
     { id: "investment", text: "Total Value Bought", column: "investment" },
+    { id: "market_cap", text: "Market Cap", column: "market_cap" },
     { id: "funds", text: "Top 3 Funds Buying", column: null }, // Not sortable
   ];
 
@@ -200,8 +220,7 @@ function updateTable() {
     row.innerHTML = `
       <td class="px-3 py-1 whitespace-nowrap">
         <a href="/largest-fund-buy-detail/?ticker=${company.tickers}" 
-           class="primary-text hover:underline font-medium text-sm"
-           target="_blank">
+           class="primary-text hover:underline font-medium text-sm">
           ${company.tickers}
         </a>
       </td>
@@ -210,6 +229,9 @@ function updateTable() {
       </td>
       <td class="px-3 py-1 whitespace-nowrap font-medium text-sm">
         ${formatCurrency(company.total_investment_value)}
+      </td>
+      <td class="px-3 py-1 whitespace-nowrap font-medium text-sm">
+        ${formatMarketCap(company.market_cap)}
       </td>
       <td class="px-3 py-1 whitespace-nowrap text-sm">
         ${topInvestorsHtml}
