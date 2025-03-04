@@ -26,13 +26,6 @@ $options = array(
         '51-100' => '51-to-100',
         '>100' => 'greater-than-100',
     ),
-    'turnover-ratio' => array(
-        'All' => 'all',
-        '<10%' => 'less-than-10',
-        '10%-20%' => '10-to-20',
-        '20%-50%' => '20-to-50',
-        '>50%' => 'greater-than-50',
-    ),
 );
 
 // Pagination settings
@@ -42,11 +35,10 @@ $current_page = isset($_GET['page-number']) ? max(1, intval($_GET['page-number']
 // Get the query parameters
 $value = isset($_GET['value']) ? $_GET['value'] : 'all';
 $numStocks = isset($_GET['num-stocks']) ? $_GET['num-stocks'] : 'all';
-$turnoverRatio = isset($_GET['turnover-ratio']) ? $_GET['turnover-ratio'] : 'all';
 $investorName = isset($_GET['investor-name']) ? $_GET['investor-name'] : '';
 
 // Filter the investors based on the query parameters
-$investors = array_filter($investors, function ($investor) use ($value, $numStocks, $turnoverRatio, $investorName) {
+$investors = array_filter($investors, function ($investor) use ($value, $numStocks, $investorName) {
     // Extract numeric value from "Value $X.XX Mil/Bil" format
     if ($value !== 'all') {
         preg_match('/\$([0-9.]+)\s*(Mil|Bil)/', $investor['value'], $matches);
@@ -91,27 +83,6 @@ $investors = array_filter($investors, function ($investor) use ($value, $numStoc
                 break;
             case 'greater-than-100':
                 if ($stockCount <= 100) return false;
-                break;
-        }
-    }
-
-    // Extract turnover percentage from "36%" format
-    if ($turnoverRatio !== 'all') {
-        preg_match('/(\d+)%/', $investor['turnover'], $matches);
-        $turnoverPercentage = isset($matches[1]) ? intval($matches[1]) : 0;
-
-        switch ($turnoverRatio) {
-            case 'less-than-10':
-                if ($turnoverPercentage >= 10) return false;
-                break;
-            case '10-to-20':
-                if ($turnoverPercentage < 10 || $turnoverPercentage > 20) return false;
-                break;
-            case '20-to-50':
-                if ($turnoverPercentage < 20 || $turnoverPercentage > 50) return false;
-                break;
-            case 'greater-than-50':
-                if ($turnoverPercentage <= 50) return false;
                 break;
         }
     }
