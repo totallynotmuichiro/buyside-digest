@@ -150,6 +150,10 @@ const updateTable = () => {
   for (let i = startIndex; i < endIndex; i++) {
     const investor = investors[i];
     const details = investor.investment_details;
+    const formattedName = investor.investor_name
+      .toLowerCase()
+      .replace(/-/g, '--')
+      .replace(/\s+/g, '-');
 
     const row = document.createElement("tr");
     row.className = `hover:bg-gray-50 ${
@@ -164,9 +168,13 @@ const updateTable = () => {
               ${getInitials(investor.investor_name)}
             </div>
           </div>
-          <div class="font-medium text-sm primary-text">${
+          <div class="font-medium text-sm primary-text">
+          <a href="/investor/${formattedName}" 
+           class="primary-text hover:underline font-medium text-sm">
+          ${
             investor.investor_name
-          }</div>
+          }
+        </a></div>
         </div>
       </td>
       <td class="px-4 py-3 whitespace-nowrap text-sm">

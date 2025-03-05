@@ -2,7 +2,17 @@
 
 require_once('utils.php');
 
-$investor_slug  = get_query_var('investor_slug');
+$investor_slug = get_query_var('investor_slug');
+
+// First replace double hyphens with forward slash
+$investor_slug = str_replace('--', '/', $investor_slug);
+
+// Then replace remaining single hyphens with spaces
+$investor_slug = str_replace('-', ' ', $investor_slug);
+
+// Finally, sanitize the slug back to a proper format for API request
+$investor_slug = str_replace('/', '-', $investor_slug);
+
 $investor_data  = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=' . rawurldecode($investor_slug) );
 $investors_data = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
 
