@@ -9,10 +9,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
     let investorName = cleanUrl.split("/").pop();
 
-    investorName = decodeURIComponent(investorName);
+    investorName = investorName
+      .toLowerCase()
+      .replace(/--/g, "/")
+      .replace(/-/g, " ")
+      .replace(/\//g, "-");
 
     // Fetch the data
-    const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
+    const response = await fetch(
+      `https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -52,17 +58,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     const getColorForChange = (sharesChange) => {
       const maxChange = 20; // Maximum value for scaling
       const normalizedChange = Math.min(Math.abs(sharesChange) / maxChange, 1);
-      
+
       // Exponential scaling for better contrast control
-      const intensity = Math.pow(normalizedChange, 1.2); 
-      
+      const intensity = Math.pow(normalizedChange, 1.2);
+
       // Define the color range using HSL
       const hue = sharesChange > 0 ? 120 : 0; // Green (120°) or Red (0°)
       const saturation = 85; // Keep saturation high for vibrant colors
       const minLightness = 35; // Prevent colors from being too dark
       const maxLightness = 80; // Prevent colors from being too light
-      const lightness = maxLightness - intensity * (maxLightness - minLightness); 
-    
+      const lightness =
+        maxLightness - intensity * (maxLightness - minLightness);
+
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     };
     // Convert the data to the format required by echarts
@@ -209,7 +216,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     const url = window.location.href;
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
     let investorName = cleanUrl.split("/").pop();
-    investorName = decodeURIComponent(investorName);
+    investorName = investorName
+      .toLowerCase()
+      .replace(/--/g, "/")
+      .replace(/-/g, " ")
+      .replace(/\//g, "-");
 
     const response = await fetch(`https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`);
     const data = await response.json();
@@ -296,7 +307,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         {
           type: "image",
           style: {
-            image: "https://ui-avatars.com/api/?name=" + investorName  + "&background=0d3e6f&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=" +
+              investorName +
+              "&background=0d3e6f&color=fff",
             width: 80,
             height: 80,
           },
