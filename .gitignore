@@ -1,0 +1,11 @@
+*
+
+!plugins
+!plugins/**
+
+!themes
+!themes/**
+
+!.gitignore
+!.vscode
+!.vscode/**
