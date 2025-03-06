@@ -1,35 +1,26 @@
-<section class="w-full bg-primary text-white rounded-lg my-5">
-  <div class="mx-auto grid 2xl:grid-cols-2 gap-12">
-    <div class="hidden 2xl:block relative">
-      <div class="absolute inset-0 flex items-center justify-center">
-        <img alt="Buyside Digest Illustration" decoding="async" data-nimg="1" class="object-cover w-full h-full" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/cta-2.jpg" style="color: transparent;">
+<section class="bsd-container">
+  <div class="w-full bg-gradient-to-b from-[#0D3E6F] to-[#080909] text-white py-12 md:py-16">
+    <div class="max-w-[1410px] mx-auto flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 px-6 lg:px-12">
+      <!-- Left Side - Text Content -->
+      <div class="lg:w-1/2 text-left space-y-4 md:space-y-6">
+        <h1 class="text-3xl md:text-4xl font-medium leading-tight text-white">Unlock the Wisdom of the Markets One Quarterly Letter at a Time</h1>
+        <p class="text-base">Sign up for the free BuySide Digest newsletter to receive a weekly email featuring letter summaries, stock elevator pitches, and media appearances from top hedge fund managers. By creating an account, you'll be able to track your favorite managers and tickers, and be notified with any updates. It's completely free. Just enter your email below</p>
+
+        <!-- Email Subscription Form -->
+        <div class="mt-6 md:mt-8">
+          <form class="flex flex-col sm:flex-row items-center bg-white rounded-full p-1 free_sign_up">
+            <input type="email" placeholder="e-mail address" required class="w-full sm:w-auto flex-grow px-4 py-3 text-black bg-white rounded-full sm:rounded-l-full focus:outline-none border-0" />
+            <button type="submit" class="w-full sm:w-auto mt-2 sm:mt-0 bg-[#1B365D] hover:bg-[#152a4a] text-white px-6 py-3 rounded-full font-medium">Sign Up Free</button>
+          </form>
+        </div>
+
+        <p class="text-xs text-gray-400 mt-4">By entering your email, you will begin receiving the BuySide Digest as well as occasional marketing messages. You can unsubscribe from each at anytime. <a href="http/privacy-policy-2/" class="text-[#2e769d] hover:text-gray-300">Our Privacy Policy</a></p>
       </div>
-    </div>
-    <div class="space-y-6 px-8 2xl:pl-0 py-10">
-      <h1 class="text-4xl font-bold text-white">Buyside Digest</h1>
-      <p class="text-lg text-gray-200">Dive deep into the minds of leading hedge fund managers through their exclusive quarterly letters and stock pitches.</p>
-      <div class="space-y-4">
-        <div class="flex items-center gap-3">
-          <div class="bg-white/20 rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4">
-              <path d="m9 18 6-6-6-6"></path>
-            </svg></div><span>Explore a vast repository of hedge fund letters.</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="bg-white/20 rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4">
-              <path d="m9 18 6-6-6-6"></path>
-            </svg></div><span>Receive tailored alerts tracking your top managers and tickers.</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="bg-white/20 rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4">
-              <path d="m9 18 6-6-6-6"></path>
-            </svg></div><span>Receive our insightful weekly roundup.</span>
-        </div>
+
+      <!-- Right Side - Image -->
+      <div class="lg:w-1/2 flex justify-center">
+        <img src="/wp-content/uploads/2024/05/Untitled-design-12.png" alt="BuySide Digest Devices" class="w-full max-w-lg">
       </div>
-      <form class="mt-8 max-w-4xl free_sign_up !bg-inherit !rounded-none !block !p-0 ">
-        <div class="flex gap-2 p-1 bg-white rounded-full">
-          <input class="flex h-10 w-full rounded-md border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 border-0 bg-transparent text-black placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0" placeholder="E-mail address" required="" type="email" value=""><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 py-2 bg-[#1B365D] hover:bg-[#152a4a] text-white rounded-full px-8" type="submit">Sign Up Free</button>
-        </div>
-      </form>
     </div>
   </div>
 </section>

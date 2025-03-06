@@ -8,7 +8,7 @@ $videos = BSD_API::get_yt_videos();
         <div class="swiper-wrapper cursor-grab">
             <?php foreach ($videos as $video): ?>
                 <div class="swiper-slide">
-                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm h-full">
+                    <div class="rounded-lg border bg-blue-50/50 shadow-sm h-full">
                         <div class="flex flex-col space-y-1.5 p-4">
                             <div class="relative pb-[56.25%] overflow-hidden rounded-lg">
                                 <div class="youtube-thumbnail absolute top-0 left-0 w-full h-full cursor-pointer group" data-video-id="<?php echo esc_attr($video['video_id']); ?>">
