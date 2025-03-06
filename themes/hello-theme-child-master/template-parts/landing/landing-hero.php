@@ -26,7 +26,7 @@
                     Learn More
                 </a>
             </div>
-            <img src=http://bsd-test.local/wp-content/uploads/2023/12/banner-arrows-1.png alt="banner arrows" class="hidden xl:block w-[60%] mt-5 absolute -right-28 z-50 -bottom-48">
+            <img src="/wp-content/uploads/2023/12/banner-arrows-1.png" alt="banner arrows" class="hidden xl:block w-[60%] mt-5 absolute -right-28 z-50 -bottom-48">
         </div>
         <div class="w-full md:w-[40%] 2xl:w-[50%]">
             <img class="object-cover object-center rounded animate-appear" alt="hero" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/hero.png">
