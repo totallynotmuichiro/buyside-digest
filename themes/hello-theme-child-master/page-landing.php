@@ -27,6 +27,6 @@ get_header();
         <?php get_template_part('template-parts/landing/landing', 'carousal'); ?>
     </div>
 </main>
-<?php get_template_part('template-parts/landing/landing', 'weekly-articles'); ?>
 <?php get_template_part('template-parts/landing/landing', 'cta-2'); ?>
+<?php get_template_part('template-parts/landing/landing', 'weekly-articles'); ?>
 <?php get_footer(); ?>

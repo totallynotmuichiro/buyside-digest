@@ -40,7 +40,7 @@ $total_blogs = count($blogs);
 
         <!-- Secondary Blogs (2-4) -->
         <?php if ($total_blogs > 1): ?>
-            <div class="col-span-8 lg:col-span-4 space-y-6">
+            <div class="col-span-8 md:col-span-4 space-y-6">
                 <?php for ($i = 1; $i < min(5, $total_blogs); $i++): ?>
                     <a class="flex flex-row items-center gap-5 group rounded-lg transition-all" href="<?php echo $blogs[$i]['link'] ?>" target="_blank">
                         <img
