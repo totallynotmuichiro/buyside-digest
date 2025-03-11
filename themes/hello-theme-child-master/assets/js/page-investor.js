@@ -142,7 +142,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         {
           type: "treemap",
           data: [chartData],
-          roam: true,
+          roam: false,
+          nodeClick: false, 
           breadcrumb: { show: true },
           label: { show: true, formatter: "{b}", overflow: "truncate" },
           upperLabel: { show: true, height: 30 },
