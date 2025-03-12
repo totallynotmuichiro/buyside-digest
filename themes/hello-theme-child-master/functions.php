@@ -3541,8 +3541,9 @@ function handle_webhook_request( $request ) {
  function send_to_elastic_email($entry, $form) {
   
   // Replace with your Elastic Email API key 
-  $api_key = '5C10F3B44C104981F9C1E2B5468A1AEE7CEFEED89431AD3F44540902F85F437B4E0D8F84ADBEBA7B237F25557092D09D';
-    $url = 'https://api.elasticemail.com/v4/contacts';
+  $ee_options = get_option( 'ee_options' );
+  $api_key = isset($ee_options['ee_apikey']) ? $ee_options['ee_apikey'] : '';
+  $url = 'https://api.elasticemail.com/v4/contacts';
   // Check if it's the specific form (replace FORM_ID with your actual form ID)
   if ($form['id'] != 7) {
     return;
@@ -3631,6 +3632,10 @@ function handle_webhook_request( $request ) {
         }
     } catch (Exception $e) {
         // Catch any errors and return them
+        echo '<pre>';
+        print_r($e->getMessage());
+        echo '</pre>';
+        wp_die();
         return 'Error: ' . $e->getMessage();
     }
 }
