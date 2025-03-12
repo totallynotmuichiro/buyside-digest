@@ -3558,6 +3558,10 @@ function handle_webhook_request( $request ) {
   $firstName = !empty($parts[0]) ? $parts[0] : '';
   $lastName = !empty($parts[1]) ? implode(' ', array_slice($parts, 1)) : '';
 
+  if (!$user_email || !$fullName || !$industry_primary_role || !$accredited) {
+    return;
+  }
+
   // Option 2: Using substr with strpos (handles names without spaces)
   if (empty($parts)) {
     $lastName = $fullName;
