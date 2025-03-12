@@ -17,7 +17,10 @@ $options = array(
         '<$1M' => 'less-than-1m',
         '$1M-$10M' => '1m-to-10m',
         '$10M-$50M' => '10m-to-50m',
-        '>$50M' => 'greater-than-50m',
+        '>$50M-$100M' => '50m-to-100m',
+        '>$100M-$500M' => '100m-to-500m',
+        '>$500M-$1B' => '500m-to-1b',
+        '>$1B' => 'greater-than-1b',
     ),
     'num-stocks' => array(
         'All' => 'all',
@@ -41,27 +44,29 @@ $investorName = isset($_GET['investor-name']) ? $_GET['investor-name'] : '';
 $investors = array_filter($investors, function ($investor) use ($value, $numStocks, $investorName) {
     // Extract numeric value from "Value $X.XX Mil/Bil" format
     if ($value !== 'all') {
-        preg_match('/\$([0-9.]+)\s*(Mil|Bil)/', $investor['value'], $matches);
-        $investorValue = isset($matches[1]) ? floatval($matches[1]) : 0;
-        $unit = isset($matches[2]) ? $matches[2] : 'Mil';
-
-        // Convert Billion to Million for consistent comparison
-        if ($unit === 'Bil') {
-            $investorValue *= 1000;
-        }
+        $investorValue = isset($investor['value']) ? floatval($investor['value']) : 0;
 
         switch ($value) {
             case 'less-than-1m':
-                if ($investorValue >= 1) return false;
+                if ($investorValue >= 1000000) return false;
                 break;
             case '1m-to-10m':
-                if ($investorValue < 1 || $investorValue > 10) return false;
+                if ($investorValue < 1000000 || $investorValue > 10000000) return false;
                 break;
             case '10m-to-50m':
-                if ($investorValue < 10 || $investorValue > 50) return false;
+                if ($investorValue < 10000000 || $investorValue > 50000000) return false;
                 break;
-            case 'greater-than-50m':
-                if ($investorValue <= 50) return false;
+            case '50m-to-100m':
+                if ($investorValue < 50000000 || $investorValue > 100000000) return false;
+                break;
+            case '100m-to-500m':
+                if ($investorValue < 100000000 || $investorValue > 500000000) return false;
+                break;
+            case '500m-to-1b':
+                if ($investorValue < 500000000 || $investorValue > 1000000000) return false;
+                break;
+            case 'greater-than-1b':
+                if ($investorValue <= 1000000000) return false;
                 break;
         }
     }
