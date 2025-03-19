@@ -1,5 +1,4 @@
 <?php
-
 require_once('utils.php');
 
 $investor_slug = get_query_var('investor_slug');
@@ -14,7 +13,6 @@ $investor_slug = str_replace('-', ' ', $investor_slug);
 $investor_slug = str_replace('/', '-', $investor_slug);
 
 $investor_data  = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=' . rawurldecode($investor_slug) );
-$investors_data = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
 
 if (is_array($investor_data) && !empty($investor_data['body'])) {
     $decoded_data = json_decode($investor_data['body'], true);
@@ -25,21 +23,6 @@ if (is_array($investor_data) && !empty($investor_data['body'])) {
     }
 } else {
     get_template_part('template-parts/investor/investor-no-data-found');
-}
-
-if (is_array($investors_data)) {
-    $investors_data = json_decode($investors_data['body'], true);
-    foreach ($investors_data as $investor) {
-        if ($investor['name'] === $investor_data['investor_name']) {
-            $investor_data['stocks_info'] = $investor['stocks_info'];
-            $investor_data['value'] = $investor['value'];
-            $investor_data['turnover'] = $investor['turnover'];
-            $investor_data['image_path'] = $investor['image_path'];
-            $investor_data['about_investor'] = $investor['about_investor'];
-            $investor_data['investor_philosophy'] = $investor['investor_philosophy'];
-            break;
-        }
-    }
 }
 
 $top_holdings = get_top_holdings($investor_data['holdings'], 5);
