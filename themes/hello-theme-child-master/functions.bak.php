@@ -3540,8 +3540,7 @@ function handle_webhook_request( $request ) {
  function send_to_elastic_email($entry, $form) {
   
   // Replace with your Elastic Email API key 
-    $ee_options = get_option( 'ee_options' );
-    $api_key = isset($ee_options['ee_apikey']) ? $ee_options['ee_apikey'] : '';
+  $api_key = '5C10F3B44C104981F9C1E2B5468A1AEE7CEFEED89431AD3F44540902F85F437B4E0D8F84ADBEBA7B237F25557092D09D';
     $url = 'https://api.elasticemail.com/v4/contacts';
   // Check if it's the specific form (replace FORM_ID with your actual form ID)
   if ($form['id'] != 7) {
@@ -3556,10 +3555,6 @@ function handle_webhook_request( $request ) {
   $parts = explode(' ', $fullName);
   $firstName = !empty($parts[0]) ? $parts[0] : '';
   $lastName = !empty($parts[1]) ? implode(' ', array_slice($parts, 1)) : '';
-	 
-  if (!$user_email || !$fullName || !$industry_primary_role || !$accredited) {
-    return;
-  }
 
   // Option 2: Using substr with strpos (handles names without spaces)
   if (empty($parts)) {
@@ -3594,9 +3589,8 @@ function handle_webhook_request( $request ) {
                 'Consent' => array(
                     'ConsentIP' => '192.168.0.1',
                     'ConsentDate' => date('n/j/Y g:i:s A'),
-                    'ConsentTracking' => 'Allow'
-                ),
-                 "ListNames" => array("All Contacts")
+                    'ConsentTracking' => 'Unknown'
+                )
             )
         )),
         'method' => 'POST',
@@ -3997,7 +3991,7 @@ function load_single_investor_page_css() {
             'investor-page-style',
             get_stylesheet_directory_uri() . '/assets/css/page-investor.css',
             array(),
-            '1.1'
+            '1.0'
         );
     }
 }
@@ -4020,7 +4014,7 @@ function load_landing_page_css() {
             'landing-page-style',
             get_stylesheet_directory_uri() . '/assets/css/page-landing.css',
             array(),
-            '1.7'
+            '1.3'
         );
     }
 }
@@ -4030,112 +4024,34 @@ add_action('wp_enqueue_scripts', 'load_landing_page_css');
 // Load Landing page JS
 function load_landing_page_script() {
     if (is_page_template('page-landing.php')) {
-        // Enqueue Swiper CSS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0');
-
-        // Enqueue Swiper JS
-        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true);
-        
-        // Enqueue your custom JS
-        wp_enqueue_script('bsd-page-landing', get_stylesheet_directory_uri() . '/assets/js/page-landing.js', array('swiper-js'), '1.2', true);
+        wp_enqueue_script( 'bsd-page-landing', get_stylesheet_directory_uri() . '/assets/js/page-landing.js', array(), '1.0', true );
     }
 }
 
 add_action('wp_enqueue_scripts', 'load_landing_page_script');
 
-function load_signup_page_script() {
+function load_register_page_script() {
     if (is_page('register')) {
-        wp_enqueue_script( 'bsd-page-register', get_stylesheet_directory_uri() . '/assets/js/page-register.js', array(), '1.0', true );
+        wp_enqueue_script( 'bsd-page-register', get_stylesheet_directory_uri() . '/assets/js/page-register.js', array(), '1.1', true );
     }
 }
 
-add_action('wp_enqueue_scripts', 'load_signup_page_script');
+add_action('wp_enqueue_scripts', 'load_register_page_script');
 
-// Load Investor page JS
-function load_investor_page_script() {
-    if ( get_query_var('investor_slug') ) {
-        // Enqueue echarts JS
-        wp_enqueue_script('bsd-echarts-js', 'https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js', array(), '5.6.1', true);
-
-        // Enqueue your custom JS
-        wp_enqueue_script('bsd-page-investor', get_stylesheet_directory_uri() . '/assets/js/page-investor.js', array('bsd-echarts-js'), '1.3.7', true);
-    }
-}
-
-add_action('wp_enqueue_scripts', 'load_investor_page_script');
-
-// Load Large Fund buy page CSS
-function load_large_fund_buy_page_css() {
-    if (is_page_template('page-largest-fund-buy.php')) {
+// Load News page CSS
+function load_news_page_css() {
+    if (is_page_template('page-news.php')) {
         // Enqueue the CSS file
         wp_enqueue_style(
-            'large-fund-buy-page-style',
-            get_stylesheet_directory_uri() . '/assets/css/page-largest-fund-buy.css',
+            'news-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-news.css',
             array(),
             '1.0'
         );
     }
 }
 
-add_action('wp_enqueue_scripts', 'load_large_fund_buy_page_css'); 
-
-// Load Large Fund buy page JS
-function load_large_fund_buy_page_js() {
-    if (is_page_template('page-largest-fund-buy.php')) {
-        // Enqueue the JS file
-        wp_enqueue_script(
-            'large-fund-buy-page-script',
-            get_stylesheet_directory_uri() . '/assets/js/page-largest-fund-buy.js',
-            array(),
-            '1.2',
-            true
-        );
-    }
-}
-
-add_action('wp_enqueue_scripts', 'load_large_fund_buy_page_js');
-
-// Load Large Fund Buy Detail page CSS
-function load_large_fund_buy_detail_page_css() {
-    if (is_page_template('page-largest-fund-buy-detail.php')) {
-        // Enqueue the CSS file
-        wp_enqueue_style(
-            'large-fund-buy-detail-page-style',
-            get_stylesheet_directory_uri() . '/assets/css/page-largest-fund-buy-detail.css',
-            array(),
-            '1.0'
-        );
-    }
-}
-
-add_action('wp_enqueue_scripts', 'load_large_fund_buy_detail_page_css');
-
-// Load Large Fund Buy Detail page JS
-function load_large_fund_buy_detail_page_js() {
-    if (is_page_template('page-largest-fund-buy-detail.php')) {
-        // Enqueue the JS file
-        wp_enqueue_script(
-            'large-fund-buy-detail-page-script', 
-            get_stylesheet_directory_uri() . '/assets/js/page-largest-fund-buy-details.js',
-            array(),
-            '1.1'
-        );
-    }
-}
-
-add_action('wp_enqueue_scripts', 'load_large_fund_buy_detail_page_js');
-
+add_action('wp_enqueue_scripts', 'load_news_page_css');
 
 // Helper functions
-require_once get_stylesheet_directory() . '/helper/template.php';
-require_once get_stylesheet_directory() . '/helper/api.php';
-
-function dequeue_css_in_pitches() {
-    if (is_page(27533)) {
-        wp_dequeue_style('hello-elementor');
-        wp_dequeue_style('elementor-post-7');
-        wp_deregister_style('hello-elementor');
-        wp_deregister_style('elementor-post-7');
-    }
-}
-add_action('wp_enqueue_scripts', 'dequeue_css_in_pitches', 100); 
+require_once get_stylesheet_directory() . '/helper/helper.php';

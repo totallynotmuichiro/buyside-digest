@@ -3,7 +3,191 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!document.getElementById("investor-treemap")) {
     return;
   }
-  try {
+try{
+  // Utility functions for color interpolation.
+    function hexToRgb(hex) {
+      hex = hex.replace(/^#/, '');
+      if (hex.length === 3) {
+        hex = hex.split('').map(h => h + h).join('');
+      }
+      const intVal = parseInt(hex, 16);
+      return { r: (intVal >> 16) & 255, g: (intVal >> 8) & 255, b: intVal & 255 };
+    }
+    function rgbToHex(r, g, b) {
+      return "#" + [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+      }).join('');
+    }
+    function interpolateColor(color1, color2, factor) {
+      const c1 = hexToRgb(color1);
+      const c2 = hexToRgb(color2);
+      const r = Math.round(c1.r + factor * (c2.r - c1.r));
+      const g = Math.round(c1.g + factor * (c2.g - c1.g));
+      const b = Math.round(c1.b + factor * (c2.b - c1.b));
+      return rgbToHex(r, g, b);
+    }
+    
+    const url = window.location.href;
+    const cleanUrl = url.split("?")[0].replace(/\/$/, "");
+    let investorName = cleanUrl.split("/").pop();
+
+    investorName = investorName
+      .toLowerCase()
+      .replace(/--/g, "/")
+      .replace(/-/g, " ")
+      .replace(/\//g, "-");
+
+    // Fetch the data
+    const response = await fetch(
+  `https://sectobsddjango-production.up.railway.app/api/holdings/?investor_name=${investorName}`
+);
+const apiData = await response.json(); // Get API data directly
+
+const holdings = apiData[0].holdings;
+
+// Get decreased investment tickers
+const decreasedInvestmentTickers = apiData[0].stock_movement_data.decreased_investment.map(item => item.ticker);
+
+// Group holdings by industry.
+const industriesMap = {};
+holdings.forEach(h => {
+  if (!industriesMap[h.industry]) {
+    industriesMap[h.industry] = [];
+  }
+  industriesMap[h.industry].push(h);
+});
+
+        
+        // Function to calculate leaf node color based on if it's in decreased investments
+        function getLeafColor(ticker, wPct) {
+          if (decreasedInvestmentTickers.includes(ticker)) {
+            // If in decreased_investment, use red scale
+            let ratio = Math.min(Math.abs(wPct), 5) / 5;
+            ratio = Math.max(0, Math.min(1, ratio));
+            return interpolateColor("#d7191c", "#d4696b", ratio);
+          } else {
+            // Otherwise use green scale
+            let ratio = Math.min(wPct, 5) / 5;
+            ratio = Math.max(0, Math.min(1, ratio));
+            return interpolateColor("#3dcd6b", "#1a9641", ratio);
+          }
+        }
+        
+        // Build hierarchical data for ECharts.
+        const chartData = Object.keys(industriesMap).map(industryName => {
+          // Check if this industry has any decreased investment tickers
+          const industryTickers = industriesMap[industryName].map(h => h.ticker);
+          const hasDecreasedInvestment = industryTickers.some(ticker => decreasedInvestmentTickers.includes(ticker));
+          
+          return {
+            name: industryName,
+            children: industriesMap[industryName].map(h => ({
+              name: h.ticker,
+              value: h.weighting_pct,  // Use weighting_pct (or h.value) for area.
+              wPct: h.weighting_pct,
+              companyName: h.company_name,
+              industry: h.industry,
+              isDecreased: decreasedInvestmentTickers.includes(h.ticker),
+              itemStyle: { color: getLeafColor(h.ticker, h.weighting_pct) }
+            })),
+            // Add a custom property to track if this industry has decreased investments
+            hasDecreasedInvestment: hasDecreasedInvestment
+          };
+        });
+
+        // Initialize ECharts instance.
+        var chart = echarts.init(document.getElementById('investor-treemap'));
+        var option = {
+          tooltip: {
+            trigger: 'item',
+            formatter: function (info) {
+              const treePath = info.treePathInfo;
+              if (treePath.length === 1) {
+                return "<strong>Industry: " + info.name + "</strong>";
+              } else {
+                const decreasedLabel = info.data.isDecreased ? 
+                  "<span style='color:#d7191c'>⬇ DECREASED INVESTMENT</span><br/>" : "";
+                return "<strong>" + info.data.companyName + "</strong><br/>" +
+                       decreasedLabel +
+                       "Ticker: " + info.data.name + "<br/>" +
+                       "Industry: " + info.data.industry + "<br/>" +
+                       "Weighting %: " + Number(info.data.wPct).toFixed(1) + "%";
+              }
+            }
+          },
+          series: [{
+            name: 'Portfolio',
+            type: 'treemap',
+            // Allow both zooming and panning (dragging)
+            roam: true,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            data: chartData,
+            // upperLabel shows the industry header at the top of each industry block.
+            upperLabel: {
+              show: true,
+              height: 20,
+              color: '#ffffff',
+              backgroundColor: '#0E3F70',  // Keep this fixed as it was originally
+              formatter: '{b}'
+            },
+            label: {
+              show: true,
+              formatter: function (params) {
+                // For ticker nodes: display ticker name and wPct with one decimal.
+                if (params.treePathInfo.length > 1) {
+                  return params.name + "\n" + Number(params.data.wPct).toFixed(1) + "%";
+                }
+                return '';
+              },
+              position: 'inside',
+              textStyle: {
+                fontSize: 16,
+                fontWeight: 'bold',
+                color: '#fff'
+              }
+            },
+            itemStyle: {
+              borderColor: '#fff',
+              borderWidth: 1,
+              gapWidth: 0  // No gap between cells.
+            },
+            levels: [
+              {
+                // Level 1: Industry nodes.
+                itemStyle: {
+                  borderColor: '#ccc',
+                  borderWidth: 2,
+                  gapWidth: 0,
+                  color: function(params) {
+                    // Change industry background color based on if it has decreased investments
+                    return params.data.hasDecreasedInvestment ? '#ffe0e0' : '#eeeeee';
+                  }
+                },
+                label: {
+                  show: false  // Industry header is shown via upperLabel.
+                }
+              },
+              {
+                // Level 2: Ticker nodes.
+                itemStyle: {
+                  borderColor: '#fff',
+                  borderWidth: 1,
+                  gapWidth: 0
+                }
+              }
+            ]
+          }]
+        };
+        chart.setOption(option);
+      }catch (error) {
+    console.log("Error fetching data:", error);
+  }
+});
+/*  try {
     // Get the investor name from the URL
     const url = window.location.href;
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
@@ -143,7 +327,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           type: "treemap",
           data: [chartData],
           roam: false,
-          nodeClick: false, 
+          nodeClick: false,
           breadcrumb: { show: true },
           label: { show: true, formatter: "{b}", overflow: "truncate" },
           upperLabel: { show: true, height: 30 },
@@ -206,7 +390,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   } catch (error) {
     console.log("Error in chart initialization:", error);
   }
-});
+});*/
 
 // Pie chart
 document.addEventListener("DOMContentLoaded", async function () {

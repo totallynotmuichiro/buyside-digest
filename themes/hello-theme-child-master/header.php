@@ -45,7 +45,7 @@ $skip_link_url = apply_filters('hello_elementor_skip_link_url', '#content');
       }
     </style>
     <div id="marquee-container" style="overflow: hidden; white-space: nowrap; background-color: #0D3E6F; color: #ffffff; padding: 11px 0; position: relative;">
-      <div id="marquee" style="display: flex; animation: marquee 12s linear infinite;">
+      <div id="marquee" style="display: flex; animation: marquee 20s linear infinite;">
         <!-- First copy of dynamic content -->
         <div class="marquee-group" id="group1" style="display: flex;"></div>
         <!-- Duplicate content for a continuous effect -->
@@ -56,6 +56,18 @@ $skip_link_url = apply_filters('hello_elementor_skip_link_url', '#content');
     <script>
       // Replace with your actual API endpoint
       const apiUrl = 'https://sectobsddjango-production.up.railway.app/api/investors-crousal/';
+		
+	  const marquee = document.getElementById('marquee-container');
+      const marqueeInner = document.getElementById('marquee');
+	  
+	  marquee.addEventListener('mouseenter', () => {
+			marqueeInner.style.animationPlayState = 'paused';
+		});
+
+		marquee.addEventListener('mouseleave', () => {
+			marqueeInner.style.animationPlayState = 'running';
+		});
+
 
       // Function to create an anchor element for a given investor object.
       function createLinkElement(investor) {

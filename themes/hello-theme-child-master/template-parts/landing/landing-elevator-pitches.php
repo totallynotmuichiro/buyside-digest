@@ -4,7 +4,7 @@ $last_week = date('Y-m-d H:i:s', strtotime('-2 month'));
 
 $args = array(
     'post_type'      => 'elevator_pitch',
-    'posts_per_page' => 5,
+    'posts_per_page' => 3,
     'date_query'     => array(
         'relation' => 'OR',
         array(
@@ -23,9 +23,9 @@ $args = array(
 );
 $weekly_pitches = new WP_Query($args);
 if ($weekly_pitches->have_posts()) : ?>
-    <section class="mt-8 w-full">
+    <section style="margin-top: 50px" class="w-full">
         <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">Elevator Pitches of the Week</h2>
-        <div class="space-y-5 mt-6">
+        <div class="space-y-3 mt-3">
             <?php while ($weekly_pitches->have_posts()) : $weekly_pitches->the_post(); ?>
                 <?php
                 // Get Fund Name & Link
@@ -40,7 +40,7 @@ if ($weekly_pitches->have_posts()) : ?>
                 $elevator_pitches_letters = get_field('elevator_pitches_letters');
                 $letters_pdf = get_post_meta($elevator_pitches_letters, 'letter-link', true);
                 ?>
-                <div class="flex items-center bg-gray-100 p-4 shadow-sm space-x-4 transition-all transform duration-300 hover:scale-105 rounded-lg">
+                <div class="flex items-center bg-gray-100 p-4 shadow-sm space-x-4 transition-all transform duration-300 rounded-lg">
                     <!-- Logo (Fixed for proper scaling) -->
                     <?php if (has_post_thumbnail()) : ?>
                         <a href="<?php the_permalink(); ?>" class="lg:hidden xl:flex flex-shrink-0 w-20 h-20 flex items-center justify-center  p-2 rounded-md overflow-hidden">
@@ -85,10 +85,10 @@ if ($weekly_pitches->have_posts()) : ?>
                         <!-- View Letter & Fund Buttons -->
                         <div class="flex space-x-2 mt-1">
                             <?php if ($letters_pdf) : ?>
-                                <a href="<?= esc_url($letters_pdf); ?>" target="_blank" class="text-sm text-blue-600 hover:underline mt-1 block">View Letter</a>
+                                <a href="<?= esc_url($letters_pdf); ?>" target="_blank" class="text-xs text-blue-600 hover:underline mt-1 block">View Letter</a>
                             <?php endif; ?>
                             <?php if ($fund_link) : ?>
-                                <a href="<?= esc_url($fund_link); ?>" target="_blank" class="text-sm text-blue-600 hover:underline mt-1 block">View Fund</a>
+                                <a href="<?= esc_url($fund_link); ?>" target="_blank" class="text-xs text-blue-600 hover:underline mt-1 block">View Fund</a>
                             <?php endif; ?>
                         </div>
                         <div class="elev-pitch-stats">

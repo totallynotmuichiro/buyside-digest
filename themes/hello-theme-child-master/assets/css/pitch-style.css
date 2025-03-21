@@ -1,0 +1,98 @@
+/* Replace green with blue */
+.bg-blue-600,
+.hover\:bg-blue-700:hover,
+button.active {
+  background-color: #0d3e6f !important; /* blue-700 */
+}
+
+.container {
+  max-width: 90% !important; /* Adjusted for better fit */
+  margin: 0 auto;
+}
+
+.bg-blue-700,
+.hover\:bg-blue-800:hover {
+  background-color: #0b3560 !important; /* blue-800 */
+}
+
+.bg-blue-50,
+.hover\:bg-blue-50:hover {
+  background-color: #ebf2fa !important; /* blue-50 */
+}
+
+.text-blue-800 {
+  color: #0d3e6f !important; /* blue-700 */
+}
+
+.border-blue-600 {
+  border-color: #0d3e6f !important; /* blue-700 */
+}
+
+/* Make filter ring thinner and blue */
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
+    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+    var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-blue-500:focus {
+  --tw-ring-color: #0d3e6f !important; /* blue-700 */
+}
+
+.focus\:border-blue-500:focus {
+  border-color: #0d3e6f !important; /* blue-700 */
+}
+
+/* Updated pagination styles */
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0; /* Reduced margin */
+}
+
+#pagination button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem; /* Reduced padding */
+  border-radius: 0.25rem; /* Smaller border radius */
+  margin: 0 0.125rem; /* Reduced margin */
+  transition: all 0.2s;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem; /* Smaller font size */
+  min-width: 1.75rem; /* Smaller minimum width */
+  height: 1.75rem; /* Smaller height */
+}
+
+#pagination button:not(:disabled):hover {
+  background-color: #ebf2fa;
+  border-color: #0d3e6f;
+}
+
+#pagination button.active {
+  background-color: #0d3e6f;
+  color: white;
+  border-color: #0d3e6f;
+}
+
+#pagination span.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem; /* Reduced padding */
+  font-size: 0.875rem; /* Smaller font size */
+}
+
+/* Loading indicator updated color */
+.border-b-2.border-blue-700 {
+  border-bottom-color: #0d3e6f !important;
+}
+
+ #filterForm input{ font-size:16px; }
+  .size-full{ width:auto; }
+  .text-white{ color:#fff !important; }
+.elementor-kit-7{--e-global-color-primary:#2E769D;--e-global-color-secondary:#0F3A4F;--e-global-color-text:#06212E;--e-global-color-accent:#9C5600;--e-global-color-a3844be:#06212E;--e-global-color-02532c4:#F5EEE5;--e-global-color-98e38e7:#2E769D;--e-global-color-87ec863:#0F3A4F;--e-global-color-78dc7cc:#9C5600;--e-global-color-0dd1a0a:#FFFFFF;--e-global-color-4985a02:#F3F3F3;--e-global-color-560ff97:#834902;--e-global-typography-primary-font-family:"Nunito";--e-global-typography-primary-font-weight:600;--e-global-typography-secondary-font-family:"Nunito";--e-global-typography-secondary-font-weight:700;--e-global-typography-text-font-family:"Nunito";--e-global-typography-text-font-weight:300;--e-global-typography-accent-font-family:"Quicksand";--e-global-typography-accent-font-weight:500;color:var( --e-global-color-text );line-height:1.7em;}.elementor-kit-7 a{color:var( --e-global-color-primary );font-weight:400;}

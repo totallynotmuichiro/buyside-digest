@@ -3,36 +3,35 @@
 $substackPosts = BSD_API::get_substacks();
 ?>
 
-<section class="my-5 w-full">
-    <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2">Substack</h2>
-    <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<section style="margin-top:25px" class="mb-5 w-full">
+    <div class="grid grid-cols-2 gap-6">
         <?php foreach ($substackPosts as $index => $post): ?>
-            <a class="flex flex-row gap-5 h-full group px-4 py-3 rounded-lg border bg-blue-50/40 hover:bg-blue-50/70 transition-all" href="<?php echo $post['url'] ?>" target="_blank">
+            <a class="flex flex-row overflow-hidden items-start gap-4 group rounded-lg transition-all" 
+               href="<?php echo $post['url'] ?>" target="_blank">
                 <img
-                    class="w-32 h-full object-cover rounded-md aspect-square"
+                    class="w-20 h-20 object-cover rounded-md aspect-square"
                     src="<?php echo $post['cover_image']; ?>"
                     alt="<?php echo $post['title']; ?>" />
-                <div>
-                    <h3 class="leading-tight font-semibold group-hover:underline line-clamp-2">
-                        <?php echo $post['title'] ?>
-                    </h3>
-                    <div class="text-sm space-x-2 mt-2">
+                <div class="flex flex-col justify-start">
+                    <div class="text-xs space-x-2">
                         <span>
-                            <?php $timestamp = strtotime($post['published_date']);
-                            $readable_date = gmdate('F j, Y', $timestamp);
-                            echo $readable_date;
+                            <?php 
+                                $timestamp = strtotime($post['published_date']);
+                                $readable_date = gmdate('F j, Y', $timestamp);
+                                echo $readable_date;
                             ?>
                         </span>
                         <span>|</span>
                         <span><?php echo $post['source_name']; ?></span>
                     </div>
-                    <p class="text-sm line-clamp-3 mt-2">
-                        <?php echo $post['subtitle'] ?>
-                    </p>
+                    <h3 class="leading-tight font-semibold text-[16px] group-hover:text-blue-600 line-clamp-2">
+                        <?php echo $post['title'] ?>
+                    </h3>
                 </div>
             </a>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </div>
 </section>
+
 
 <?php wp_reset_postdata(); ?>

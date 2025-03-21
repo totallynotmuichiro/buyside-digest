@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 22px;
             
         `;
-        alertDiv.textContent = "Our database is only for Accredited Investors";
+        alertDiv.textContent = "Sorry, our database is only for Accredited Investors";
 
         submitButton.parentNode.style.flexDirection = 'column';
         submitButton.parentNode.insertBefore(alertDiv, submitButton);

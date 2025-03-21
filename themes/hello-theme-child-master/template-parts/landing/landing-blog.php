@@ -9,7 +9,7 @@ shuffle($images);
 $total_blogs = count($blogs);
 ?>
 
-<section class="mt-8">
+<section class="">
     <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">Must Read Blogs</h2>
     <div class="grid grid-cols-1 md:grid-cols-8 gap-6">
         <!-- Featured Blog -->
@@ -42,13 +42,13 @@ $total_blogs = count($blogs);
         <?php if ($total_blogs > 1): ?>
             <div class="col-span-8 md:col-span-4 space-y-6">
                 <?php for ($i = 1; $i < min(5, $total_blogs); $i++): ?>
-                    <a class="flex flex-row items-center gap-5 group rounded-lg transition-all" href="<?php echo $blogs[$i]['link'] ?>" target="_blank">
+                    <a class="flex flex-row items-start gap-3 group rounded-lg transition-all" href="<?php echo $blogs[$i]['link'] ?>" target="_blank">
                         <img
-                            class="w-20 object-cover rounded-md aspect-square"
+                            class="w-20 h-18 object-cover rounded-md aspect-square"
                             src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
                             alt="<?php echo $blogs[$i]['title']; ?>" />
-                        <div class="flex flex-col justify-center">
-                            <div class="text-xs space-x-2 mt-2">
+                        <div class="flex flex-col justify-start">
+                            <div class="text-xs space-x-2">
                                 <span>
                                     <?php
                                     $timestamp = strtotime($blogs[$i]['published_date']);
@@ -59,12 +59,12 @@ $total_blogs = count($blogs);
                                 <span>|</span>
                                 <span><?php echo $blogs[$i]['blog_name']; ?></span>
                             </div>
-                            <h3 class="leading-tight font-semibold group-hover:text-blue-600 line-clamp-2">
+                            <h3 class="leading-tight font-semibold text-[16px] group-hover:text-blue-600 line-clamp-2">
                                 <?php echo $blogs[$i]['title']; ?>
                             </h3>
-                            <p class="text-gray-600 line-clamp-3 text-sm">
+<!--                             <p class="text-gray-600 line-clamp-3 text-sm">
                                 <?php echo $blogs[$i]['excerpt']; ?>
-                            </p>
+                            </p> -->
                         </div>
                     </a>
                 <?php endfor; ?>
@@ -72,16 +72,16 @@ $total_blogs = count($blogs);
         <?php endif; ?>
 
         <!-- Additional Blogs (6-9) -->
-        <?php if ($total_blogs > 5): ?>
+       <?php if ($total_blogs > 5): ?>
             <?php for ($i = 5; $i < min(9, $total_blogs); $i++): ?>
-                <a class="flex flex-row overflow-hidden col-span-8 lg:col-span-4 items-center gap-5 group rounded-lg transition-all" href="<?php echo $blogs[$i]['link'] ?>" target="_blank">
+                <a class="flex flex-row overflow-hidden col-span-8 lg:col-span-4 items-start gap-3 group rounded-lg transition-all" href="<?php echo $blogs[$i]['link'] ?>" target="_blank">
                     <img
-                        class="w-20 object-cover rounded-md aspect-square"
+                        class="w-20 h-18 object-cover rounded-md aspect-square"
                         src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/finance-<?php echo $images[$i] ?>.jpg"
                         alt="<?php echo $blogs[$i]['title']; ?>" />
 
-                    <div class="flex flex-col justify-center">
-                        <div class="text-xs space-x-2 mt-2">
+                    <div class="flex flex-col justify-start">
+                        <div class="text-xs space-x-2 ">
                             <span>
                                 <?php
                                 $timestamp = strtotime($blogs[$i]['published_date']);
@@ -92,15 +92,12 @@ $total_blogs = count($blogs);
                             <span>|</span>
                             <span><?php echo $blogs[$i]['blog_name']; ?></span>
                         </div>
-                        <h3 class="leading-tight font-semibold group-hover:text-blue-600 line-clamp-2">
+                        <h3 class="leading-tight font-semibold text-[16px] group-hover:text-blue-600 line-clamp-2">
                             <?php echo $blogs[$i]['title']; ?>
                         </h3>
-                        <p class="text-gray-600 line-clamp-3 text-sm">
-                            <?php echo $blogs[$i]['excerpt']; ?>
-                        </p>
                     </div>
                 </a>
             <?php endfor; ?>
-        <?php endif; ?>
+        <?php endif; ?> 
     </div>
 </section>

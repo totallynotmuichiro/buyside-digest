@@ -12,7 +12,7 @@ shuffle($images);
 $total_articles = count($articles);
 ?>
 
-<section class="mt-8">
+<section style="margin-top:40px" class="">
     <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">BSDs in the News</h2>
     <div class="grid grid-cols-1 md:grid-cols-8 gap-6">
         <!-- Featured Article -->

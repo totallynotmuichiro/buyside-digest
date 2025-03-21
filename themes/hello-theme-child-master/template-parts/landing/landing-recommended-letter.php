@@ -1,9 +1,9 @@
 <?php
 $args = array(
-    'post_type' => 'letters',
+    'post_type'      => 'letters',
     'posts_per_page' => 10,
-    'orderby' => 'date',
-    'order' => 'DESC',
+    'post__in'       => array(27011, 27319, 27187, 26481, 26819, 26844, 27136, 27504, 27419,27803 ),
+    'orderby'        => 'post__in',
 );
 
 $letters = new WP_Query($args);
@@ -11,7 +11,7 @@ $letters = new WP_Query($args);
 
 <section class="mt-8 w-full">
     <div class="flex justify-between border-b border-black/20 pb-2 mb-6 lg:mb-4">
-        <h2 class="flex text-xl items-center font-bold text-black/80 capitalize">Recently Posted Letters</h2>
+        <h2 class="flex text-xl items-center font-bold text-black/80 capitalize">BSD Recommended Letters</h2>
         <a href="/hedge-fund-database/" class="border border-[1.4px] border-primary hover:bg-primary/5 font-medium text-sm rounded-md text-primary py-1 px-4">
             Full list
         </a>

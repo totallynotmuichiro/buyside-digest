@@ -3,110 +3,63 @@
 Template Name: Investors
 */
 
-// Fetch investors from the API
-$investors = wp_remote_get('https://sectobsddjango-production.up.railway.app/api/investors/');
-
-if (is_array($investors)) {
-    $investors = json_decode($investors['body'], true);
-}
-
-// Define the dropdown options
+// Dropdown options
 $options = array(
     'value' => array(
         'All' => 'all',
-        '<$1M' => 'less-than-1m',
-        '$1M-$10M' => '1m-to-10m',
-        '$10M-$50M' => '10m-to-50m',
-        '$50M-$100M' => '50m-to-100m',
-        '$100M-$500M' => '100m-to-500m',
-        '$500M-$1B' => '500m-to-1b',
-        '>$1B' => 'greater-than-1b',
+        '<$1M' => '<1M',
+        '$1M-$10M' => '1M$-10M$',
+        '$10M-$50M' => '10M$-50M$',
+        '$50M-$100M' => '50M$-100M$',
+        '$100M-$500M' => '100M$-500M$',
+        '$500M-$1B' => '500M$-1B$',
+        '>$1B' => '>1B$',
     ),
     'num-stocks' => array(
         'All' => 'all',
-        '1-10' => '1-to-10',
-        '11-50' => '11-to-50',
-        '51-100' => '51-to-100',
-        '>100' => 'greater-than-100',
+        '1-10' => '1-10',
+        '11-50' => '11-50',
+        '51-100' => '51-100',
+        '>100' => '>100',
     ),
 );
 
-// Pagination settings
-$items_per_page = 15;
-$current_page = isset($_GET['page-number']) ? max(1, intval($_GET['page-number'])) : 1;
-
 // Get the query parameters
+$current_page = isset($_GET['page-number']) ? max(1, intval($_GET['page-number'])) : 1;
 $value = isset($_GET['value']) ? $_GET['value'] : 'all';
 $numStocks = isset($_GET['num-stocks']) ? $_GET['num-stocks'] : 'all';
 $investorName = isset($_GET['investor-name']) ? $_GET['investor-name'] : '';
 
-// Filter the investors based on the query parameters
-$investors = array_filter($investors, function ($investor) use ($value, $numStocks, $investorName) {
-    // Extract numeric value from "Value $X.XX Mil/Bil" format
-    if ($value !== 'all') {
-        $investorValue = isset($investor['value']) ? floatval($investor['value']) : 0;
+// Build API URL with query parameters
+$api_url = 'https://sectobsddjango-production.up.railway.app/api/investors1/?page_size=21&page=' . $current_page;
 
-        switch ($value) {
-            case 'less-than-1m':
-                if ($investorValue >= 1000000) return false;
-                break;
-            case '1m-to-10m':
-                if ($investorValue < 1000000 || $investorValue > 10000000) return false;
-                break;
-            case '10m-to-50m':
-                if ($investorValue < 10000000 || $investorValue > 50000000) return false;
-                break;
-            case '50m-to-100m':
-                if ($investorValue < 50000000 || $investorValue > 100000000) return false;
-                break;
-            case '100m-to-500m':
-                if ($investorValue < 100000000 || $investorValue > 500000000) return false;
-                break;
-            case '500m-to-1b':
-                if ($investorValue < 500000000 || $investorValue > 1000000000) return false;
-                break;
-            case 'greater-than-1b':
-                if ($investorValue <= 1000000000) return false;
-                break;
-        }
+if ($value !== 'all') {
+    $api_url .= '&value=' . urlencode($value);
+}
+
+if ($numStocks !== 'all') {
+    $api_url .= '&num_of_stocks=' . urlencode($numStocks);
+}
+
+if (!empty($investorName)) {
+    $api_url .= '&name=' . urlencode($investorName);
+}
+
+// Fetch investors from the API
+$response = wp_remote_get($api_url);
+$investors = array();
+$total_pages = 1;
+
+if (is_array($response) && !is_wp_error($response)) {
+    $data = json_decode($response['body'], true);
+    if (isset($data['results'])) {
+        $investors = $data['results'];
+        // Calculate total pages based on count from API response
+        $total_pages = !empty($data['results']) ? ceil($data['count'] / count($data['results'])) : 1;
     }
+}
 
-    // Extract number of stocks from "X Stocks (Y new)" format
-    if ($numStocks !== 'all') {
-        preg_match('/(\d+)\s+Stocks/', $investor['stocks_info'], $matches);
-        $stockCount = isset($matches[1]) ? intval($matches[1]) : 0;
-
-        switch ($numStocks) {
-            case '1-to-10':
-                if ($stockCount < 1 || $stockCount > 10) return false;
-                break;
-            case '11-to-50':
-                if ($stockCount < 11 || $stockCount > 50) return false;
-                break;
-            case '51-to-100':
-                if ($stockCount < 51 || $stockCount > 100) return false;
-                break;
-            case 'greater-than-100':
-                if ($stockCount <= 100) return false;
-                break;
-        }
-    }
-
-    if (!empty($investorName) && stripos($investor['name'], $investorName) === false) {
-        return false;
-    }
-
-    return true;
-});
-
-// Pagination calculations
-$total_items = count($investors);
-$total_pages = ceil($total_items / $items_per_page);
-$current_page = min($current_page, $total_pages); // Ensure current page doesn't exceed total pages
-$offset = ($current_page - 1) * $items_per_page;
-
-// Slice the array for current page
-$paginated_investors = array_slice($investors, $offset, $items_per_page);
+$paginated_investors = $investors;
 
 function toCamelCase($string)
 {
@@ -254,6 +207,14 @@ get_header();
                                             ?>
                                         </p>
                                     </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Turnover</p>
+                                        <p class="text-lg font-semibold text-gray-900">
+                                            <?php
+                                            echo isset($investor['turnover']) ? $investor['turnover'] : '-';
+                                            ?>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -316,4 +277,4 @@ get_header();
     </div>
 </section>
 
-<?php get_footer(); ?>
+<?php get_footer(); ?>  

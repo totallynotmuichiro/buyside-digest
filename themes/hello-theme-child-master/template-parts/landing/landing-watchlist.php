@@ -2,7 +2,7 @@
     <h2 class="text-xl font-extrabold text-gray-800">My Watchlist</h2>
     <hr class="my-3 border-gray-300">
     <p class="text-sm text-gray-600">Track your favorite fund managers and tickers with our free watchlist.</p>
-    <div class="mt-4">
+    <div class="mt-4 scale-[0.8]">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/watchlist.png" alt="Watchlist Preview" class="mx-auto ">
     </div>
     <div class="mt-5">

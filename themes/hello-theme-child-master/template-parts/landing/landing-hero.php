@@ -3,7 +3,7 @@
         <div class="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:w-[60%] xl:w-[50%] relative">
             <h1 class="title-font lg:text-4xl xl:text-5xl text-3xl mb-4 font-medium text-gray-900 animate-appear">
                 <span class="text-territory font-bold">Unlock</span>
-                the Wisdom of the Markets <span class="text-territory font-bold"> One Quarterly Investor </span> Letter at a Time.
+                the Wisdom of the Markets <span class="text-territory font-bold"> One Investor Letter </span> at a Time.
             </h1>
             <form class="flex flex-row flex-nowrap justify-center items-center bg-gray-100 p-1 rounded-full w-full xl:w-full animate-appear md:max-w-xl free_sign_up">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#444" class="w-8 h-8 ml-4">

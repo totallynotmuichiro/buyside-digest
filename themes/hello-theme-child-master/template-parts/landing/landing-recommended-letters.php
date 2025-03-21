@@ -2,7 +2,7 @@
 global $wpdb;
 
 // Query to get the top 10 most followed funds
-$fund_followers_query = "SELECT p.ID as fund_id, COUNT(DISTINCT fs.user_id) as follower_count 
+/*$fund_followers_query = "SELECT p.ID as fund_id, COUNT(DISTINCT fs.user_id) as follower_count 
         FROM {$wpdb->posts} p
         LEFT JOIN {$wpdb->prefix}fund_subscriptions fs ON p.ID = fs.fund_id
         WHERE p.post_type = 'funds' AND p.post_status = 'publish'
@@ -11,6 +11,24 @@ $fund_followers_query = "SELECT p.ID as fund_id, COUNT(DISTINCT fs.user_id) as f
         LIMIT 10";
 
 $top_funds = $wpdb->get_results($fund_followers_query, ARRAY_A);
+
+global $wpdb;*/
+
+$post_ids = array(27011, 27319, 27187, 26481, 26819); // Replace with your actual post IDs
+
+// Prepare query
+$post_ids_placeholder = implode(',', array_fill(0, count($post_ids), '%d'));
+$query = $wpdb->prepare(
+    "SELECT ID, post_type FROM {$wpdb->posts} WHERE ID IN ($post_ids_placeholder) AND post_type = %s",
+    [...$post_ids, 'letters']
+);
+
+// Get results
+$top_funds = $wpdb->get_results($query, ARRAY_A);
+
+// Print results
+// print_r($top_funds);
+
 ?>
 
 <section class="mt-8 w-full">

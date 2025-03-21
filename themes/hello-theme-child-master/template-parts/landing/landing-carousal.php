@@ -2,7 +2,7 @@
 $videos = BSD_API::get_yt_videos();
 ?>
 
-<section class="mt-8 mb-8 w-full">
+<section style="margin-top:65px" class="mt-8 mb-8 w-full">
     <h2 class="text-xl font-bold text-black/80 border-b border-gray-300 pb-2 mb-4">Must watch Videos</h2>
     <div class="swiper mySwiper">
         <div class="swiper-wrapper cursor-grab">
