@@ -1,0 +1,268 @@
+:root {
+  --primary-color: #0d3e6f; /* Your primary color */
+  --primary-faint: rgba(13, 62, 111, 0.1); /* Faint primary color */
+  --secondary-color: #9a5500;
+}
+
+body {
+  background-color: white; /* White background for body */
+  color: #333;
+}
+
+html,
+body {
+  overflow: auto; /* Allows scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.container {
+  max-width: 90% !important; /* Adjusted for better fit */
+  margin: 0 auto;
+}
+
+.primary-bg {
+  background-color: var(--primary-color);
+}
+
+.secondary-bg {
+  background-color: var(--secondary-color);
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-text {
+  color: var(--secondary-color);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Faint primary color background */
+.bg-primary-faint {
+  background-color: var(--primary-faint);
+}
+
+/* Ensure the table container scrolls horizontally */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Ensure the pagination stays fixed and does not scroll */
+.pagination-container {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+/* Filter sidebar styling - Added shadow */
+.w-full.md\:w-80.bg-white.border.border-gray-100 {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Market cap options - No fixed height, no scrollbar */
+#market-cap-options {
+  overflow-y: visible;
+  max-height: none;
+}
+
+/* Toggle switch styling - Fixed position for toggle movement */
+.toggle-checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-color: #e5e7eb;
+  transition: all 0.3s;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+  transform: translateX(4px);
+  border-color: #ffffff;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: var(--primary-color);
+}
+
+.toggle-label {
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+/* Search button color fix to match theme */
+#apply-filters {
+  background-color: var(--primary-color);
+}
+
+#apply-filters:hover {
+  background-color: var(
+    --secondary-color
+  ); /* Darker version of primary color */
+}
+
+/* No results styling */
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Add this to your style.css */
+td:nth-child(4),
+td:nth-child(5) {
+  text-align: left !important;
+}
+
+/* Override for a specific table by adding a class */
+.no-left-align td:nth-child(4),
+.no-left-align td:nth-child(5) {
+  text-align: center !important; /* Or whatever alignment you need */
+}
+
+/* Smaller Blue-Themed Toggle Switch */
+.toggle-checkbox {
+  display: none; /* Hide the actual checkbox */
+}
+
+.toggle-label {
+  position: relative;
+  display: inline-block;
+  width: 2.5rem; /* Smaller width */
+  height: 1.25rem; /* Smaller height */
+  background-color: #e2e8f0; /* Default off state background (gray) */
+  border-radius: 9999px; /* Fully rounded */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-label::after {
+  content: "";
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1rem; /* Smaller toggle circle */
+  height: 1rem;
+  background-color: white; /* Circle color */
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* When the toggle is ON */
+.toggle-checkbox:checked + .toggle-label {
+  background-color: var(
+    --primary-color
+  ) !important; /* Use your primary color */
+}
+
+.toggle-checkbox:checked + .toggle-label::after {
+  transform: translateX(1.25rem); /* Adjusted movement */
+}
+
+/* Hover effects */
+.toggle-label:hover {
+  background-color: #d1d5db; /* Slightly darker gray when hovered */
+}
+
+.toggle-checkbox:checked + .toggle-label:hover {
+  background-color: var(--primary-color); /* Keep primary color when hovered */
+}
+
+/* Enhanced table styling */
+.table-container {
+  border-radius: 2px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Sticky header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Better cell styling */
+table thead th {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Improve row hover effect */
+tbody tr:hover {
+  transition: background-color 0.2s ease;
+}
+
+/* Hide scrollbar but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Industries chip styles */
+/* .industry-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px;
+  background-color: #e5f0ff;
+  border: 1px solid #cce0ff;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+} */
+.industry-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px;
+  background-color: color-mix(in srgb, var(--primary-color) 20%, white);
+
+  border-radius: 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--primary-color);
+}
+
+.industries-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 4px;
+}
+
+/* Format currency */
+.currency {
+  font-variant-numeric: tabular-nums;
+}
+
+#applyFiltersBtn:hover {
+  background-color: var(--secondary-color) !important;
+}

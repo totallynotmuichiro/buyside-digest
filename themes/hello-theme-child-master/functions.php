@@ -4131,7 +4131,7 @@ require_once get_stylesheet_directory() . '/helper/template.php';
 require_once get_stylesheet_directory() . '/helper/api.php';
 
 function dequeue_css_in_pitches() {
-    if (is_page(27533)) {
+    if (is_page(27533) || is_page(26839) ) {
         wp_dequeue_style('hello-elementor');
         wp_dequeue_style('elementor-post-7');
         wp_deregister_style('hello-elementor');
@@ -4139,3 +4139,30 @@ function dequeue_css_in_pitches() {
     }
 }
 add_action('wp_enqueue_scripts', 'dequeue_css_in_pitches', 100); 
+
+
+function load_aum_page_css() {
+    if (is_page_template('page-aum.php')) {
+        wp_enqueue_style(
+            'aum-page-style',
+            get_stylesheet_directory_uri() . '/assets/css/page-aum.css',
+            array(),
+            '1.2'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_aum_page_css');
+
+function load_aum_page_js() {
+    if (is_page_template('page-aum.php')) {
+        wp_enqueue_script(
+            'aum-page-script', 
+            get_stylesheet_directory_uri() . '/assets/js/page-aum.js',
+            array(),
+            '1.0'
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'load_aum_page_js');
